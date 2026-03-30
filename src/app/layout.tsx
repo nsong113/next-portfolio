@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fira_Code, Geist } from "next/font/google";
 import { AppProviders } from "@/app/providers";
+import { SiteFooter } from "@/widgets/site-footer";
+import { SiteHeader } from "@/widgets/site-header";
 import "@/shared/styles/index.css";
 
 const geistSans = Geist({
@@ -8,8 +10,8 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const firaCode = Fira_Code({
+  variable: "--font-fira-code",
   subsets: ["latin"],
 });
 
@@ -27,10 +29,16 @@ export default function RootLayout({
     <html
       lang="ko"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${firaCode.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <AppProviders>{children}</AppProviders>
+        <AppProviders>
+          <SiteHeader />
+          <div className="flex min-h-screen flex-col pt-24">
+            <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+            <SiteFooter />
+          </div>
+        </AppProviders>
       </body>
     </html>
   );

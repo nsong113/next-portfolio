@@ -56,7 +56,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           <p className="text-lg text-primary">{portfolio.subTitle}</p>
         </header>
 
-        <div className="neo-card mb-10 space-y-4 p-6 md:p-8">
+        <div className="glass-card mb-10 space-y-4 p-6 md:p-8">
           <p className="font-sans leading-relaxed text-foreground/90">
             {portfolio.description}
           </p>

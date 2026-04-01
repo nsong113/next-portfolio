@@ -7,7 +7,7 @@ import { SkillsSection } from "./sections/skills-section";
 
 export function PortfolioPage() {
   return (
-    <main className="flex-1 overflow-x-hidden bg-background text-foreground">
+    <main className="flex-1 overflow-x-hidden bg-transparent text-foreground">
       <div id="portfolio-page">
         <HeroSection />
       </div>

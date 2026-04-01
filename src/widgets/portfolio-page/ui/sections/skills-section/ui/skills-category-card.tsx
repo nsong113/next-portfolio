@@ -19,7 +19,7 @@ export function SkillsCategoryCard({
 }: SkillsCategoryCardProps) {
   return (
     <motion.div
-      className="neo-card p-6"
+      className="glass-card p-6"
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}

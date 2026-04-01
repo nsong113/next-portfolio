@@ -15,7 +15,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <motion.article
       variants={staggerItem}
-      className={`group relative flex h-full min-h-0 flex-col overflow-hidden transition-all duration-500 neo-card hover:scale-[1.02] ${
+      className={`glass-card group relative flex h-full min-h-0 flex-col overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
         project.tags && project.tags.length > 0 ? "ring-1 ring-primary/30" : ""
       }`}
       whileHover={{ y: -4 }}
@@ -25,7 +25,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center justify-center rounded-[40px] border border-[#3D4352] bg-[#2E3442] px-4 py-2 text-xs text-foreground/90 opacity-50"
+              className="inline-flex items-center justify-center rounded-full border border-border/60 bg-background/40 px-4 py-2 text-xs text-foreground/80"
             >
               {tag}
             </span>
@@ -54,7 +54,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="inline-flex items-center rounded-full border border-[#3D4352] bg-[#2E3442]/70 px-2.5 py-1 text-[11px] leading-tight text-muted-foreground transition-colors hover:border-primary/35 hover:text-foreground/90"
+              className="inline-flex items-center rounded-full border border-border/60 bg-background/40 px-2.5 py-1 text-[11px] leading-tight text-muted-foreground transition-colors hover:border-primary/35 hover:text-foreground/90"
             >
               {tech}
             </span>

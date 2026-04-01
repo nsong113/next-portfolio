@@ -12,7 +12,7 @@ export function SiteHeader() {
       animate="visible"
       variants={fadeInUp}
     >
-      <div className="neo-card mx-4 my-2 md:mx-6">
+      <div className="glass-card mx-4 my-2 md:mx-6">
         <div className="mx-auto max-w-6xl px-4 py-4">
           <div className="flex items-center justify-between gap-4">
             <div className="glow-text text-lg text-primary">

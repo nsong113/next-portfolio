@@ -28,7 +28,7 @@ export function AboutSection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="neo-card p-8">
+            <div className="glass-card p-8">
               <h3 className="mb-6 text-xl text-primary">About Me</h3>
               <p className="mb-8 font-sans text-lg leading-relaxed text-foreground">
                 Computer Engineering student with a passion for creating

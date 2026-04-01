@@ -11,10 +11,10 @@ function TickerSegment({ duplicate }: { duplicate?: boolean }) {
     >
       {LABELS.map((label, i) => (
         <Fragment key={`${label}-${i}`}>
-          <span className="font-black tracking-tight text-black md:text-xl">
+          <span className="font-black tracking-tight text-primary-foreground md:text-xl">
             {label}
           </span>
-          <span className="select-none text-lg font-bold text-black/80 md:text-xl">
+          <span className="select-none text-lg font-bold text-primary-foreground/80 md:text-xl">
             *
           </span>
         </Fragment>

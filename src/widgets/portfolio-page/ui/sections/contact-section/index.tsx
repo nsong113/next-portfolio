@@ -38,7 +38,7 @@ export function ContactSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <div className="neo-card inline-block px-6 py-3">
+          <div className="glass-card inline-block px-6 py-3">
             <p className="font-jetbrains text-sm text-muted-foreground">
               [ Connection established successfully ]
             </p>

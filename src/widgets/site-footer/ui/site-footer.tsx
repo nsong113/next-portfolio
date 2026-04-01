@@ -9,7 +9,7 @@ export function SiteFooter() {
     <footer className="border-t border-primary/20 py-12">
       <div className="mx-auto max-w-6xl px-4 text-center">
         <motion.div
-          className="neo-card mb-4 inline-block px-8 py-4"
+          className="glass-card mb-4 inline-block px-8 py-4"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

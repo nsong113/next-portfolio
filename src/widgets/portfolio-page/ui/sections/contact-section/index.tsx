@@ -10,7 +10,7 @@ export function ContactSection() {
 
   return (
     <section className="px-4 py-20">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           className="atmospheric-glow mb-16"
           initial={{ opacity: 0, y: 20 }}

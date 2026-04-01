@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export function HeroAboutCard() {
   return (
     <motion.div
-      className="float-animation mx-auto mb-12 max-w-2xl rounded-2xl border border-slate-900/10 bg-black/5 p-8 text-slate-900 shadow-[0_18px_70px_rgba(2,6,23,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-black/30 dark:text-zinc-100 dark:shadow-[0_18px_60px_rgba(0,0,0,0.30)]"
+      className="float-animation font-jetbrains mx-auto mb-12 max-w-2xl rounded-2xl border border-slate-900/10 bg-black/5 p-8 text-slate-900 shadow-[0_18px_70px_rgba(2,6,23,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-black/30 dark:text-zinc-100 dark:shadow-[0_18px_60px_rgba(0,0,0,0.30)]"
       initial={{ opacity: 0, y: 28, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ delay: 0.35, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}

@@ -19,7 +19,7 @@ export function SkillsSection() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="glow-text text-center text-3xl md:text-4xl">
+          <h2 className="glow-text font-jetbrains text-center text-3xl md:text-4xl">
             &gt; Skills Matrix
           </h2>
         </motion.div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SKILLS } from "@/shared/data/skillsData";
+import { SKILLS } from "@/entities/skill/model/skills-data";
 import { staggerContainer, staggerItem } from "@/shared/lib/motion";
 
 const CATEGORIES = Array.from(

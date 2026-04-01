@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fira_Code, Geist, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { AppProviders } from "@/app/providers";
 import { SiteFooter } from "@/widgets/site-footer";
 import { SiteHeader } from "@/widgets/site-header";
@@ -20,6 +21,28 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const fontOne = localFont({
+  src: [
+    {
+      path: "../shared/assets/font/ONE Mobile Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../shared/assets/font/ONE Mobile Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../shared/assets/font/ONE Mobile Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-one-stack",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Portfolio",
   description: "개인 포트폴리오",
@@ -34,7 +57,7 @@ export default function RootLayout({
     <html
       lang="ko"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${firaCode.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${firaCode.variable} ${jetbrainsMono.variable} ${fontOne.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <AppProviders>

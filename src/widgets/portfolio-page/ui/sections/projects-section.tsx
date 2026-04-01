@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { PROJECTS } from "@/shared/data/projectData";
+import { PROJECTS } from "@/entities/project/model/project-data";
 import { staggerContainer, staggerItem } from "@/shared/lib/motion";
 import { ImageWithFallback } from "@/shared/ui/image-with-fallback";
 

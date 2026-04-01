@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { PROJECTS } from "@/shared/data/projectData";
+import { PROJECTS } from "@/entities/project/model/project-data";
 import { ImageWithFallback } from "@/shared/ui/image-with-fallback";
 
 type Props = {

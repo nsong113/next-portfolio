@@ -15,7 +15,7 @@ export function AboutSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="glow-text text-center font-mono text-3xl md:text-4xl">
+          <h2 className="glow-text text-center text-3xl md:text-4xl">
             &gt; User Profile
           </h2>
         </motion.div>
@@ -29,7 +29,7 @@ export function AboutSection() {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="neo-card p-8">
-              <h3 className="mb-6 font-mono text-xl text-primary">About Me</h3>
+              <h3 className="mb-6 text-xl text-primary">About Me</h3>
               <p className="mb-8 font-sans text-lg leading-relaxed text-foreground">
                 Computer Engineering student with a passion for creating
                 innovative solutions through technology. Specializing in Flutter
@@ -40,23 +40,23 @@ export function AboutSection() {
 
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-sm text-primary">Role:</span>
-                  <span className="skill-tag px-4 py-2 font-mono text-sm text-primary">
+                  <span className="text-sm text-primary">Role:</span>
+                  <span className="skill-tag px-4 py-2 text-sm text-primary">
                     Program Coordinator
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-sm text-primary">
+                  <span className="text-sm text-primary">
                     Achievement:
                   </span>
-                  <span className="skill-tag px-4 py-2 font-mono text-sm text-primary">
+                  <span className="skill-tag px-4 py-2 text-sm text-primary">
                     Scholarship Recipient
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-sm text-primary">Focus:</span>
+                  <span className="text-sm text-primary">Focus:</span>
                   <span className="font-sans text-foreground">
                     Frontend Development
                   </span>

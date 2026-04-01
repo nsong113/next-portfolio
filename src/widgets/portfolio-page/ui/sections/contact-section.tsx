@@ -20,7 +20,7 @@ export function ContactSection() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     alert("Message sent! (Demo)");
@@ -36,7 +36,7 @@ export function ContactSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="glow-text text-center font-mono text-3xl md:text-4xl">
+          <h2 className="glow-text text-center font-jetbrains text-3xl md:text-4xl">
             &gt; Establish Connection
           </h2>
         </motion.div>
@@ -50,7 +50,7 @@ export function ContactSection() {
           >
             <motion.h3
               variants={staggerItem}
-              className="mb-6 font-mono text-xl text-primary"
+              className="mb-6 font-jetbrains text-xl text-primary"
             >
               Get In Touch
             </motion.h3>
@@ -75,7 +75,7 @@ export function ContactSection() {
                 <div className="neo-button p-4 transition-transform duration-300 group-hover:scale-105">
                   <IconGithub className="text-primary" size={24} />
                 </div>
-                <span className="font-mono text-foreground transition-colors duration-300 group-hover:text-primary">
+                <span className="font-jetbrains text-foreground transition-colors duration-300 group-hover:text-primary">
                   GitHub Profile
                 </span>
               </motion.a>
@@ -91,7 +91,7 @@ export function ContactSection() {
                 <div className="neo-button p-4 transition-transform duration-300 group-hover:scale-105">
                   <IconLinkedin className="text-primary" size={24} />
                 </div>
-                <span className="font-mono text-foreground transition-colors duration-300 group-hover:text-primary">
+                <span className="font-jetbrains text-foreground transition-colors duration-300 group-hover:text-primary">
                   LinkedIn Profile
                 </span>
               </motion.a>
@@ -100,7 +100,7 @@ export function ContactSection() {
                 <div className="neo-button p-4">
                   <Mail size={24} className="text-primary" />
                 </div>
-                <span className="font-mono text-foreground">
+                <span className="font-jetbrains text-foreground">
                   nsong113@gmail.com
                 </span>
               </motion.div>
@@ -108,7 +108,7 @@ export function ContactSection() {
           </motion.div>
 
           <motion.div
-            className="overflow-hidden rounded-xl border border-zinc-700/90 bg-black font-[family-name:var(--font-jetbrains-mono),monospace] shadow-[0_24px_80px_rgba(0,0,0,0.55)]"
+            className="overflow-hidden rounded-xl border border-zinc-700/90 bg-black font-jetbrains shadow-[0_24px_80px_rgba(0,0,0,0.55)]"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -239,7 +239,7 @@ export function ContactSection() {
           viewport={{ once: true }}
         >
           <div className="neo-card inline-block px-6 py-3">
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-jetbrains text-sm text-muted-foreground">
               [ Connection established successfully ]
             </p>
           </div>

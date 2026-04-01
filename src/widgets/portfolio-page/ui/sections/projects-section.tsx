@@ -17,7 +17,7 @@ export function ProjectsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="glow-text text-center font-mono text-3xl md:text-4xl">
+          <h2 className="glow-text text-center text-3xl md:text-4xl">
             &gt; Project Repository
           </h2>
         </motion.div>
@@ -45,7 +45,7 @@ export function ProjectsSection() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center justify-center rounded-[40px] border border-[#3D4352] bg-[#2E3442] px-4 py-2 font-mono text-xs text-foreground/90 opacity-50"
+                      className="inline-flex items-center justify-center rounded-[40px] border border-[#3D4352] bg-[#2E3442] px-4 py-2 text-xs text-foreground/90 opacity-50"
                     >
                       {tag}
                     </span>
@@ -64,7 +64,7 @@ export function ProjectsSection() {
               </div>
 
               <div className="flex min-h-0 flex-1 flex-col p-6">
-                <h3 className="mb-3 font-mono text-lg leading-snug text-primary">
+                <h3 className="mb-3 text-lg leading-snug text-primary">
                   {project.title}
                 </h3>
                 <p className="mb-4 font-sans leading-relaxed text-muted-foreground">
@@ -75,7 +75,7 @@ export function ProjectsSection() {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="inline-flex items-center rounded-full border border-[#3D4352] bg-[#2E3442]/70 px-2.5 py-1 font-mono text-[11px] leading-tight text-muted-foreground transition-colors hover:border-primary/35 hover:text-foreground/90"
+                      className="inline-flex items-center rounded-full border border-[#3D4352] bg-[#2E3442]/70 px-2.5 py-1 text-[11px] leading-tight text-muted-foreground transition-colors hover:border-primary/35 hover:text-foreground/90"
                     >
                       {tech}
                     </span>
@@ -87,7 +87,7 @@ export function ProjectsSection() {
                     <motion.div whileTap={{ scale: 0.97 }} className="inline-flex">
                       <Link
                         href={`/projects/${project.id}`}
-                        className="inline-flex rounded-lg px-4 py-2 font-mono text-sm text-white opacity-80 shadow-sm transition-opacity hover:opacity-95"
+                        className="inline-flex rounded-lg px-4 py-2 text-sm text-white opacity-80 shadow-sm transition-opacity hover:opacity-95"
                         style={{
                           background:
                             "linear-gradient(90deg, #8a2be2 0%, #4973FF 100%), #111",
@@ -100,7 +100,7 @@ export function ProjectsSection() {
                   {project.liveUrl ? (
                     <motion.a
                       href={project.liveUrl}
-                      className="neo-button inline-flex px-4 py-2 font-mono text-sm text-primary"
+                      className="neo-button inline-flex px-4 py-2 text-sm text-primary"
                       whileTap={{ scale: 0.97 }}
                     >
                       View Live
@@ -109,7 +109,7 @@ export function ProjectsSection() {
                   {project.codeUrl ? (
                     <motion.a
                       href={project.codeUrl}
-                      className="inline-flex rounded-lg border border-muted-foreground px-4 py-2 font-mono text-sm text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
+                      className="inline-flex rounded-lg border border-muted-foreground px-4 py-2 text-sm text-muted-foreground transition-all duration-300 hover:border-primary hover:text-primary"
                       whileTap={{ scale: 0.97 }}
                     >
                       View Code

@@ -15,12 +15,12 @@ export function HeroSection() {
         >
           <motion.h1
             variants={staggerItem}
-            className="glow-text mb-4 font-mono text-4xl md:text-5xl lg:text-6xl"
+            className="glow-text mb-4 font-one text-4xl font-bold md:text-5xl lg:text-6xl"
           >
             FRONTEND DEVELOPER
           </motion.h1>
           <motion.div variants={staggerItem} className="inline-block">
-            <p className="cursor-blink font-mono text-lg text-primary">
+            <p className="cursor-blink text-lg text-primary">
               Turning complex flows into simple interfaces 
             </p>
           </motion.div>
@@ -33,11 +33,11 @@ export function HeroSection() {
           transition={{ delay: 0.35, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="mb-4">
-            <span className="font-mono text-sm text-primary opacity-90">
+            <span className="text-sm text-primary opacity-90">
               {"// About"}
             </span>
           </div>
-          <div className="space-y-5 text-left font-mono text-sm leading-7 text-primary md:text-base">
+          <div className="space-y-5 text-left text-sm leading-7 text-primary md:text-base">
             <p className="text-xs text-zinc-400 opacity-90">
               <span className="text-primary/50">{"// "}</span>
               requirements<span className="text-primary/40 mr-2">.map</span>
@@ -85,7 +85,7 @@ export function HeroSection() {
 
         <motion.a
           href="#projects"
-          className="neo-button inline-block px-8 py-3 font-mono text-lg text-primary"
+          className="neo-button inline-block px-8 py-3 text-lg text-primary"
           variants={fadeInUp}
           initial="hidden"
           animate="visible"

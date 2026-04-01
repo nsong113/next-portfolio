@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Fira_Code, Geist, JetBrains_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Fira_Code, JetBrains_Mono } from "next/font/google";
 import { AppProviders } from "@/app/providers";
 import { SiteFooter } from "@/widgets/site-footer";
 import { SiteHeader } from "@/widgets/site-header";
-import "@/shared/styles/index.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import "@/shared/styles/index.css";
 
 const firaCode = Fira_Code({
   variable: "--font-fira-code",
@@ -19,28 +14,6 @@ const firaCode = Fira_Code({
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-});
-
-const fontOne = localFont({
-  src: [
-    {
-      path: "../shared/assets/font/ONE Mobile Light.ttf",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../shared/assets/font/ONE Mobile Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../shared/assets/font/ONE Mobile Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-one-stack",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -57,7 +30,7 @@ export default function RootLayout({
     <html
       lang="ko"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${firaCode.variable} ${jetbrainsMono.variable} ${fontOne.variable} h-full antialiased`}
+      className={`${firaCode.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <AppProviders>

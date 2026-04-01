@@ -15,38 +15,38 @@ export function SiteHeader() {
       <div className="neo-card mx-4 my-2 md:mx-6">
         <div className="mx-auto max-w-6xl px-4 py-4">
           <div className="flex items-center justify-between gap-4">
-            <div className="glow-text font-mono text-lg text-primary">
+            <div className="glow-text text-lg text-primary">
               &gt; FRONTEND_PORTFOLIO
             </div>
             <div className="flex items-center gap-3">
               <div className="hidden space-x-8 md:flex">
                 <a
                   href="#home"
-                  className="font-mono text-muted-foreground transition-all duration-300 hover:text-primary hover:glow-text"
+                  className="text-muted-foreground transition-all duration-300 hover:text-primary hover:glow-text"
                 >
                   Home
                 </a>
                 <a
                   href="#skills"
-                  className="font-mono text-muted-foreground transition-all duration-300 hover:text-primary hover:glow-text"
+                  className="text-muted-foreground transition-all duration-300 hover:text-primary hover:glow-text"
                 >
                   Skills
                 </a>
                 <a
                   href="#projects"
-                  className="font-mono text-muted-foreground transition-all duration-300 hover:text-primary hover:glow-text"
+                  className="text-muted-foreground transition-all duration-300 hover:text-primary hover:glow-text"
                 >
                   Projects
                 </a>
                 <a
                   href="#about"
-                  className="font-mono text-muted-foreground transition-all duration-300 hover:text-primary hover:glow-text"
+                  className="text-muted-foreground transition-all duration-300 hover:text-primary hover:glow-text"
                 >
                   About
                 </a>
                 <a
                   href="#contact"
-                  className="font-mono text-muted-foreground transition-all duration-300 hover:text-primary hover:glow-text"
+                  className="text-muted-foreground transition-all duration-300 hover:text-primary hover:glow-text"
                 >
                   Contact
                 </a>

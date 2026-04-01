@@ -14,11 +14,11 @@ export function SiteFooter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             [ System : {year} ] • All rights reserved @nsong113
           </p>
         </motion.div>
-        <p className="glow-text font-mono text-primary">
+        <p className="glow-text text-primary">
           &gt; Thank you for visiting_
         </p>
       </div>

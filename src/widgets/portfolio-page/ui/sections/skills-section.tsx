@@ -23,7 +23,7 @@ export function SkillsSection() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="glow-text text-center font-mono text-3xl md:text-4xl">
+          <h2 className="glow-text text-center text-3xl md:text-4xl">
             &gt; Skills Matrix
           </h2>
         </motion.div>
@@ -42,7 +42,7 @@ export function SkillsSection() {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <h3 className="mb-6 flex items-center gap-2 font-mono text-lg text-primary">
+              <h3 className="mb-6 flex items-center gap-2 text-lg text-primary">
                 <span className="text-primary/60">{"//"}</span>
                 {category}
                 <span className="text-sm text-primary/60">
@@ -65,11 +65,11 @@ export function SkillsSection() {
                       variants={staggerItem}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-sm text-foreground">
+                        <span className="text-sm text-foreground">
                           {skill.name}
                         </span>
                         <motion.span
-                          className="font-mono text-sm text-primary"
+                          className="text-sm text-primary"
                           initial={{ opacity: 0 }}
                           whileInView={{ opacity: 1 }}
                           viewport={{ once: true }}
@@ -113,7 +113,7 @@ export function SkillsSection() {
           viewport={{ once: true }}
         >
           <div className="neo-card inline-block px-6 py-3">
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               [ {SKILLS.length} skills loaded • {avg}% avg proficiency ]
             </p>
           </div>

@@ -41,19 +41,19 @@ export default async function ProjectDetailPage({ params }: Props) {
       <div className="mx-auto max-w-3xl">
         <Link
           href="/#projects"
-          className="mb-10 inline-flex font-mono text-sm text-primary transition-colors hover:text-primary/80"
+          className="mb-10 inline-flex text-sm text-primary transition-colors hover:text-primary/80"
         >
           ← Back to projects
         </Link>
 
         <header className="mb-10">
-          <p className="mb-2 font-mono text-xs text-muted-foreground">
+          <p className="mb-2 text-xs text-muted-foreground">
             {portfolio.period}
           </p>
-          <h1 className="glow-text mb-2 font-mono text-2xl md:text-3xl">
+          <h1 className="glow-text mb-2 text-2xl md:text-3xl">
             {portfolio.title}
           </h1>
-          <p className="font-mono text-lg text-primary">{portfolio.subTitle}</p>
+          <p className="text-lg text-primary">{portfolio.subTitle}</p>
         </header>
 
         <div className="neo-card mb-10 space-y-4 p-6 md:p-8">
@@ -64,7 +64,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             {portfolio.technologies.map((tech) => (
               <span
                 key={tech}
-                className="skill-tag px-3 py-1 font-mono text-xs text-primary"
+                className="skill-tag px-3 py-1 text-xs text-primary"
               >
                 {tech}
               </span>
@@ -91,26 +91,26 @@ export default async function ProjectDetailPage({ params }: Props) {
 
         {portfolio.problems.length > 0 ? (
           <section className="space-y-8">
-            <h2 className="font-mono text-xl text-primary">Problems &amp; solutions</h2>
+            <h2 className="text-xl text-primary">Problems &amp; solutions</h2>
             <ul className="space-y-8">
               {portfolio.problems.map((item) => (
                 <li key={item.id} className="neo-card p-6">
-                  <p className="mb-1 font-mono text-xs text-muted-foreground">
+                  <p className="mb-1 text-xs text-muted-foreground">
                     #{item.id}
                   </p>
-                  <h3 className="mb-3 font-mono text-sm font-semibold text-foreground">
+                  <h3 className="mb-3 text-sm font-semibold text-foreground">
                     Problem
                   </h3>
                   <p className="mb-6 font-sans text-sm leading-relaxed text-muted-foreground">
                     {item.problem}
                   </p>
-                  <h3 className="mb-3 font-mono text-sm font-semibold text-primary">
+                  <h3 className="mb-3 text-sm font-semibold text-primary">
                     Solution
                   </h3>
                   <p className="mb-6 font-sans text-sm leading-relaxed text-foreground/90">
                     {item.solution}
                   </p>
-                  <h3 className="mb-3 font-mono text-sm font-semibold text-primary">
+                  <h3 className="mb-3 text-sm font-semibold text-primary">
                     Result
                   </h3>
                   <p className="font-sans text-sm leading-relaxed text-muted-foreground">

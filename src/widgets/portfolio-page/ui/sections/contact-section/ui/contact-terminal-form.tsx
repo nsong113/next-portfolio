@@ -21,13 +21,13 @@ export function ContactTerminalForm({
 }: ContactTerminalFormProps) {
   return (
     <motion.div
-      className="overflow-hidden rounded-xl border border-zinc-700/90 bg-black font-jetbrains shadow-[0_24px_80px_rgba(0,0,0,0.55)]"
+      className="overflow-hidden rounded-xl border border-white/16 bg-[rgba(15,23,42,0.78)] font-jetbrains shadow-[0_18px_64px_rgba(2,6,23,0.22)] backdrop-blur-xl dark:border-zinc-700/90 dark:bg-black dark:shadow-[0_24px_80px_rgba(0,0,0,0.55)]"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.1 }}
     >
-      <div className="flex items-center gap-2 border-b border-zinc-800 bg-[#252525] px-3 py-2.5">
+      <div className="flex items-center gap-2 border-b border-white/10 bg-[rgba(17,24,39,0.72)] px-3 py-2.5 dark:border-zinc-800 dark:bg-[#252525]">
         <div className="flex gap-2">
           <span className="h-3 w-3 rounded-full bg-[#ff5f57]" aria-hidden />
           <span className="h-3 w-3 rounded-full bg-[#febc2e]" aria-hidden />
@@ -39,7 +39,7 @@ export function ContactTerminalForm({
         <span className="w-[52px] shrink-0" aria-hidden />
       </div>
 
-      <div className="bg-size-[20px_20px] bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.04)_1px,transparent_0)] bg-black px-5 py-6 md:px-7 md:py-8">
+      <div className="bg-size-[20px_20px] bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.035)_1px,transparent_0)] bg-[rgba(15,23,42,0.62)] px-5 py-6 md:px-7 md:py-8 dark:bg-black">
         <p className="mb-6 text-[13px] leading-relaxed tracking-tight antialiased">
           <span className="text-cyan-400">guest@portfolio:~$</span>{" "}
           <span className="text-zinc-100">sudo init contact --form</span>

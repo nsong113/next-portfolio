@@ -1,17 +1,16 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const isReady = resolvedTheme === "dark" || resolvedTheme === "light";
+  const isDark = resolvedTheme === "dark";
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => {}, []);
 
-  if (!mounted) {
+  if (!isReady) {
     return (
       <span
         className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-card text-sm text-muted-foreground"
@@ -19,8 +18,6 @@ export function ThemeToggle() {
       />
     );
   }
-
-  const isDark = resolvedTheme === "dark";
 
   return (
     <button

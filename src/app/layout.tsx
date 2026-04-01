@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fira_Code, Geist } from "next/font/google";
+import { Fira_Code, Geist, JetBrains_Mono } from "next/font/google";
 import { AppProviders } from "@/app/providers";
 import { SiteFooter } from "@/widgets/site-footer";
 import { SiteHeader } from "@/widgets/site-header";
@@ -12,6 +12,11 @@ const geistSans = Geist({
 
 const firaCode = Fira_Code({
   variable: "--font-fira-code",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -29,7 +34,7 @@ export default function RootLayout({
     <html
       lang="ko"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${firaCode.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${firaCode.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <AppProviders>

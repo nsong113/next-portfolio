@@ -33,9 +33,10 @@
 
 .dark {
   /* Original design vibe (neo terminal, purple glow) */
-  --background: #121212;
+  --background: #22264b;
   --foreground: #ffffff;
-  --card: #1a1a1a;
+  /* Slightly lifted from pure black so panels read on navy */
+  --card: #2a3158;
   --card-foreground: #ffffff;
   --primary: #8a2be2;
   --primary-foreground: #ffffff;
@@ -71,6 +72,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-section-stone: #c5bcac;
+  --color-hero-bg: #22264b;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -317,4 +320,27 @@ body::before {
   margin-left: 0.15em;
   opacity: 0.85;
   animation: cursor-blink 1.1s step-end infinite;
+}
+
+/* Infinite horizontal ticker (hero strip) */
+@keyframes portfolio-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.portfolio-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: portfolio-marquee 50s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-marquee-track {
+    animation: none;
+  }
 }

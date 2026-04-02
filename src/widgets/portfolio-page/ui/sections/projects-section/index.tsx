@@ -11,7 +11,7 @@ export function ProjectsSection() {
     <section className="px-4 py-20">
       <div className="mx-auto max-w-6xl">
         <PortfolioSectionHeading>
-          &gt; Project Repository
+          &gt; Projects
         </PortfolioSectionHeading>
 
         <motion.div

@@ -3,10 +3,9 @@
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 
-/** Active pointer: splash-style soft disk */
 const DOT_PX = 20;
-const CURSOR_LIGHT = "#9E05FF";
-const CURSOR_DARK = "#A6F003";
+const CURSOR_LIGHT = "#04c9bf";
+const CURSOR_DARK = "#f97bfd";
 
 const TRAIL_MAX_AGE_MS = 520;
 const TRAIL_MAX_AGE_REDUCED_MS = 180;
@@ -23,7 +22,7 @@ function CursorDot({ color, opacity = 1 }: { color: string; opacity?: number }) 
         width: DOT_PX,
         height: DOT_PX,
         opacity,
-        /* Same idea as splash canvas: radial core + soft rim + outer bloom (see source-field-canvas) */
+       
         background: `radial-gradient(circle at 50% 50%,
           color-mix(in srgb, ${color} 90%, rgb(255 250 245)) 0%,
           color-mix(in srgb, ${color} 52%, rgb(255 248 242)) 38%,
@@ -39,7 +38,7 @@ function CursorDot({ color, opacity = 1 }: { color: string; opacity?: number }) 
   );
 }
 
-/** Trail = glow only (no visible disk): 1px anchor + layered shadow, like light smear */
+/** Trail **/
 function TrailGlow({ color, opacity }: { color: string; opacity: number }) {
   return (
     <div

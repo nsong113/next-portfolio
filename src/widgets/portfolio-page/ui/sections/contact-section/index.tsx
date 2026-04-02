@@ -13,7 +13,7 @@ export function ContactSection() {
     <section className="px-4 py-20">
       <div className="mx-auto max-w-6xl">
         <PortfolioSectionHeading>
-          &gt; Establish Connection
+          &gt; Contact Me
         </PortfolioSectionHeading>
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">

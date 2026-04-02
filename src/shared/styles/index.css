@@ -114,55 +114,55 @@
   --font-size: 16px;
 
   /* Light theme (kept subtle, still purple-accented) */
-  --logo-color: #392645;
+  --logo-color: #04c9bf;
   --background: #fafafa; /* //bg */
-  --foreground: #222222; /* //font */
+  --foreground: #26293d; /* //font */
   --card: #ffffff; /* //bg */
-  --card-foreground: #222222; /* //font */
-  --primary: #9e05ff; /* //btn */
-  --primary-foreground: #222222; /* //font */
+  --card-foreground: #26293d; /* //font */
+  --primary: #04c9bf; /* //btn */
+  --primary-foreground: #26293d; /* //font */
   --secondary: #333d47; /* //bg */
-  --secondary-foreground: #222222; /* //font */
+  --secondary-foreground: #26293d; /* //font */
   --muted: #737373; /* //bg */
   --muted-foreground: #525252; /* //font */
   --accent: #392645; /* //btn */
-  --accent-foreground: #222222; /* //font */
+  --accent-foreground: #26293d; /* //font */
   --destructive: #d4183d; /* //btn */
-  --destructive-foreground: #222222; /* //font */
+  --destructive-foreground: #26293d; /* //font */
   --border: #e5e5e5; /* //border */
   --input: transparent; /* //bg */
   --input-background: #eef0f3; /* //bg */
   --ring: #392645; /* //btn */
   --radius: 0.625rem; /* //radius */
-  --light-color: #a97ec4;
+  --light-color: #77c9ff;
+  --opposite-color: #f97bfd;
 
   /* shared */
   --accent-rgb: 138 43 226;
 }
 
 .dark {
-  /* Original design vibe (neo terminal, purple glow) */
-  --logo-color: #58c4ff;
+  --logo-color: #f97bfd;
   --background: #22264b;
-  --foreground: #ffffff;
-  /* Slightly lifted from pure black so panels read on navy */
+  --foreground: #fef6ff;
   --card: #2a3158;
-  --card-foreground: #ffffff;
-  --primary: #58c4ff;
-  --primary-foreground: #ffffff;
-  --secondary: #333d47;
-  --secondary-foreground: #ffffff;
-  --muted: #333d47;
+  --card-foreground: #fef6ff;
+  --primary: #4abfba;
+  --primary-foreground: #fef6ff;
+  --secondary: #2e3451;
+  --secondary-foreground: #fef6ff;
+  --muted: #2e3451;
   --muted-foreground: #7b7a7a;
-  --accent: #58c4ff;
-  --accent-foreground: #ffffff;
+  --accent: #4abfba;
+  --accent-foreground: #fef6ff;
   --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
-  --border: #333d47;
+  --destructive-foreground: #fef6ff;
+  --border: #2e3451;
   --input: transparent;
-  --input-background: #333d47;
-  --ring: #58c4ff;
-  --light-color: #7ab1cf;
+  --input-background: #26293d;
+  --ring: #4abfba;
+  --light-color: #3f43b4;
+  --opposite-color: #04c9bf;
 }
 
 @theme inline {
@@ -187,7 +187,8 @@
   --color-section-stone: #c5bcac;
   --color-hero-bg: #22264b;
   --color-light-color: var(--light-color);
-  /* Tailwind v4 breakpoints (enable `sm:`, `md:`, `lg:` ...) */
+  --color-opposite-color: var(--opposite-color);
+
   --breakpoint-sm: 40rem; /* 640px */
   --breakpoint-md: 48rem; /* 768px */
   --breakpoint-lg: 64rem; /* 1024px */
@@ -217,7 +218,6 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Layer order: --background (bottom) -> bg image -> DOM */
 body::after {
   content: "";
   position: fixed;

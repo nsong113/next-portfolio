@@ -12,7 +12,7 @@ export function SkillsSection() {
     <section className="px-4 py-20">
       <div className="mx-auto max-w-6xl">
         <PortfolioSectionHeading viewport={{ once: true, amount: 0.4 }}>
-          &gt; Skills Matrix
+          &gt; Skills
         </PortfolioSectionHeading>
 
         <div className="space-y-8">

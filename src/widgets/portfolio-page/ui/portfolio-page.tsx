@@ -17,19 +17,19 @@ export function PortfolioPage() {
 
       <PortfolioTicker />
 
-      <div id="skills">
+      <div id="skills" className='py-10'>
         <SkillsSection />
       </div>
 
-      <div id="projects">
+      <div id="projects" className='py-10'>
         <ProjectsSection />
       </div>
 
-      <div id="about">
+      <div id="about" className='py-10'>
         <AboutSection />
       </div>
 
-      <div id="contact">
+      <div id="contact" className='py-10'>
         <ContactSection />
       </div>
     </main>

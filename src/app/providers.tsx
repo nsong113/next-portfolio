@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { useState } from "react";
 import { SplashGateProvider } from "@/app/splash-gate-context";
 import { createQueryClient } from "@/shared/lib/query-client";
+import { CustomCursor } from "@/shared/ui/custom-cursor";
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(createQueryClient);
@@ -20,6 +21,7 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
           disableTransitionOnChange
         >
           {children}
+          <CustomCursor />
         </ThemeProvider>
       </SplashGateProvider>
       {process.env.NODE_ENV === "development" ? (

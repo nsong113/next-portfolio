@@ -12,8 +12,10 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
   const shellRef = useRef<HTMLDivElement>(null);
   const enterButtonRef = useRef<HTMLButtonElement>(null);
   const attractPointRef = useRef<{ x: number; y: number } | null>(null);
+  const releaseClusterRef = useRef(false);
 
   const syncAttractToButtonCenter = () => {
+    releaseClusterRef.current = true;
     const shell = shellRef.current;
     const btn = enterButtonRef.current;
     if (!shell || !btn) return;
@@ -36,6 +38,7 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
     >
       <SourceFieldCanvas
         attractPointRef={attractPointRef}
+        releaseClusterRef={releaseClusterRef}
         className="pointer-events-auto absolute inset-0 h-full w-full touch-none"
       />
 

@@ -13,16 +13,23 @@ export type AttractPointRef = {
   current: { x: number; y: number } | null;
 };
 
+/** Set `current` to true (e.g. Enter button hover) to leave idle cluster */
+export type ReleaseClusterRef = { current: boolean };
+
 type SourceFieldCanvasProps = {
   className?: string;
   particleDensity?: number;
   attractPointRef?: AttractPointRef;
-};  
+  releaseClusterRef?: ReleaseClusterRef;
+};
+
+/** ~500×500 area → radius 250px at viewport center */
+const SPLASH_CLUSTER_RADIUS = 250;
 
 function particleCountForSize(w: number, h: number, density: number) {
   const area = w * h;
-  const base = Math.round((area / 90000) * density * 0.5);
-  return clampInt(base, 24, 80);
+  const base = Math.round((area / 90000) * density);
+  return clampInt(base, 48, 160);
 }
 
 function clampInt(n: number, lo: number, hi: number) {
@@ -33,6 +40,7 @@ export function SourceFieldCanvas({
   className,
   particleDensity = 42,
   attractPointRef,
+  releaseClusterRef,
 }: SourceFieldCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerRef = useRef<PointerState>(null);
@@ -40,6 +48,8 @@ export function SourceFieldCanvas({
   const particlesRef = useRef<ReturnType<typeof createParticles> | null>(null);
   const sizeRef = useRef({ w: 0, h: 0, dpr: 1 });
   const reducedMotionRef = useRef(false);
+  /** Canvas pointer / enter / down — leave central cluster */
+  const hasInteractedRef = useRef(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -61,6 +71,10 @@ export function SourceFieldCanvas({
       return;
     }
 
+    const markLeftCluster = () => {
+      hasInteractedRef.current = true;
+    };
+
     const setPointerFromEvent = (e: PointerEvent) => {
       const rect = canvas.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -74,8 +88,20 @@ export function SourceFieldCanvas({
       pointerRef.current = null;
     };
 
-    canvas.addEventListener("pointermove", setPointerFromEvent);
-    canvas.addEventListener("pointerdown", setPointerFromEvent);
+    const onPointerDown = (e: PointerEvent) => {
+      markLeftCluster();
+      setPointerFromEvent(e);
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (Math.abs(e.movementX) + Math.abs(e.movementY) > 0.5) {
+        markLeftCluster();
+      }
+      setPointerFromEvent(e);
+    };
+
+    canvas.addEventListener("pointerdown", onPointerDown);
+    canvas.addEventListener("pointermove", onPointerMove);
     canvas.addEventListener("pointerleave", clearPointer);
     canvas.addEventListener("pointercancel", clearPointer);
 
@@ -91,7 +117,9 @@ export function SourceFieldCanvas({
 
       if (!particlesRef.current || prev.w === 0) {
         const n = particleCountForSize(w, h, particleDensity);
-        particlesRef.current = createParticles(w, h, n);
+        particlesRef.current = createParticles(w, h, n, {
+          clusterRadius: SPLASH_CLUSTER_RADIUS,
+        });
       } else {
         resizeParticles(
           particlesRef.current,
@@ -118,18 +146,36 @@ export function SourceFieldCanvas({
         return;
       }
 
+      const releasedFromUi = releaseClusterRef?.current ?? false;
+      const idleCluster =
+        !hasInteractedRef.current && !releasedFromUi;
+
       if (!reducedMotionRef.current) {
-        const pointer =
-          attractPointRef?.current ?? pointerRef.current;
-        const attractActive = Boolean(attractPointRef?.current);
-        if (attractActive) {
-          stepParticles(particles, w, h, pointer, { pointerSteer: 0.14 });
+        if (idleCluster) {
+          stepParticles(particles, w, h, null, {
+            clusterMode: {
+              cx: w / 2,
+              cy: h / 2,
+              radius: SPLASH_CLUSTER_RADIUS,
+            },
+            wander: 0.032,
+          });
         } else {
-          stepParticles(particles, w, h, pointer);
+          const pointer =
+            attractPointRef?.current ?? pointerRef.current;
+          const attractActive = Boolean(attractPointRef?.current);
+          if (attractActive) {
+            stepParticles(particles, w, h, pointer, { pointerSteer: 0.14 });
+          } else {
+            stepParticles(particles, w, h, pointer);
+          }
         }
       }
 
-      ctx.fillStyle = "rgba(38, 40, 64, 0.22)";
+      /* Stronger clear while clustered so glow doesn’t read as full-screen haze */
+      ctx.fillStyle = idleCluster
+        ? "rgba(38, 40, 64, 0.38)"
+        : "rgba(38, 40, 64, 0.22)";
       ctx.fillRect(0, 0, w, h);
 
       ctx.save();
@@ -137,7 +183,7 @@ export function SourceFieldCanvas({
       ctx.shadowOffsetY = 0;
       for (const p of particles) {
         const core = p.r * 0.75;
-        const radius = Math.max(0.5, p.r >= 6 ? core * 2 : core);
+        const radius = Math.max(0.5, p.r >= 6 ? core * 4 : core);
         /* Afterglow scales with drawn radius; large stars get 3× longer bloom. */
         const baseGlow = 6 + radius * 9.8;
         const glow = Math.min(
@@ -194,12 +240,12 @@ export function SourceFieldCanvas({
       mq.removeEventListener("change", onMq);
       ro.disconnect();
       cancelAnimationFrame(rafRef.current);
-      canvas.removeEventListener("pointermove", setPointerFromEvent);
-      canvas.removeEventListener("pointerdown", setPointerFromEvent);
+      canvas.removeEventListener("pointerdown", onPointerDown);
+      canvas.removeEventListener("pointermove", onPointerMove);
       canvas.removeEventListener("pointerleave", clearPointer);
       canvas.removeEventListener("pointercancel", clearPointer);
     };
-  }, [particleDensity, attractPointRef]);
+  }, [particleDensity, attractPointRef, releaseClusterRef]);
 
   return (
     <canvas

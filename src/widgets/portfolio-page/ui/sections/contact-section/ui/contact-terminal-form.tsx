@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { ChangeEvent, FormEventHandler } from "react";
+import type { ChangeEvent, SubmitEventHandler } from "react";
 
 type ContactTerminalFormProps = {
   formData: {
@@ -10,7 +10,7 @@ type ContactTerminalFormProps = {
     message: string;
   };
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onSubmit: FormEventHandler<HTMLFormElement>;
+  onSubmit: SubmitEventHandler<HTMLFormElement>;
 };
 
 export function ContactTerminalForm({

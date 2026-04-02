@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PROJECTS } from "@/entities/project/model/project-data";
-import { PortfolioSectionHeading } from "@/entities/portfolio";
+import { PortfolioSectionHeading } from "@/shared/ui/portfolio-section-heading";
 import { ProjectCard } from "./ui/project-card";
 import { staggerContainer } from "@/shared/lib/motion";
 

@@ -1,13 +1,12 @@
 "use client";
 
-// import { SKILLS } from "@/entities/skill/model/skills-data";
-import { PortfolioSectionHeading } from "@/entities/portfolio";
+import { PortfolioSectionHeading } from "@/shared/ui/portfolio-section-heading";
 import { SkillsCategoryCard } from "./ui/skills-category-card";
-// import { SkillsSummary } from "./ui/skills-summary";
+
 import { useSkillsStats } from "./model/use-skills-stats";
 
 export function SkillsSection() {
-  const { categories, avg, getSkillsByCategory } = useSkillsStats();
+  const { categories, getSkillsByCategory } = useSkillsStats();
 
   return (
     <section className="px-4 py-20">
@@ -26,8 +25,6 @@ export function SkillsSection() {
             />
           ))}
         </div>
-
-        {/* <SkillsSummary totalSkills={SKILLS.length} avg={avg} /> */}
       </div>
     </section>
   );

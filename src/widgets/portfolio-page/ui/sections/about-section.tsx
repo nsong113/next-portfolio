@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import profilePhoto from "@/shared/assets/images/profile.jpg";
 import { ImageWithFallback } from "@/shared/ui/image-with-fallback";
-import { PortfolioSectionHeading } from "@/entities/portfolio";
+import { PortfolioSectionHeading } from "@/shared/ui/portfolio-section-heading";
 
 export function AboutSection() {
   return (

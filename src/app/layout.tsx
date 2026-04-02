@@ -16,8 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "개인 포트폴리오",
+  title: "Frontend Portfolio",
+  description: "프론트엔드 포트폴리오",
 };
 
 export default function RootLayout({

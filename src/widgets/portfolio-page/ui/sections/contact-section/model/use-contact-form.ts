@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type SubmitEventHandler } from "react";
 
 type FormState = {
   name: string;
@@ -22,7 +22,7 @@ export function useContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     alert("Message sent! (Demo)");

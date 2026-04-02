@@ -350,11 +350,8 @@ body::after {
     opacity: 0.5;
     filter: blur(0.42em);
   }
-
-  /* No-op elsewhere: components gate animations with `motion-reduce:*` utilities */
 }
 
-/* Custom star cursor (see `CustomCursor`) — fine pointer only */
 html.custom-cursor-active,
 html.custom-cursor-active * {
   cursor: none !important;

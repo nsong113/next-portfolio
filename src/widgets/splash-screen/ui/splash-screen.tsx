@@ -46,7 +46,7 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
         className="relative z-10 flex flex-col items-center gap-6 px-6 text-center"
         style={{ pointerEvents: "none" }}
       >
-        <p className="font-mono text-sm text-logo-color md:text-base">
+        <p className="font-mono text-2xl font-bold text-logo-color md:text-base">
           Jiu&apos;s Portfolio
         </p>
         <button

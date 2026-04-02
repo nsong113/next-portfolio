@@ -6,11 +6,7 @@ import { SiteFooter } from "@/widgets/site-footer";
 import { SiteHeader } from "@/widgets/site-header";
 import { useSplashGate } from "@/app/splash-gate-context";
 
-/**
- * Global header/footer shell.
- * Hidden only while the home splash is active (`/` + not yet dismissed).
- * Any other route, or home after "Enter portfolio", shows header + footer.
- */
+
 export function AppChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const { splashDismissed } = useSplashGate();

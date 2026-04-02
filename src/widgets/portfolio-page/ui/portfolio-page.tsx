@@ -1,4 +1,4 @@
-import { AboutSection } from "./sections/about-section";
+// import { AboutSection } from "./sections/about-section";
 import { ContactSection } from "./sections/contact-section";
 import { HeroAboutSection } from "./sections/hero-about-section/ui/hero-about-section";
 import { HeroSection } from "./sections/hero-section";

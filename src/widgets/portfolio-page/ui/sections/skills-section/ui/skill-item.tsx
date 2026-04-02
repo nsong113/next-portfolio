@@ -8,9 +8,17 @@ type Skill = (typeof import("@/entities/skill/model/skills-data").SKILLS)[number
 type SkillItemProps = {
   skill: Skill;
   index: number;
+  isCoreSkill: boolean;
 };
 
-export function SkillItem({ skill, index }: SkillItemProps) {
+export function SkillItem({ skill, index, isCoreSkill }: SkillItemProps) {
+  const barClassName = isCoreSkill
+    ? "relative h-full rounded-full bg-linear-to-r from-primary via-primary/80 to-primary"
+    : "relative h-full rounded-full bg-linear-to-r from-primary/60 via-primary/45 to-primary/60";
+  const barShadow = isCoreSkill
+    ? "0 0 10px rgba(138, 43, 226, 0.4)"
+    : "0 0 10px rgba(138, 43, 226, 0.16)";
+
   return (
     <motion.div className="space-y-3" variants={staggerItem}>
       <div className="flex items-center justify-between">
@@ -29,7 +37,7 @@ export function SkillItem({ skill, index }: SkillItemProps) {
       <div className="relative h-2 overflow-hidden rounded-full bg-secondary/30">
         <div className="absolute inset-0 rounded-full bg-linear-to-r from-secondary/50 via-secondary/30 to-secondary/50" />
         <motion.div
-          className="relative h-full rounded-full bg-linear-to-r from-primary via-primary/80 to-primary"
+          className={barClassName}
           initial={{ width: 0 }}
           whileInView={{ width: `${skill.percentage}%` }}
           viewport={{ once: true, amount: 0.5 }}
@@ -39,7 +47,7 @@ export function SkillItem({ skill, index }: SkillItemProps) {
             ease: [0.22, 1, 0.36, 1],
           }}
           style={{
-            boxShadow: "0 0 10px rgba(138, 43, 226, 0.4)",
+            boxShadow: barShadow,
           }}
         >
           <div className="absolute inset-0 rounded-full bg-linear-to-r from-transparent via-white/20 to-transparent" />

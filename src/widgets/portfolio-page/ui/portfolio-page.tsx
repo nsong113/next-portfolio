@@ -25,9 +25,9 @@ export function PortfolioPage() {
         <ProjectsSection />
       </div>
 
-      <div id="about" className='py-10'>
+      {/* <div id="about" className='py-10'>
         <AboutSection />
-      </div>
+      </div> */}
 
       <div id="contact" className='py-10'>
         <ContactSection />

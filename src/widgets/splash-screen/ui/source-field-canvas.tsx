@@ -8,11 +8,16 @@ import {
   type PointerState,
 } from "../lib/source-field-simulation";
 
+
+export type AttractPointRef = {
+  current: { x: number; y: number } | null;
+};
+
 type SourceFieldCanvasProps = {
   className?: string;
-  /** approximate particle count (clamped by area) */
   particleDensity?: number;
-};
+  attractPointRef?: AttractPointRef;
+};  
 
 function particleCountForSize(w: number, h: number, density: number) {
   const area = w * h;
@@ -27,6 +32,7 @@ function clampInt(n: number, lo: number, hi: number) {
 export function SourceFieldCanvas({
   className,
   particleDensity = 42,
+  attractPointRef,
 }: SourceFieldCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerRef = useRef<PointerState>(null);
@@ -113,7 +119,14 @@ export function SourceFieldCanvas({
       }
 
       if (!reducedMotionRef.current) {
-        stepParticles(particles, w, h, pointerRef.current);
+        const pointer =
+          attractPointRef?.current ?? pointerRef.current;
+        const attractActive = Boolean(attractPointRef?.current);
+        if (attractActive) {
+          stepParticles(particles, w, h, pointer, { pointerSteer: 0.14 });
+        } else {
+          stepParticles(particles, w, h, pointer);
+        }
       }
 
       ctx.fillStyle = "rgba(38, 40, 64, 0.22)";
@@ -186,7 +199,7 @@ export function SourceFieldCanvas({
       canvas.removeEventListener("pointerleave", clearPointer);
       canvas.removeEventListener("pointercancel", clearPointer);
     };
-  }, [particleDensity]);
+  }, [particleDensity, attractPointRef]);
 
   return (
     <canvas

@@ -70,6 +70,11 @@ const defaultStep: StepOptions = {
   speedJitter: 0.018,
 };
 
+/** Faster drift + higher cap while a pointer/attractor is active */
+const POINTER_STEP_MULT = 1.48;
+const POINTER_MAX_SPEED_MULT = 1.28;
+const POINTER_MIN_SPEED_MULT = 1.06;
+
 export function stepParticles(
   particles: Particle[],
   w: number,
@@ -78,8 +83,9 @@ export function stepParticles(
   opts: Partial<StepOptions> = {},
 ): void {
   const o = { ...defaultStep, ...opts };
-  const minS = 0.28;
-  const maxS = 1.25;
+  const minS = pointer ? 0.28 * POINTER_MIN_SPEED_MULT : 0.28;
+  const maxS = pointer ? 1.25 * POINTER_MAX_SPEED_MULT : 1.25;
+  const stepMult = pointer ? POINTER_STEP_MULT : 1;
 
   for (const p of particles) {
     p.angle += (Math.random() - 0.5) * o.wander;
@@ -93,8 +99,9 @@ export function stepParticles(
     p.speed += (Math.random() - 0.5) * o.speedJitter;
     p.speed = clamp(p.speed, minS, maxS);
 
-    p.x += Math.cos(p.angle) * p.speed;
-    p.y += Math.sin(p.angle) * p.speed;
+    const step = p.speed * stepMult;
+    p.x += Math.cos(p.angle) * step;
+    p.y += Math.sin(p.angle) * step;
 
     if (p.x < 0) p.x += w;
     else if (p.x > w) p.x -= w;

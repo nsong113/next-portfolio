@@ -1,14 +1,31 @@
 "use client";
 
-import { useRef } from "react";
-
+import { useRef, useSyncExternalStore } from "react";
 import { SourceFieldCanvas } from "./source-field-canvas";
+import { motion } from "framer-motion";
+
+import { useResolvedTheme } from "@/shared/lib/theme/use-resolved-theme";
+
+import darkBtn from "@/shared/assets/ico/darkBtn.svg";
+import lightBtn from "@/shared/assets/ico/lightBtn.svg";
 
 type SplashScreenProps = {
   onEnter: () => void;
 };
 
 export function SplashScreen({ onEnter }: SplashScreenProps) {
+  const { isDark } = useResolvedTheme();
+ 
+  const isClient = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
+
+  const buttonAsset = isClient && isDark ? darkBtn : lightBtn;
+  const buttonBgUrl =
+    typeof buttonAsset === "string" ? buttonAsset : buttonAsset.src;
+
   const shellRef = useRef<HTMLDivElement>(null);
   const enterButtonRef = useRef<HTMLButtonElement>(null);
   const attractPointRef = useRef<{ x: number; y: number } | null>(null);
@@ -46,20 +63,29 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
         className="relative z-10 flex flex-col items-center gap-6 px-6 text-center"
         style={{ pointerEvents: "none" }}
       >
-        <p className="font-mono text-2xl font-bold text-logo-color md:text-base">
+        <p className="font-mono text-2xl font-bold text-logo-color">
           Jiu&apos;s Portfolio
         </p>
-        <button
+        <motion.button
           ref={enterButtonRef}
           type="button"
-          onClick={onEnter}
+          className="pointer-events-auto mb-10 px-4 py-6 text-[14px] font-bold text-logo-color"
           onMouseEnter={syncAttractToButtonCenter}
           onMouseMove={syncAttractToButtonCenter}
           onMouseLeave={clearAttract}
-          className="pointer-events-auto rounded-full border border-primary/40 bg-background/80 px-10 py-3 text-sm font-medium text-primary shadow-[0_0_24px_rgba(158,5,255,0.15)] backdrop-blur-md transition hover:border-primary hover:bg-background/90 hover:shadow-[0_0_32px_rgba(158,5,255,0.22)] dark:shadow-[0_0_24px_rgba(88,187,246,0.12)] dark:hover:shadow-[0_0_32px_rgba(88,187,246,0.18)]"
+          onClick={onEnter}
+          transition={{ delay: 0.55 }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.98 }}
+          style={{
+            backgroundImage: `url(${buttonBgUrl})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "contain",
+          }}
         >
           Enter portfolio
-        </button>
+        </motion.button>
       </div>
     </div>
   );

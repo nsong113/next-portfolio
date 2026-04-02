@@ -83,6 +83,8 @@ export default async function ProjectDetailPage({ params }: Props) {
                   src={src}
                   alt={`${project.title} — ${i + 1}`}
                   className="h-full w-full object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 672px"
+                  quality={75}
                 />
               </div>
             ))}

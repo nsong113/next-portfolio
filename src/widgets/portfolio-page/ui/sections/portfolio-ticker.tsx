@@ -29,15 +29,13 @@ function TickerSegment({ duplicate }: { duplicate?: boolean }) {
 
 export function PortfolioTicker() {
   return (
-    <div className="relative isolate my-7 overflow-hidden py-3 md:py-4">
-      <div className="bg-light-color">
+    <div className="relative isolate my-7 overflow-hidden py-1 bg-light-color">
         <HorizontalTicker duration={80000}>
           <TickerSegment />
           <TickerSegment />
-          <TickerSegment />
-          <TickerSegment />
+          {/* <TickerSegment /> */}
+          {/* <TickerSegment /> */}
         </HorizontalTicker>
-      </div>
     </div>
   );
 }

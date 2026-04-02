@@ -13,7 +13,7 @@ export const PROJECTS = [
       "Framer Motion",
     ],
     image:
-      "https://images.unsplash.com/photo-1592323401640-9c24ed330baf?w=1080&q=80",
+      "https://images.unsplash.com/photo-1592323401640-9c24ed330baf?w=960&q=75&auto=format&fit=max",
     liveUrl: "#",
     codeUrl: "#",
     tags: ["ai", "유지보수"],
@@ -38,9 +38,9 @@ export const PROJECTS = [
       contribution: 100,
       video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       image: [
-        "https://images.unsplash.com/photo-1592323401640-9c24ed330baf?w=1080&q=80",
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1080&q=80",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1080&q=80",
+        "https://images.unsplash.com/photo-1592323401640-9c24ed330baf?w=960&q=75&auto=format&fit=max",
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=960&q=75&auto=format&fit=max",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=960&q=75&auto=format&fit=max",
       ],
       problems: [
         {
@@ -86,7 +86,7 @@ export const PROJECTS = [
       "Framer Motion",
     ],
     image:
-      "https://images.unsplash.com/photo-1678845536613-5cf0ec5245cd?w=1080&q=80",
+      "https://images.unsplash.com/photo-1678845536613-5cf0ec5245cd?w=960&q=75&auto=format&fit=max",
     liveUrl: "#",
     codeUrl: "#",
     tags: ["ai", "유지보수"],
@@ -109,9 +109,9 @@ export const PROJECTS = [
       contribution: 100,
       video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       image: [
-        "https://images.unsplash.com/photo-1678845536613-5cf0ec5245cd?w=1080&q=80",
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1080&q=80",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1080&q=80",
+        "https://images.unsplash.com/photo-1678845536613-5cf0ec5245cd?w=960&q=75&auto=format&fit=max",
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=960&q=75&auto=format&fit=max",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=960&q=75&auto=format&fit=max",
       ],
       problems: [
         {

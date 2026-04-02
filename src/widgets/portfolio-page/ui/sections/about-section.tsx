@@ -1,20 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import profilePhoto from "@/shared/assets/images/profile.jpg";
+
+
 import { ImageWithFallback } from "@/shared/ui/image-with-fallback";
 import { PortfolioSectionHeading } from "@/shared/ui/portfolio-section-heading";
+
+import { staggerContainer, staggerItem } from "@/shared/lib/motion";
+import profilePhoto from "@/shared/assets/images/profile.jpg";
 
 export function AboutSection() {
   return (
     <section className="px-4 py-20">
-      <div className="mx-auto max-w-6xl">
+      <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mx-auto max-w-6xl">
         <PortfolioSectionHeading>
           &gt; About Me
         </PortfolioSectionHeading>
 
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <motion.div
+            variants={staggerItem}
             className="order-2 lg:order-1"
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -64,20 +69,20 @@ export function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative">
-              <div className="relative h-80 w-80 overflow-hidden rounded-full">
-                <div className="absolute inset-0 z-10 rounded-full border-2 border-primary/30" />
-                <div className="absolute inset-[-4px] animate-pulse rounded-full bg-linear-to-r from-primary/20 via-transparent to-primary/20" />
-                <ImageWithFallback
-                  src={profilePhoto.src}
-                  alt="Profile"
-                  className="h-full w-full object-cover"
-                />
-              </div>
+            <div className="relative h-80 w-80 overflow-hidden rounded-full">
+              <div className="absolute inset-0 z-10 rounded-full border-2 border-primary/30" />
+              <div className="absolute inset-[-4px] animate-pulse rounded-full bg-linear-to-r from-primary/20 via-transparent to-primary/20" />
+              <ImageWithFallback
+                src={profilePhoto}
+                alt="Profile"
+                className="h-full w-full object-cover"
+                sizes="320px"
+                placeholder="blur"
+              />
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

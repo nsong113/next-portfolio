@@ -27,6 +27,7 @@ export function ContactLinks() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
+      className="w-full flex-1"
     >
       <motion.h3
         variants={staggerItem}

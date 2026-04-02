@@ -16,7 +16,7 @@ export function ContactSection() {
           &gt; Contact Me
         </PortfolioSectionHeading>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
           <ContactLinks />
           <ContactTerminalForm
             formData={formData}
@@ -31,7 +31,7 @@ export function ContactSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <div className="inline-block px-6 py-3">
+          <div className="inline-block px-3 py-3">
             <p className="font-jetbrains text-sm text-muted-foreground">
               [ Connection established successfully ]
             </p>

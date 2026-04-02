@@ -1,30 +1,6 @@
 @import "tailwindcss";
 @import "pretendard/dist/web/variable/pretendardvariable.css";
 
-@font-face {
-  font-family: "ONE Mobile OTF";
-  src: url("../assets/font/ONE Mobile Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "ONE Mobile OTF";
-  src: url("../assets/font/ONE Mobile Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "ONE Mobile OTF";
-  src: url("../assets/font/ONE Mobile Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* A2z (에이투지) — projectnoonnu via jsDelivr */
 @font-face {
   font-family: "A2z";
@@ -107,7 +83,6 @@
   font-display: swap;
 }
 
-/* next-themes: `class="dark"` on <html> — enables `dark:` utilities */
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -203,7 +178,7 @@
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --font-jetbrains: var(--font-jetbrains-mono), ui-monospace, monospace;
-  --font-one: "ONE Mobile OTF", ui-sans-serif, system-ui, sans-serif;
+  /* --font-one: "ONE Mobile OTF", ui-sans-serif, system-ui, sans-serif; */
   --font-a2z: "A2z", ui-sans-serif, system-ui, sans-serif;
 }
 

@@ -20,7 +20,7 @@ export function ContactTerminalForm({
 }: ContactTerminalFormProps) {
   return (
     <motion.div
-      className="overflow-hidden rounded-xl border border-slate-900/10 bg-white/70 font-jetbrains shadow-[0_18px_64px_rgba(2,6,23,0.10)] backdrop-blur-xl dark:border-white/12 dark:bg-[rgba(44,53,83,0.94)] dark:shadow-[0_18px_64px_rgba(0,0,0,0.24)]"
+      className="overflow-hidden w-full rounded-xl border border-slate-900/10 bg-white/70 font-jetbrains shadow-[0_18px_64px_rgba(2,6,23,0.10)] backdrop-blur-xl dark:border-white/12 dark:bg-[rgba(44,53,83,0.94)] dark:shadow-[0_18px_64px_rgba(0,0,0,0.24)] flex-1"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

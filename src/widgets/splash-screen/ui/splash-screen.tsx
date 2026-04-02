@@ -1,9 +1,10 @@
 "use client";
 
 import { useRef, useSyncExternalStore } from "react";
-import { SourceFieldCanvas } from "./source-field-canvas";
 import { motion } from "framer-motion";
 
+import { SourceFieldCanvas } from "./source-field-canvas";
+import { staggerContainer, staggerItem } from "@/shared/lib/motion";
 import { useResolvedTheme } from "@/shared/lib/theme/use-resolved-theme";
 
 import darkBtn from "@/shared/assets/ico/darkBtn.svg";
@@ -59,14 +60,18 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
         className="pointer-events-auto absolute inset-0 h-full w-full touch-none"
       />
 
-      <div
+      <motion.div
         className="relative z-10 flex flex-col items-center gap-6 px-6 text-center"
         style={{ pointerEvents: "none" }}
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
       >
-        <p className="font-mono text-2xl font-bold text-logo-color">
+        <motion.p variants={staggerItem} className="font-mono text-2xl font-bold text-logo-color">
           Jiu&apos;s Portfolio
-        </p>
+        </motion.p>
         <motion.button
+          variants={staggerItem} 
           ref={enterButtonRef}
           type="button"
           className="pointer-events-auto mb-10 px-4 py-6 text-[14px] font-bold text-logo-color"
@@ -86,7 +91,7 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
         >
           Enter portfolio
         </motion.button>
-      </div>
+      </motion.div>
     </div>
   );
 }

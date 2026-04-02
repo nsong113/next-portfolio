@@ -9,13 +9,13 @@ export function AboutSection() {
     <section className="px-4 py-20">
       <div className="mx-auto max-w-6xl">
         <motion.div
-          className="atmospheric-glow mb-16"
+          className="relative mb-16 before:content-[''] before:absolute before:-inset-5 before:rounded-full before:bg-[radial-gradient(circle,rgb(var(--accent-rgb)/0.10)_0%,transparent_70%)] before:-z-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="glow-text font-jetbrains text-center text-3xl md:text-4xl">
+          <h2 className="[text-shadow:0_0_10px_rgba(80,5,255,0.28),0_0_24px_rgba(80,5,255,0.1)] font-jetbrains text-center text-3xl md:text-4xl dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]">
             &gt; User Profile
           </h2>
         </motion.div>
@@ -28,7 +28,7 @@ export function AboutSection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="glass-card p-8">
+            <div className="rounded-[28px] border border-slate-900/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(255,255,255,0.26)_30%,rgba(245,243,255,0.18))] p-8 shadow-[0_4px_34px_rgba(0,0,0,0.12)] backdrop-blur-[20px] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04)_30%,rgba(0,0,0,0.08))] dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)]">
               <h3 className="mb-6 text-xl text-primary">About Me</h3>
               <p className="mb-8 font-sans text-lg leading-relaxed text-foreground">
                 Computer Engineering student with a passion for creating
@@ -41,7 +41,7 @@ export function AboutSection() {
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <span className="text-sm text-primary">Role:</span>
-                  <span className="skill-tag px-4 py-2 text-sm text-primary">
+                  <span className="rounded-lg border border-[rgb(var(--accent-rgb)/0.26)] bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.14),rgb(var(--accent-rgb)/0.05))] px-4 py-2 text-sm text-primary shadow-[0_6px_14px_rgba(2,6,23,0.08),0_2px_10px_rgb(var(--accent-rgb)/0.10)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.22),rgb(var(--accent-rgb)/0.12))] hover:shadow-[0_10px_22px_rgba(2,6,23,0.12),0_6px_18px_rgb(var(--accent-rgb)/0.16)]">
                     Program Coordinator
                   </span>
                 </div>
@@ -50,7 +50,7 @@ export function AboutSection() {
                   <span className="text-sm text-primary">
                     Achievement:
                   </span>
-                  <span className="skill-tag px-4 py-2 text-sm text-primary">
+                  <span className="rounded-lg border border-[rgb(var(--accent-rgb)/0.26)] bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.14),rgb(var(--accent-rgb)/0.05))] px-4 py-2 text-sm text-primary shadow-[0_6px_14px_rgba(2,6,23,0.08),0_2px_10px_rgb(var(--accent-rgb)/0.10)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.22),rgb(var(--accent-rgb)/0.12))] hover:shadow-[0_10px_22px_rgba(2,6,23,0.12),0_6px_18px_rgb(var(--accent-rgb)/0.16)]">
                     Scholarship Recipient
                   </span>
                 </div>

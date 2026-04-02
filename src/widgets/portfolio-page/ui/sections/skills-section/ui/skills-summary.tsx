@@ -15,7 +15,7 @@ export function SkillsSummary({ totalSkills, avg }: SkillsSummaryProps) {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
     >
-      <div className="glass-card inline-block px-6 py-3">
+      <div className="inline-block px-6 py-3">
         <p className="text-sm text-muted-foreground">
           [ {totalSkills} skills loaded • {avg}% avg proficiency ]
         </p>

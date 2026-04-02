@@ -9,19 +9,19 @@ export function HeroSection() {
     <section className="relative flex min-h-screen items-center justify-center px-4 text-foreground">
       <div className="mx-auto max-w-4xl text-center">
         <motion.div
-          className="atmospheric-glow mb-8"
+          className="relative mb-8 before:content-[''] before:absolute before:-inset-5 before:rounded-full before:bg-[radial-gradient(circle,rgb(var(--accent-rgb)/0.10)_0%,transparent_70%)] before:-z-10"
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
         >
           <motion.h1
             variants={staggerItem}
-            className="glow-text mb-4 font-bold font-one text-4xl font-bold md:text-5xl lg:text-6xl"
+            className="[text-shadow:0_0_10px_rgba(80,5,255,0.28),0_0_24px_rgba(80,5,255,0.1)] mb-4 font-one text-4xl font-bold md:text-5xl lg:text-6xl dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]"
           >
             FRONTEND DEVELOPER
           </motion.h1>
           <motion.div variants={staggerItem} className="inline-block">
-            <p className="cursor-blink text-lg text-primary">
+            <p className="text-lg text-primary after:content-['▍'] after:ml-[0.15em] after:opacity-85 after:animate-[cursor-blink_1.1s_step-end_infinite]">
               Turning complex flows into simple interfaces 
             </p>
           </motion.div>
@@ -31,7 +31,7 @@ export function HeroSection() {
 
         <motion.a
           href="#projects"
-          className="neo-button inline-block px-8 py-3 text-lg text-primary"
+          className="inline-block rounded-lg border border-[rgb(var(--accent-rgb)/0.34)] bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.10),rgb(var(--accent-rgb)/0.05))] px-8 py-3 text-lg text-primary shadow-[0_2px_12px_rgb(var(--accent-rgb)/0.14),inset_0_1px_0_rgba(255,255,255,0.55)] transition-all duration-300 hover:-translate-y-px hover:bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.18),rgb(var(--accent-rgb)/0.10))] hover:shadow-[0_6px_20px_rgb(var(--accent-rgb)/0.22),inset_0_1px_0_rgba(255,255,255,0.70)] dark:border-[rgba(138,43,226,0.40)] dark:bg-[linear-gradient(145deg,rgba(138,43,226,0.10),rgba(138,43,226,0.05))] dark:shadow-[0_2px_8px_rgba(138,43,226,0.15),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-[linear-gradient(145deg,rgba(138,43,226,0.20),rgba(138,43,226,0.10))] dark:hover:shadow-[0_4px_16px_rgba(138,43,226,0.25),inset_0_1px_0_rgba(255,255,255,0.10)]"
           variants={fadeInUp}
           initial="hidden"
           animate="visible"

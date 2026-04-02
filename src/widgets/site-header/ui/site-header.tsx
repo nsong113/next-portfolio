@@ -27,7 +27,7 @@ export function SiteHeader() {
       <div className="mx-4 my-2 md:mx-6">
         <div className="mx-auto max-w-6xl px-4 py-4">
           <div className="flex items-center justify-between gap-4">
-            <div className="glow-text text-lg font-bold text-logo-color flex items-center gap-2">
+            <div className="[text-shadow:0_0_10px_rgba(80,5,255,0.28),0_0_24px_rgba(80,5,255,0.1)] text-lg font-bold text-logo-color flex items-center gap-2 dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]">
                &gt;
               <Image
                 src={star}
@@ -50,7 +50,7 @@ export function SiteHeader() {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="text-foreground transition-all duration-300 hover:text-[#9E05FF] hover:glow-text dark:text-white dark:hover:text-primary"
+                    className="text-foreground transition-all duration-300 hover:text-[#9E05FF] hover:[text-shadow:0_0_10px_rgba(80,5,255,0.28),0_0_24px_rgba(80,5,255,0.1)] dark:text-white dark:hover:text-primary dark:hover:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]"
                   >
                     {item.label}
                   </a>

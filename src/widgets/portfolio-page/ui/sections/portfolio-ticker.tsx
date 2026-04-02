@@ -27,7 +27,7 @@ export function PortfolioTicker() {
   return (
     <div className="relative isolate my-7 overflow-hidden py-3 md:py-4">
       <div className="bg-light-color">
-        <div className="portfolio-marquee-track select-none">
+        <div className="flex w-max select-none animate-[portfolio-marquee_50s_linear_infinite] will-change-transform motion-reduce:animate-none">
           <TickerSegment />
           <TickerSegment duplicate />
         </div>

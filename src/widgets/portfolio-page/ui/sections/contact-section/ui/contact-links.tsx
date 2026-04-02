@@ -37,7 +37,7 @@ export function ContactLinks() {
           className="group flex items-center gap-4"
           whileHover={{ x: 4 }}
         >
-          <div className="neo-button p-4 transition-transform duration-300 group-hover:scale-105">
+          <div className="rounded-lg border border-[rgb(var(--accent-rgb)/0.34)] bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.10),rgb(var(--accent-rgb)/0.05))] p-4 shadow-[0_2px_12px_rgb(var(--accent-rgb)/0.14),inset_0_1px_0_rgba(255,255,255,0.55)] transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-px group-hover:bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.18),rgb(var(--accent-rgb)/0.10))] group-hover:shadow-[0_6px_20px_rgb(var(--accent-rgb)/0.22),inset_0_1px_0_rgba(255,255,255,0.70)] dark:border-[rgba(138,43,226,0.40)] dark:bg-[linear-gradient(145deg,rgba(138,43,226,0.10),rgba(138,43,226,0.05))] dark:shadow-[0_2px_8px_rgba(138,43,226,0.15),inset_0_1px_0_rgba(255,255,255,0.05)] dark:group-hover:bg-[linear-gradient(145deg,rgba(138,43,226,0.20),rgba(138,43,226,0.10))] dark:group-hover:shadow-[0_4px_16px_rgba(138,43,226,0.25),inset_0_1px_0_rgba(255,255,255,0.10)]">
             <IconGithub className="text-primary" size={24} />
           </div>
           <span className="font-jetbrains text-foreground transition-colors duration-300 group-hover:text-primary">
@@ -53,7 +53,7 @@ export function ContactLinks() {
           className="group flex items-center gap-4"
           whileHover={{ x: 4 }}
         >
-          <div className="neo-button p-4 transition-transform duration-300 group-hover:scale-105">
+          <div className="rounded-lg border border-[rgb(var(--accent-rgb)/0.34)] bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.10),rgb(var(--accent-rgb)/0.05))] p-4 shadow-[0_2px_12px_rgb(var(--accent-rgb)/0.14),inset_0_1px_0_rgba(255,255,255,0.55)] transition-all duration-300 group-hover:scale-105 group-hover:-translate-y-px group-hover:bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.18),rgb(var(--accent-rgb)/0.10))] group-hover:shadow-[0_6px_20px_rgb(var(--accent-rgb)/0.22),inset_0_1px_0_rgba(255,255,255,0.70)] dark:border-[rgba(138,43,226,0.40)] dark:bg-[linear-gradient(145deg,rgba(138,43,226,0.10),rgba(138,43,226,0.05))] dark:shadow-[0_2px_8px_rgba(138,43,226,0.15),inset_0_1px_0_rgba(255,255,255,0.05)] dark:group-hover:bg-[linear-gradient(145deg,rgba(138,43,226,0.20),rgba(138,43,226,0.10))] dark:group-hover:shadow-[0_4px_16px_rgba(138,43,226,0.25),inset_0_1px_0_rgba(255,255,255,0.10)]">
             <IconLinkedin className="text-primary" size={24} />
           </div>
           <span className="font-jetbrains text-foreground transition-colors duration-300 group-hover:text-primary">
@@ -62,7 +62,7 @@ export function ContactLinks() {
         </motion.a>
 
         <motion.div variants={staggerItem} className="flex items-center gap-4">
-          <div className="neo-button p-4">
+          <div className="rounded-lg border border-[rgb(var(--accent-rgb)/0.34)] bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.10),rgb(var(--accent-rgb)/0.05))] p-4 shadow-[0_2px_12px_rgb(var(--accent-rgb)/0.14),inset_0_1px_0_rgba(255,255,255,0.55)] transition-all duration-300 dark:border-[rgba(138,43,226,0.40)] dark:bg-[linear-gradient(145deg,rgba(138,43,226,0.10),rgba(138,43,226,0.05))] dark:shadow-[0_2px_8px_rgba(138,43,226,0.15),inset_0_1px_0_rgba(255,255,255,0.05)]">
             <Mail size={24} className="text-primary" />
           </div>
           <span className="font-jetbrains text-foreground">nsong113@gmail.com</span>

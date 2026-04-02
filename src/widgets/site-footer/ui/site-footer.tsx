@@ -8,7 +8,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-primary/20 py-12">
       <div className="mx-auto max-w-6xl px-4 text-center">
-         <p className="[text-shadow:0_0_10px_rgba(80,5,255,0.28),0_0_24px_rgba(80,5,255,0.1)] text-primary dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]">
+         <p className="[text-shadow:0_0_3px_rgba(80,5,255,0.035),0_0_8px_rgba(80,5,255,0.01)] text-primary dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]">
           &gt; Thank you for visiting_
         </p>
         <motion.div

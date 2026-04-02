@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Fira_Code, JetBrains_Mono } from "next/font/google";
+import { AppChrome } from "@/app/app-chrome";
 import { AppProviders } from "@/app/providers";
-import { SiteFooter } from "@/widgets/site-footer";
-import { SiteHeader } from "@/widgets/site-header";
 
 import "@/shared/styles/index.css";
 
@@ -34,11 +33,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <AppProviders>
-          <SiteHeader />
-          <div className="flex min-h-screen flex-col pt-24">
-            <div className="flex min-h-0 flex-1 flex-col">{children}</div>
-            <SiteFooter />
-          </div>
+          <AppChrome>{children}</AppChrome>
         </AppProviders>
       </body>
     </html>

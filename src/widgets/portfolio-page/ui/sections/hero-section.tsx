@@ -9,17 +9,19 @@ export function HeroSection() {
     <section className="relative flex min-h-screen items-center justify-center px-4 text-foreground">
       <div className="mx-auto max-w-4xl text-center">
         <motion.div
-          className="relative mb-8 before:content-[''] before:absolute before:-inset-5 before:rounded-full before:bg-[radial-gradient(circle,rgb(var(--accent-rgb)/0.10)_0%,transparent_70%)] before:-z-10"
+          className="mb-8"
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
         >
-          <motion.h1
+          <motion.div
             variants={staggerItem}
-            className="[text-shadow:0_0_10px_rgba(80,5,255,0.28),0_0_24px_rgba(80,5,255,0.1)] mb-4 font-one text-4xl font-bold md:text-5xl lg:text-6xl dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]"
+            className="mx-auto mb-4 w-fit"
           >
-            FRONTEND DEVELOPER
-          </motion.h1>
+            <h1 className="[text-shadow:0_0_3px_rgba(80,5,255,0.035),0_0_8px_rgba(80,5,255,0.01)] font-one text-4xl font-bold md:text-5xl lg:text-6xl dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]">
+              FRONTEND DEVELOPER
+            </h1>
+          </motion.div>
           <motion.div variants={staggerItem} className="inline-block">
             <p className="text-lg text-primary after:content-['▍'] after:ml-[0.15em] after:opacity-85 after:animate-[cursor-blink_1.1s_step-end_infinite]">
               Turning complex flows into simple interfaces 

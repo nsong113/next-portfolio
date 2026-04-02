@@ -50,7 +50,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           <p className="mb-2 text-xs text-muted-foreground">
             {portfolio.period}
           </p>
-          <h1 className="[text-shadow:0_0_10px_rgba(80,5,255,0.28),0_0_24px_rgba(80,5,255,0.1)] mb-2 text-2xl md:text-3xl dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]">
+          <h1 className="[text-shadow:0_0_3px_rgba(80,5,255,0.035),0_0_8px_rgba(80,5,255,0.01)] mb-2 text-2xl md:text-3xl dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]">
             {portfolio.title}
           </h1>
           <p className="text-lg text-primary">{portfolio.subTitle}</p>

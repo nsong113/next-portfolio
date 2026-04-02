@@ -182,6 +182,91 @@ body::after {
   }
 }
 
+/* Soft glow + horizontal trail*/
+.portfolio-ticker-star {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  --ticker-glow-mix: color-mix(in srgb, var(--primary) 55%, rgb(180 205 255));
+  text-shadow:
+    /* warm core (matches Source Field fill) */
+    0 0 0.17em rgb(255 250 245 / 0.5),
+    0 0 0.33em color-mix(in srgb, var(--primary) 88%, rgb(255 250 245)),
+    /* stacked bloom ~ canvas shadowBlur */ 0 0 0.85em
+      color-mix(in srgb, var(--primary) 72%, transparent),
+    0 0 1.85em var(--ticker-glow-mix),
+    0 0 3.2em color-mix(in srgb, var(--ticker-glow-mix) 55%, transparent),
+    /* phosphor trail behind star (marquee ←) */ -0.65em 0 1.35em
+      var(--ticker-glow-mix),
+    -1.5em 0 2.35em color-mix(in srgb, var(--ticker-glow-mix) 70%, transparent),
+    -2.65em 0 3.5em color-mix(in srgb, var(--ticker-glow-mix) 45%, transparent),
+    -4em 0 4.35em color-mix(in srgb, var(--ticker-glow-mix) 26%, transparent),
+    -5.35em 0 4.85em color-mix(in srgb, var(--ticker-glow-mix) 14%, transparent);
+}
+
+.portfolio-ticker-star::before {
+  content: "";
+  position: absolute;
+  left: -6.75em;
+  top: 50%;
+  z-index: -2;
+  width: 7em;
+  height: 1.15em;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--primary) 14%, rgb(180 205 255 / 0.35)) 30%,
+    color-mix(in srgb, var(--primary) 38%, rgb(180 205 255 / 0.55)) 100%
+  );
+  filter: blur(1em);
+  opacity: 0.88;
+}
+
+.portfolio-ticker-star::after {
+  content: "";
+  position: absolute;
+  left: -5.5em;
+  top: 50%;
+  z-index: -1;
+  width: 5.65em;
+  height: 0.95em;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--primary) 26%, transparent) 38%,
+    color-mix(in srgb, var(--primary) 52%, rgb(180 205 255 / 0.4)) 100%
+  );
+  filter: blur(0.58em);
+  opacity: 0.92;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  /* No-op: components gate animations with `motion-reduce:*` utilities */
+  .portfolio-ticker-star {
+    text-shadow:
+      0 0 0.17em rgb(255 250 245 / 0.35),
+      0 0 0.65em color-mix(in srgb, var(--primary) 50%, transparent),
+      -0.85em 0 1.5em color-mix(in srgb, var(--primary) 35%, rgb(180 205 255));
+  }
+
+  .portfolio-ticker-star::before {
+    width: 4em;
+    left: -3.75em;
+    opacity: 0.45;
+    filter: blur(0.65em);
+  }
+
+  .portfolio-ticker-star::after {
+    width: 3em;
+    left: -2.85em;
+    opacity: 0.5;
+    filter: blur(0.42em);
+  }
+
+  /* No-op elsewhere: components gate animations with `motion-reduce:*` utilities */
 }

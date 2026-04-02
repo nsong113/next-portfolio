@@ -14,7 +14,7 @@ function TickerSegment({ duplicate }: { duplicate?: boolean }) {
           <span className="font-black tracking-tight text-primary-foreground text-xs md:text-sm">
             {label}
           </span>
-          <span className="select-none font-bold text-primary-foreground/80 text-xs md:text-sm">
+          <span className="portfolio-ticker-star select-none font-bold text-primary-foreground/80 text-xs md:text-sm">
             *
           </span>
         </Fragment>

@@ -3,22 +3,15 @@
 import { motion } from "framer-motion";
 import profilePhoto from "@/shared/assets/images/profile.jpg";
 import { ImageWithFallback } from "@/shared/ui/image-with-fallback";
+import { PortfolioSectionHeading } from "@/entities/portfolio";
 
 export function AboutSection() {
   return (
     <section className="px-4 py-20">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          className="mx-auto mb-16 w-fit"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="[text-shadow:0_0_3px_rgba(80,5,255,0.035),0_0_8px_rgba(80,5,255,0.01)] font-jetbrains text-center text-3xl md:text-4xl dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]">
-            &gt; User Profile
-          </h2>
-        </motion.div>
+        <PortfolioSectionHeading>
+          &gt; User Profile
+        </PortfolioSectionHeading>
 
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <motion.div
@@ -29,13 +22,12 @@ export function AboutSection() {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="rounded-[28px] border border-slate-900/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(255,255,255,0.26)_30%,rgba(245,243,255,0.18))] p-8 shadow-[0_4px_34px_rgba(0,0,0,0.12)] backdrop-blur-[20px] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04)_30%,rgba(0,0,0,0.08))] dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)]">
-              <h3 className="mb-6 text-xl text-primary">About Me</h3>
-              <p className="mb-8 font-sans text-lg leading-relaxed text-foreground">
-                Computer Engineering student with a passion for creating
-                innovative solutions through technology. Specializing in Flutter
-                mobile development, MERN stack web applications, and AI/ML
-                implementations. I believe in writing clean, efficient code that
-                solves real-world problems.
+              <h3 className="mb-6 text-2xl font-bold text-primary">About Me</h3>
+              <p className="mb-8 font-sans text-lg leading-relaxed text-foreground break-keep">
+                컴퓨터공학을 전공하며, 기술로 혁신적인 해결책을 만드는 일에
+                관심이 많습니다. Flutter 모바일 개발, MERN 스택 웹 애플리케이션,
+                AI/ML 구현을 중심으로 활동합니다. 실제 문제를 풀 수 있는 깨끗하고
+                효율적인 코드를 쓰는 것을 중요하게 생각합니다. 블라블라 예시 입니다.
               </p>
 
               <div className="space-y-6">

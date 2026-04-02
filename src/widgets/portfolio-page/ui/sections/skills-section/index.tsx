@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { SKILLS } from "@/entities/skill/model/skills-data";
+// import { SKILLS } from "@/entities/skill/model/skills-data";
+import { PortfolioSectionHeading } from "@/entities/portfolio";
 import { SkillsCategoryCard } from "./ui/skills-category-card";
-import { SkillsSummary } from "./ui/skills-summary";
+// import { SkillsSummary } from "./ui/skills-summary";
 import { useSkillsStats } from "./model/use-skills-stats";
 
 export function SkillsSection() {
@@ -12,17 +12,9 @@ export function SkillsSection() {
   return (
     <section className="px-4 py-20">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          className="mx-auto mb-16 w-fit"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="[text-shadow:0_0_3px_rgba(80,5,255,0.035),0_0_8px_rgba(80,5,255,0.01)] font-jetbrains text-center text-3xl md:text-4xl dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]">
-            &gt; Skills Matrix
-          </h2>
-        </motion.div>
+        <PortfolioSectionHeading viewport={{ once: true, amount: 0.4 }}>
+          &gt; Skills Matrix
+        </PortfolioSectionHeading>
 
         <div className="space-y-8">
           {categories.map((category, categoryIndex) => (
@@ -35,7 +27,7 @@ export function SkillsSection() {
           ))}
         </div>
 
-        <SkillsSummary totalSkills={SKILLS.length} avg={avg} />
+        {/* <SkillsSummary totalSkills={SKILLS.length} avg={avg} /> */}
       </div>
     </section>
   );

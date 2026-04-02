@@ -15,17 +15,16 @@ export function ContactLinks() {
     >
       <motion.h3
         variants={staggerItem}
-        className="mb-6 font-jetbrains text-xl text-primary"
+        className="mb-6 font-jetbrains text-2xl font-bold text-primary"
       >
         Get In Touch
       </motion.h3>
       <motion.p
         variants={staggerItem}
-        className="mb-8 font-sans text-lg leading-relaxed text-foreground"
+        className="mb-8 font-sans text-lg leading-relaxed text-foreground break-keep    "
       >
-        Ready to collaborate on your next project? Let&apos;s connect and build
-        something amazing together. I&apos;m always interested in discussing new
-        opportunities and innovative ideas.
+        다음 프로젝트를 함께해 볼까요? 블라블라 예시 문구임더
+        연락 주시면 멋진 결과를 함께 만들어가겠습니다. 새로운 기회와 혁신적인 아이디어에 대한 이야기를 언제나 반갑게 기다리고 있습니다. 
       </motion.p>
 
       <div className="space-y-6">

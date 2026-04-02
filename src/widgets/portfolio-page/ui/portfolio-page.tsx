@@ -1,5 +1,6 @@
 import { AboutSection } from "./sections/about-section";
 import { ContactSection } from "./sections/contact-section";
+import { HeroAboutSection } from "./sections/hero-about-section";
 import { HeroSection } from "./sections/hero-section";
 import { PortfolioTicker } from "./sections/portfolio-ticker";
 import { ProjectsSection } from "./sections/projects-section";
@@ -11,6 +12,8 @@ export function PortfolioPage() {
       <div id="portfolio-page">
         <HeroSection />
       </div>
+
+      <HeroAboutSection />
 
       <PortfolioTicker />
 

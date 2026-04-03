@@ -1,9 +1,7 @@
 import Link from "next/link";
 
-import {
-  ImageWithFallback,
-  imageWithFallbackKey,
-} from "@/shared/ui/image-with-fallback";
+import { imageWithFallbackKey } from "@/shared/lib/static-import-url";
+import { ImageWithFallback } from "@/shared/ui/image-with-fallback";
 
 import { PROJECTS } from "@/entities/project/model/project-data";
 

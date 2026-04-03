@@ -25,20 +25,11 @@ export const metadata: Metadata = {
     siteName: "Frontend Portfolio",
     locale: "ko_KR",
     type: "website",
-    images: [
-      {
-        url: "/icon.png",
-        width: 614,
-        height: 614,
-        alt: "Jiu's Portfolio",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "송지우 | Frontend Developer",
     description: "TypeScript, Next.js 기반 프론트엔드 포트폴리오",
-    images: ["/icon.png"],
   },
 };
 

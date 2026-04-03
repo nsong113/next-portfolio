@@ -3,18 +3,19 @@
 import Image, { type ImageProps } from "next/image";
 import { useState } from "react";
 
+export { imageWithFallbackKey } from "@/shared/lib/static-import-url";
+
 const ERROR_IMG_SRC =
   "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg==";
 
-/** 부모에 `relative`와 높이·폭(또는 aspect 등)이 있어야 합니다 — `fill` 사용 */
+/**
+ * 부모에 `relative`와 높이·폭(또는 aspect 등)이 있어야 합니다 — `fill` 사용.
+ * `src`가 바뀔 때 에러 UI를 리셋하려면 `key={imageWithFallbackKey(src)}` 권장.
+ */
 export type ImageWithFallbackProps = Omit<
   ImageProps,
   "onError" | "fill" | "width" | "height"
 > & {
-  /**
-   * 뷰포트에 맞게 요청 폭을 줄이려면 반드시 지정하세요.
-   * 카드/그리드는 `(max-width:768px) 100vw, 45vw` 등으로 좁히는 것이 좋습니다.
-   */
   sizes?: string;
 };
 
@@ -31,7 +32,7 @@ export function ImageWithFallback({
   if (src == null || src === "") {
     return null;
   }
-
+  
   if (didError) {
     return (
       <div
@@ -41,6 +42,7 @@ export function ImageWithFallback({
         <Image
           src={ERROR_IMG_SRC}
           alt=""
+          aria-hidden
           fill
           className="object-cover opacity-50"
           unoptimized

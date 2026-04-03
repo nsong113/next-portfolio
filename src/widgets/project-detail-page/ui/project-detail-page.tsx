@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-import { ImageWithFallback } from "@/shared/ui/image-with-fallback";
+import {
+  ImageWithFallback,
+  imageWithFallbackKey,
+} from "@/shared/ui/image-with-fallback";
 
 import { PROJECTS } from "@/entities/project/model/project-data";
 
@@ -59,6 +62,7 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
                 className="relative aspect-video overflow-hidden rounded-lg border border-border/60 bg-muted/20"
               >
                 <ImageWithFallback
+                  key={imageWithFallbackKey(src)}
                   src={src}
                   alt={`${project.title} — ${i + 1}`}
                   className="h-full w-full object-cover"

@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import type { ComponentProps, ReactNode } from "react";
+import { motion } from "framer-motion";
 
 const titleClassName =
   "[text-shadow:0_0_3px_rgba(80,5,255,0.035),0_0_8px_rgba(80,5,255,0.01)] text-center font-jetbrains font-bold text-3xl md:text-4xl dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]";

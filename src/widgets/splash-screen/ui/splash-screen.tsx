@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
 
 import { SourceFieldCanvas } from "./source-field-canvas";
@@ -20,9 +20,17 @@ type SplashScreenProps = {
 // 클릭하면 포트폴리오 진입 함수를 실행하는 풀스크린 스플래시 화면
 
 export function SplashScreen({ onEnter }: SplashScreenProps) {
-  const { isDark, isReady } = useResolvedTheme();
+  const { isDark } = useResolvedTheme();
 
-  const buttonAsset = isReady && isDark ? darkBtn : lightBtn;
+  /** SSR·하이드레이션 첫 페인트는 서버와 동일하게 lightBtn → 이후 테마 반영 (next-themes) */
+  //setMounted(true) 대용
+  const isClient = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
+  
+  const buttonAsset = isClient && isDark ? darkBtn : lightBtn;
   const buttonBgUrl = staticImportUrl(buttonAsset);
 
   const shellRef = useRef<HTMLDivElement>(null);//전체 스플레시 화면
@@ -90,20 +98,23 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
           Jiu&apos;s Portfolio
         </motion.p>
         <motion.button
-          variants={staggerItem} 
           ref={enterButtonRef}
           type="button"
-          // className="pointer-events-auto mb-10 px-4 py-6 text-[14px] font-bold text-logo-color"
-          className="mb-10 px-4 py-6 text-[14px] font-bold text-logo-color"
+          className="pointer-events-auto mb-10 px-4 py-6 text-[14px] font-bold text-logo-color"
+          initial={{ opacity: 0, y: 16 }}
+          animate={isClient ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{
+            delay: 0.55,
+            duration: 0.45,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           onMouseEnter={syncAttractToButtonCenter}
           onMouseMove={syncAttractToButtonCenter}
           onMouseLeave={clearAttract}
           onTouchStart={syncAttractToTouchPoint}
-          // onTouchMove={syncAttractToTouchPoint}
           onTouchEnd={clearAttract}
           onTouchCancel={clearAttract}
           onClick={onEnter}
-          transition={{ delay: 0.55 }}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
           style={{

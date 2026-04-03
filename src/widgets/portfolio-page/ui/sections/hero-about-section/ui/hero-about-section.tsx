@@ -4,7 +4,10 @@ import { motion } from "framer-motion";
 
 import { HeroAboutCard } from "./hero-about-card";
 import { PortfolioSectionHeading } from "@/shared/ui/portfolio-section-heading";
-import { ImageWithFallback } from "@/shared/ui/image-with-fallback";
+import {
+  ImageWithFallback,
+  imageWithFallbackKey,
+} from "@/shared/ui/image-with-fallback";
 
 import { staggerContainer, staggerItem } from "@/shared/lib/motion";
 
@@ -28,10 +31,11 @@ export function HeroAboutSection() {
             <div className="absolute inset-0 z-10 rounded-full border-2 border-primary/30" />
             <div className="absolute inset-[-4px] animate-pulse rounded-full bg-linear-to-r from-primary/20 via-transparent to-primary/20" />
             <ImageWithFallback
+              key={imageWithFallbackKey(profilePhoto)}
               src={profilePhoto}
               alt="Profile"
               className="h-full w-full object-cover"
-              sizes="320px" 
+              sizes="320px"
               placeholder="blur"
             />
           </motion.div>

@@ -2,7 +2,10 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ImageWithFallback } from "@/shared/ui/image-with-fallback";
+import {
+  ImageWithFallback,
+  imageWithFallbackKey,
+} from "@/shared/ui/image-with-fallback";
 import { ProjectLinkButton } from "@/shared/ui/project-link-button";
 import { staggerItem } from "@/shared/lib/motion";
 import { useResolvedTheme } from "@/shared/lib/theme/use-resolved-theme";
@@ -53,6 +56,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="relative aspect-video shrink-0 overflow-hidden bg-secondary/40">
         <ImageWithFallback
+          key={imageWithFallbackKey(project.image)}
           src={project.image}
           alt={project.title}
           className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100"

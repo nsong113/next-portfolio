@@ -25,6 +25,7 @@ export function ImageWithFallback({
   className,
   style,
   sizes = "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 640px",
+  draggable = false,
   ...rest
 }: ImageWithFallbackProps) {
   const [didError, setDidError] = useState(false);
@@ -44,6 +45,7 @@ export function ImageWithFallback({
           alt=""
           aria-hidden
           fill
+          draggable={draggable}
           className="object-cover opacity-50"
           unoptimized
           sizes={sizes}
@@ -60,6 +62,7 @@ export function ImageWithFallback({
       src={src}
       alt={alt}
       fill
+      draggable={draggable}
       className={className}
       style={style}
       sizes={sizes}

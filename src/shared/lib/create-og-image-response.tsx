@@ -4,54 +4,28 @@ import { join } from "node:path";
 
 const OG_SIZE = { width: 1200, height: 630 } as const;
 
-const OG_BG =
-  "linear-gradient(135deg, #0f172a 0%, #1e293b 42%, #0c1222 100%)";
-
 export async function createOgImageResponse() {
-  const fontData = await readFile(
-    join(
-      process.cwd(),
-      "node_modules/pretendard/dist/public/static/alternative/Pretendard-SemiBold.ttf",
-    ),
-  );
+  const buf = await readFile(join(process.cwd(), "public/og.png"));
+  const src = `data:image/png;base64,${buf.toString("base64")}`;
 
   return new ImageResponse(
     (
-      <div
-        style={{ background: OG_BG }}
-        tw="flex h-full w-full flex-col justify-center px-[72px]"
-      >
-        <div
-          style={{ fontFamily: "Pretendard" }}
-          tw="text-[68px] font-semibold leading-[1.12] tracking-tight text-slate-50"
-        >
-          송지우
-        </div>
-        <div
-          style={{ fontFamily: "Pretendard" }}
-          tw="mt-3.5 text-[30px] text-slate-400"
-        >
-          Frontend Developer · Portfolio
-        </div>
-        <div
-          style={{ fontFamily: "Pretendard" }}
-          tw="mt-9 max-w-[900px] text-[22px] leading-[1.45] text-slate-500"
-        >
-          TypeScript, Next.js 기반 프론트엔드 포트폴리오
-        </div>
+      <div tw="relative flex h-full w-full overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element -- Satori OG */}
+        <img
+          alt=""
+          src={src}
+          height={OG_SIZE.height}
+          width={OG_SIZE.width}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
       </div>
     ),
-    {
-      ...OG_SIZE,
-      fonts: [
-        {
-          name: "Pretendard",
-          data: fontData,
-          style: "normal",
-          weight: 600,
-        },
-      ],
-    },
+    { ...OG_SIZE },
   );
 }
 

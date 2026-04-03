@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
-import { Fira_Code, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import { AppChrome } from "@/app/app-chrome";
 import { AppProviders } from "@/app/providers";
 
 import "@/shared/styles/index.css";
-
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
-  subsets: ["latin"],
-});
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -16,8 +11,25 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Frontend Portfolio",
+  title: "송지우 | Frontend Portfolio",
   description: "프론트엔드 포트폴리오",
+  keywords: ["Frontend", "React", "TypeScript", "Next.js", "Portfolio"],
+  openGraph: {
+    title: "송지우 | Frontend Developer",
+    description: "TypeScript, Next.js 기반 프론트엔드 포트폴리오",
+    url: "https://next-portfolio-phi-topaz.vercel.app/",
+    siteName: "Frontend Portfolio",
+    locale: "ko_KR",
+    type: "website",
+     images: [
+      {
+        url: "/app/icon.png",
+        width: 630,
+        height: 630,
+        alt: "Jiu's Portfolio",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +41,7 @@ export default function RootLayout({
     <html
       lang="ko"
       suppressHydrationWarning
-      className={`${firaCode.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <AppProviders>

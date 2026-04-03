@@ -10,14 +10,14 @@ import {
 } from "react";
 
 type SplashGateContextValue = {
-  splashDismissed: boolean;
-  dismissSplash: () => void;
+  splashDismissed: boolean; // 스플래시 화면 닫힘 여부
+  dismissSplash: () => void; 
 };
 
 const SplashGateContext = createContext<SplashGateContextValue | null>(null);
 
 export function SplashGateProvider({ children }: { children: ReactNode }) {
-  const [splashDismissed, setSplashDismissed] = useState(false);
+  const [splashDismissed, setSplashDismissed] = useState<boolean>(false);
   const dismissSplash = useCallback(() => setSplashDismissed(true), []);
 
   const value = useMemo(
@@ -33,9 +33,9 @@ export function SplashGateProvider({ children }: { children: ReactNode }) {
 }
 
 export function useSplashGate() {
-  const ctx = useContext(SplashGateContext);
-  if (!ctx) {
+  const context = useContext(SplashGateContext);
+  if (!context) {
     throw new Error("useSplashGate must be used within SplashGateProvider");
   }
-  return ctx;
+  return context;
 }

@@ -13,7 +13,7 @@ export type AttractPointRef = {
   current: { x: number; y: number } | null;
 };
 
-/** Set `current` to true (e.g. Enter button hover) to leave idle cluster */
+
 export type ReleaseClusterRef = { current: boolean };
 
 type SourceFieldCanvasProps = {
@@ -23,18 +23,30 @@ type SourceFieldCanvasProps = {
   releaseClusterRef?: ReleaseClusterRef;
 };
 
-/** ~500×500 area → radius 250px at viewport center */
-const SPLASH_CLUSTER_RADIUS = 250;
+/** Idle: 초기 클러스터 반경 (px) */
+const SPLASH_CLUSTER_RADIUS = 200;
+
+/** 호버/인터랙션 시: 뷰포트 높이를 지름으로 하는 원 (중앙 = 캔버스 중심) 안으로만 이동 */
+function viewportHeightCircleBounds(w: number, h: number) {
+  const vh = typeof window !== "undefined" ? window.innerHeight : h;
+  const radius = Math.max(1, vh / 2);
+  return { cx: w / 2, cy: h / 2, radius };
+}
+
+
 
 function particleCountForSize(w: number, h: number, density: number) {
+  //파티클 수 정하기
   const area = w * h;
   const base = Math.round((area / 90000) * density);
-  return clampInt(base, 48, 160);
+  return clampInt(base, 48, 140);
 }
 
 function clampInt(n: number, lo: number, hi: number) {
   return Math.max(lo, Math.min(hi, Math.round(n)));
 }
+
+// 스플래시 화면 뒤에서 반짝이는 입자 캔버스를 직접 그리는 컴포넌트
 
 export function SourceFieldCanvas({
   className,
@@ -43,13 +55,12 @@ export function SourceFieldCanvas({
   releaseClusterRef,
 }: SourceFieldCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const pointerRef = useRef<PointerState>(null);
-  const rafRef = useRef<number>(0);
-  const particlesRef = useRef<ReturnType<typeof createParticles> | null>(null);
-  const sizeRef = useRef({ w: 0, h: 0, dpr: 1 });
-  const reducedMotionRef = useRef(false);
-  /** Canvas pointer / enter / down — leave central cluster */
-  const hasInteractedRef = useRef(false);
+  const pointerRef = useRef<PointerState>(null); //마우스 커서 위치
+  const rafRef = useRef<number>(0); //requestAnimationFrame id 저장
+  const particlesRef = useRef<ReturnType<typeof createParticles> | null>(null); //파티클 배열 저장
+  const sizeRef = useRef<{ w: number; h: number; dpr: number }>({ w: 0, h: 0, dpr: 1 });
+  const reducedMotionRef = useRef<boolean>(false);
+  const hasInteractedRef = useRef<boolean>(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -164,10 +175,14 @@ export function SourceFieldCanvas({
           const pointer =
             attractPointRef?.current ?? pointerRef.current;
           const attractActive = Boolean(attractPointRef?.current);
+          const clusterMode = viewportHeightCircleBounds(w, h);
           if (attractActive) {
-            stepParticles(particles, w, h, pointer, { pointerSteer: 0.14 });
+            stepParticles(particles, w, h, pointer, {
+              clusterMode,
+              pointerSteer: 0.14,
+            });
           } else {
-            stepParticles(particles, w, h, pointer);
+            stepParticles(particles, w, h, pointer, { clusterMode });
           }
         }
       }
@@ -194,10 +209,7 @@ export function SourceFieldCanvas({
         const shadowA = Math.min(0.36 + radius * 0.05, 0.98);
         const shadowBoost = isLarge ? Math.min(shadowA * 1.28, 0.995) : shadowA;
 
-        /*
-         * Radial gradients fade to transparent at the edge, so canvas shadow barely
-         * forms — use a uniform-alpha disk first to cast glow, then paint the soft core.
-         */
+        //  글로우 지정
         ctx.shadowBlur = glow;
         ctx.shadowColor = `rgba(180, 205, 255, ${shadowBoost})`;
         const silhouetteA = isLarge ? 0.44 : 0.28;
@@ -209,6 +221,8 @@ export function SourceFieldCanvas({
         ctx.shadowBlur = 0;
         ctx.shadowColor = "transparent";
         const warmA = Math.min(0.88 + p.r * 0.008, 0.96);
+
+        //광원 지정
         const g = ctx.createRadialGradient(
           p.x,
           p.y,
@@ -231,7 +245,7 @@ export function SourceFieldCanvas({
       ctx.shadowColor = "transparent";
       ctx.restore();
 
-      rafRef.current = requestAnimationFrame(render);
+      rafRef.current = requestAnimationFrame(render); //다음 프레임 렌더링 예약
     };
 
     rafRef.current = requestAnimationFrame(render);

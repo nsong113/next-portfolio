@@ -21,7 +21,7 @@ export function AppChrome({ children }: { children: ReactNode }) {
       <div
         className={
           showChrome
-            ? "flex min-h-screen flex-col pt-21"
+            ? "flex min-h-screen flex-col"
             : "flex min-h-screen flex-col"
         }
       >

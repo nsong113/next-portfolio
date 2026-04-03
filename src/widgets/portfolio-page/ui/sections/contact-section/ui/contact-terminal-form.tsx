@@ -44,7 +44,7 @@ export function ContactTerminalForm({
           command="sudo init contact --form"
         />
 
-        <form onSubmit={onSubmit} className="space-y-7">
+        <form onSubmit={onSubmit} className="space-y-7 font-jetbrains">
           <div>
             <label
               htmlFor="name"

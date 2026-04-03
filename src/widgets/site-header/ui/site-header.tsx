@@ -44,7 +44,7 @@ export function SiteHeader() {
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 border-b border-primary/20 backdrop-blur-md">
-      <div className="mx-auto my-2 flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-4 md:px-6">
+      <div className="mx-auto my-2 flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-2 md:px-6">
         <Link
           href="/"
           prefetch

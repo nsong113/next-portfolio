@@ -41,7 +41,7 @@ export function HeroSection() {
       />
       
       <motion.div
-        className="mx-auto flex w-full max-w-4xl flex-col items-center text-center"
+        className="mx-auto flex w-full max-w-4xl mt-20 flex-col items-center text-center"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
@@ -62,7 +62,7 @@ export function HeroSection() {
         <motion.a
           href="#projects"
           className="mb-10 font-bold px-4 py-6 text-[14px] text-foreground"
-          variants={staggerItem}
+          variants={staggerItem} 
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
           style={

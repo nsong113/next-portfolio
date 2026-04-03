@@ -28,7 +28,7 @@ const SPLASH_CLUSTER_RADIUS = 200;
 
 /** 호버/인터랙션 시: 뷰포트 높이를 지름으로 하는 원 (중앙 = 캔버스 중심) 안으로만 이동 */
 function viewportHeightCircleBounds(w: number, h: number) {
-  const vh = typeof window !== "undefined" ? window.innerHeight : h;
+  const vh = typeof window !== "undefined" ? window.innerHeight - 150 : h;
   const radius = Math.max(1, vh / 2);
   return { cx: w / 2, cy: h / 2, radius };
 }

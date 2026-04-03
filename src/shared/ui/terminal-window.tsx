@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 export const terminalWindowShellClassName =
-  "w-full overflow-hidden rounded-xl border border-slate-900/10 bg-white/70 font-jetbrains shadow-[0_18px_64px_rgba(2,6,23,0.10)] backdrop-blur-xl dark:border-white/12 dark:bg-[rgba(42,48,69,0.94)] dark:shadow-[0_18px_64px_rgba(0,0,0,0.24)]";
+  "w-full overflow-hidden rounded-xl border border-slate-900/10 bg-white/70 shadow-[0_18px_64px_rgba(2,6,23,0.10)] backdrop-blur-xl dark:border-white/12 dark:bg-[rgba(42,48,69,0.94)] dark:shadow-[0_18px_64px_rgba(0,0,0,0.24)]";
 
 function TrafficLights() {
   return (
@@ -24,7 +24,7 @@ export function TerminalTitleBar({ title, className }: TerminalTitleBarProps) {
       className={`flex items-center gap-2 border-b border-slate-900/10 px-3 py-2.5 ${className ?? "bg-slate-900/5"} dark:border-white/10 dark:bg-[rgba(48,55,77,0.96)]`}
     >
       <TrafficLights />
-      <span className="flex-1 text-center text-[11px] leading-none text-slate-500 dark:text-zinc-500">
+      <span className="flex-1 text-center text-[11px] leading-none text-slate-500 font-jetbrains dark:text-zinc-500">
         {title}
       </span>
       <span className="w-[52px] shrink-0" aria-hidden />
@@ -54,8 +54,8 @@ type TerminalPromptLineProps = {
 
 export function TerminalPromptLine({ prompt, command }: TerminalPromptLineProps) {
   return (
-    <p className="mb-6 text-[13px] leading-relaxed tracking-tight antialiased">
-      <span className="text-cyan-700 dark:text-primary">{prompt}</span>{" "}
+    <p className="mb-6 text-[13px] leading-relaxed tracking-tight antialiased font-jetbrains">
+      <span className="text-cyan-700 dark:text-primary ">{prompt}</span>{" "}
       <span className="text-slate-900 dark:text-zinc-100">{command}</span>
     </p>
   );

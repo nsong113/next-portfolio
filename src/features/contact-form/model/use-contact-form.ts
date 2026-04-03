@@ -8,7 +8,12 @@ type FormState = {
   message: string;
 };
 
-export function useContactForm() {
+type UseContactFormOptions = {
+  /** Called after successful native validation when the form is submitted. */
+  onCommit?: () => void;
+};
+
+export function useContactForm(options?: UseContactFormOptions) {
   const [formData, setFormData] = useState<FormState>({
     name: "",
     email: "",
@@ -25,7 +30,11 @@ export function useContactForm() {
   const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    alert("Message sent! (Demo)");
+    if (options?.onCommit) {
+      options.onCommit();
+    } else {
+      alert("Message sent! (Demo)");
+    }
   };
 
   return { formData, handleInputChange, handleSubmit };

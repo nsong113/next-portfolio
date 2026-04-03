@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 
 const DOT_PX = 20;
-const CURSOR_LIGHT = "#04c9bf";
+const CURSOR_LIGHT = "#f97bfd";
 const CURSOR_DARK = "#f97bfd";
 
 const TRAIL_MAX_AGE_MS = 520;

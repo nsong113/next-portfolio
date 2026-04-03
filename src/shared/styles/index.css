@@ -111,6 +111,7 @@
   --radius: 0.625rem; /* //radius */
   --light-color: #f97bfd;
   --opposite-color: #f97bfd;
+  --modal-bg: #FEF6FF;
 
   /* shared */
   --accent-rgb: 138 43 226;
@@ -138,6 +139,7 @@
   --ring: #4abfba;
   --light-color: #3f43b4;
   --opposite-color: #04c9bf;
+  --modal-bg: #2a3158;
 }
 
 @theme inline {
@@ -163,6 +165,7 @@
   --color-hero-bg: #22264b;
   --color-light-color: var(--light-color);
   --color-opposite-color: var(--opposite-color);
+  --color-modal-bg: var(--modal-bg);
 
   --breakpoint-sm: 40rem; /* 640px */
   --breakpoint-md: 48rem; /* 768px */

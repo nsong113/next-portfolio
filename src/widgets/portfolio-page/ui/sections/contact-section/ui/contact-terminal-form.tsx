@@ -3,6 +3,13 @@
 import { motion } from "framer-motion";
 import type { ChangeEvent, SubmitEventHandler } from "react";
 
+import {
+  TerminalBody,
+  TerminalPromptLine,
+  TerminalTitleBar,
+  terminalWindowShellClassName,
+} from "@/shared/ui/terminal-window";
+
 type ContactTerminalFormProps = {
   formData: {
     name: string;
@@ -20,29 +27,22 @@ export function ContactTerminalForm({
 }: ContactTerminalFormProps) {
   return (
     <motion.div
-      className="overflow-hidden w-full rounded-xl border border-slate-900/10 bg-white/70 font-jetbrains shadow-[0_18px_64px_rgba(2,6,23,0.10)] backdrop-blur-xl dark:border-white/12 dark:bg-[rgba(44,53,83,0.94)] dark:shadow-[0_18px_64px_rgba(0,0,0,0.24)] flex-1"
+      className={`${terminalWindowShellClassName} flex-1`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.1 }}
     >
-      <div className="flex items-center gap-2 border-b border-slate-900/10 bg-[#F4EEF5] px-3 py-2.5 dark:border-white/10 dark:bg-[rgba(48,55,77,0.96)]">
-        <div className="flex gap-2">
-          <span className="h-3 w-3 rounded-full bg-[#ff5f57]" aria-hidden />
-          <span className="h-3 w-3 rounded-full bg-[#febc2e]" aria-hidden />
-          <span className="h-3 w-3 rounded-full bg-[#28c840]" aria-hidden />
-        </div>
-        <span className="flex-1 text-center text-[11px] leading-none text-slate-500 dark:text-zinc-500">
-          message_payload.sh
-        </span>
-        <span className="w-[52px] shrink-0" aria-hidden />
-      </div>
+      <TerminalTitleBar
+        title="message_payload.sh"
+        className="bg-[#F4EEF5]"
+      />
 
-      <div className="bg-size-[20px_20px] bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.08)_1px,transparent_0)] bg-[#F9F2FA] px-5 py-6 md:px-7 md:py-8 dark:bg-[rgba(38,41,61,0.88)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.043)_1px,transparent_0)]">
-        <p className="mb-6 text-[13px] leading-relaxed tracking-tight antialiased">
-          <span className="text-cyan-700 dark:text-primary">guest@portfolio:~$</span>{" "}
-          <span className="text-slate-900 dark:text-zinc-100">sudo init contact --form</span>
-        </p>
+      <TerminalBody className="bg-[#F9F2FA]">
+        <TerminalPromptLine
+          prompt="guest@portfolio:~$"
+          command="sudo init contact --form"
+        />
 
         <form onSubmit={onSubmit} className="space-y-7">
           <div>
@@ -128,8 +128,7 @@ export function ContactTerminalForm({
             [ COMMIT &amp; PUSH ]
           </motion.button>
         </form>
-      </div>
+      </TerminalBody>
     </motion.div>
   );
 }
-

@@ -2,31 +2,28 @@
 
 import { motion } from "framer-motion";
 
+import {
+  TerminalBody,
+  TerminalPromptLine,
+  TerminalTitleBar,
+  terminalWindowShellClassName,
+} from "@/shared/ui/terminal-window";
+
 export function HeroAboutCard() {
   return (
     <motion.div
-      className="w-full animate-[float_3s_ease-in-out_infinite] max-w-2xl overflow-hidden rounded-xl border border-slate-900/10 bg-white/70 font-jetbrains shadow-[0_18px_64px_rgba(2,6,23,0.10)] backdrop-blur-xl dark:border-white/12 dark:bg-[rgba(40,42,55,0.94)] dark:shadow-[0_18px_64px_rgba(0,0,0,0.24)]"
+      className={`${terminalWindowShellClassName} max-w-2xl animate-[float_3s_ease-in-out_infinite]`}
       initial={{ opacity: 0, y: 28, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ delay: 0.35, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="flex items-center gap-2 border-b border-slate-900/10 bg-slate-900/5 px-3 py-2.5 dark:border-white/10 dark:bg-[rgba(48,55,77,0.96)]">
-        <div className="flex gap-2">
-          <span className="h-3 w-3 rounded-full bg-[#ff5f57]" aria-hidden />
-          <span className="h-3 w-3 rounded-full bg-[#febc2e]" aria-hidden />
-          <span className="h-3 w-3 rounded-full bg-[#28c840]" aria-hidden />
-        </div>
-        <span className="flex-1 text-center text-[11px] leading-none text-slate-500 dark:text-zinc-500">
-          about_preview.tsx
-        </span>
-        <span className="w-[52px] shrink-0" aria-hidden />
-      </div>
+      <TerminalTitleBar title="about_preview.tsx" />
 
-      <div className="bg-size-[20px_20px] bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.08)_1px,transparent_0)] bg-white/35 px-5 py-6 md:px-7 md:py-8 dark:bg-[rgba(38,41,61,0.88)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.043)_1px,transparent_0)]">
-        <p className="mb-6 text-[13px] leading-relaxed tracking-tight antialiased">
-          <span className="text-cyan-700 dark:text-primary">dev@portfolio:~$</span>{" "}
-          <span className="text-slate-900 dark:text-zinc-100">cat ./about.md</span>
-        </p>
+      <TerminalBody className="bg-white/35">
+        <TerminalPromptLine
+          prompt="dev@portfolio:~$"
+          command="cat ./about.md"
+        />
 
         <div className="space-y-5 text-left text-sm leading-7 text-slate-800 md:text-base dark:text-zinc-200">
           <p className="text-xs text-slate-600/80 dark:text-zinc-400/90">
@@ -74,7 +71,7 @@ export function HeroAboutCard() {
             <span className="text-slate-600/80 dark:text-zinc-400/90">;</span>
           </p>
         </div>
-      </div>
+      </TerminalBody>
     </motion.div>
   );
 }

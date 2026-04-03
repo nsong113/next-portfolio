@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { SourceFieldCanvas } from "./source-field-canvas";
 import { staggerContainer, staggerItem } from "@/shared/lib/motion";
+import { staticImportUrl } from "@/shared/lib/static-import-url";
 import { useResolvedTheme } from "@/shared/lib/theme/use-resolved-theme";
 
 import darkBtn from "@/shared/assets/ico/darkBtn.svg";
@@ -22,8 +23,7 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
   const { isDark, isReady } = useResolvedTheme();
 
   const buttonAsset = isReady && isDark ? darkBtn : lightBtn;
-  const buttonBgUrl =
-    typeof buttonAsset === "string" ? buttonAsset : buttonAsset.src;
+  const buttonBgUrl = staticImportUrl(buttonAsset);
 
   const shellRef = useRef<HTMLDivElement>(null);//전체 스플레시 화면
   const enterButtonRef = useRef<HTMLButtonElement>(null);

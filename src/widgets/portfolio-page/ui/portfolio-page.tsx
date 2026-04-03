@@ -1,4 +1,3 @@
-// import { AboutSection } from "./sections/about-section";
 import { ContactSection } from "./sections/contact-section";
 import { HeroAboutSection } from "./sections/hero-about-section/ui/hero-about-section";
 import { HeroSection } from "./sections/hero-section";
@@ -24,10 +23,6 @@ export function PortfolioPage() {
       <div id="projects" className='py-10'>
         <ProjectsSection />
       </div>
-
-      {/* <div id="about" className='py-10'>
-        <AboutSection />
-      </div> */}
 
       <div id="contact" className='py-10'>
         <ContactSection />

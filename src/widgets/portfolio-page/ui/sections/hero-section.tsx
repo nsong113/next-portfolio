@@ -2,52 +2,44 @@
 
 import { motion } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/shared/lib/motion";
+import { staticImportUrl } from "@/shared/lib/static-import-url";
 import { useResolvedTheme } from "@/shared/lib/theme/use-resolved-theme";
 
 import darkBtn from "@/shared/assets/ico/darkBtn.svg";
 import lightBtn from "@/shared/assets/ico/lightBtn.svg";
-import lightBgRound from "@/shared/assets/images/lightBgRound.png";
-import lightBgRoundMob from "@/shared/assets/images/lightBgRoundMob.png";
-import darkBgRound from "@/shared/assets/images/darkBgRound.png";
-import darkBgRoundMob from "@/shared/assets/images/darkBgRoundMob.png";
 
 export function HeroSection() {
   const { isDark, isReady } = useResolvedTheme();
   const buttonAsset = isDark ? darkBtn : lightBtn;
-  const bgRoundAsset = isDark ? darkBgRound : lightBgRound;
-  const bgRoundMobAsset = isDark ? darkBgRoundMob : lightBgRoundMob;
-  const bgRoundUrl =
-    typeof bgRoundAsset === "string" ? bgRoundAsset : bgRoundAsset.src;
-  const bgRoundMobUrl =
-    typeof bgRoundMobAsset === "string" ? bgRoundMobAsset : bgRoundMobAsset.src;
-  const buttonBgUrl =
-    typeof buttonAsset === "string" ? buttonAsset : buttonAsset.src;
+  const bgRoundUrl = isDark ? "/darkBgRound.png" : "/lightBgRound.png";
+  const bgRoundMobUrl = isDark ? "/darkBgRoundMob.png" : "/lightBgRoundMob.png";
+  const buttonBgUrl = staticImportUrl(buttonAsset);
 
+  if (!isReady) {
+    return null;
+  }
 
   return (
     <section className="relative flex min-h-screen items-center justify-center px-4 text-foreground">
-      {isReady ? (
-        <>
-          {/* md 이하: 모바일용 배경 */}
-          <div
-            className="pointer-events-none absolute inset-0 -z-10 bg-no-repeat bg-center md:hidden"
-            style={{
-              backgroundImage: `url(${bgRoundMobUrl})`,
-              backgroundSize: "60% auto",
-            }}
-            aria-hidden
-          />
-          {/* md 이상: 데스크탑용 배경 */}
-          <div
-            className="pointer-events-none absolute inset-0 -z-10 hidden bg-no-repeat bg-center md:block"
-            style={{
-              backgroundImage: `url(${bgRoundUrl})`,
-              backgroundSize: "60% auto",
-            }}
-            aria-hidden
-          />
-        </>
-      ) : null}
+      {/* md 이하: 모바일용 배경 */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-no-repeat bg-center md:hidden"
+        style={{
+          backgroundImage: `url(${bgRoundMobUrl})`,
+          backgroundSize: "60% auto",
+        }}
+        aria-hidden
+      />
+      {/* md 이상: 데스크탑용 배경 */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 hidden bg-no-repeat bg-center md:block"
+        style={{
+          backgroundImage: `url(${bgRoundUrl})`,
+          backgroundSize: "60% auto",
+        }}
+        aria-hidden
+      />
+      
       <motion.div
         className="mx-auto flex w-full max-w-4xl flex-col items-center text-center"
         variants={staggerContainer}

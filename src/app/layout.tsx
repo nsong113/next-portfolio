@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     siteName: "Frontend Portfolio",
     locale: "ko_KR",
     type: "website",
-     images: [
+    images: [
       {
-        url: "/app/icon.png",
+        url: "/icon.png",
         width: 630,
         height: 630,
         alt: "Jiu's Portfolio",

@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import type { ChangeEvent, SubmitEventHandler } from "react";
+import { motion } from "framer-motion";
 
 import {
   TerminalBody,

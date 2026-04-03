@@ -1,12 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   ImageWithFallback,
   imageWithFallbackKey,
 } from "@/shared/ui/image-with-fallback";
 import { ProjectLinkButton } from "@/shared/ui/project-link-button";
+
 import { staggerItem } from "@/shared/lib/motion";
 import { useResolvedTheme } from "@/shared/lib/theme/use-resolved-theme";
 
@@ -28,7 +29,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <motion.article
       variants={staggerItem}
-      className={`group relative flex h-full min-h-0 flex-col overflow-hidden rounded-[15px] border border-slate-900/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(255,255,255,0.26)_30%,rgba(245,243,255,0.18))] shadow-[0_4px_34px_rgba(0,0,0,0.12)] backdrop-blur-[20px] transition-all duration-500 hover:scale-[1.02] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04)_30%,rgba(0,0,0,0.08))] dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)] ${
+      className={`group relative flex h-full min-h-0 flex-col overflow-hidden rounded-[15px] border border-slate-900/10 
+        bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(255,255,255,0.26)_30%,rgba(245,243,255,0.18))] 
+        shadow-[0_4px_34px_rgba(0,0,0,0.12)] backdrop-blur-[20px] transition-all duration-500 hover:scale-[1.02] dark:border-white/10 
+        dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04)_30%,rgba(0,0,0,0.08))] 
+        dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)] ${
         project.tags && project.tags.length > 0 ? "ring-1 ring-primary/30" : ""
       }`}
       whileHover={{ y: -4 }}

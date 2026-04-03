@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PROJECTS } from "@/entities/project/model/project-data";
-import { PortfolioSectionHeading } from "@/shared/ui/portfolio-section-heading";
 import { ProjectCard } from "./ui/project-card";
+import { PortfolioSectionHeading } from "@/shared/ui/portfolio-section-heading";
 import { staggerContainer } from "@/shared/lib/motion";
+
+import { PROJECTS } from "@/entities/project/model/project-data";
 
 export function ProjectsSection() {
   return (

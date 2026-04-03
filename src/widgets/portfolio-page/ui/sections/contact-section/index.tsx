@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import { PortfolioSectionHeading } from "@/shared/ui/portfolio-section-heading";
 import { ContactLinks } from "./ui/contact-links";
 import { ContactTerminalForm } from "./ui/contact-terminal-form";
-import { useContactForm } from "./model/use-contact-form";
+import { useContactForm } from "@/features/contact-form";
 
 export function ContactSection() {
   const { formData, handleInputChange, handleSubmit } = useContactForm();

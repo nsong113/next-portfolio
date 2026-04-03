@@ -21,7 +21,7 @@
 
 ```
 next-portfolio/
-├── public/                    # 정적 파일 (있을 경우)
+├── public/                    # 정적 파일 (있을 경우) - 이미지 프리로드 
 ├── next.config.ts
 ├── package.json
 ├── postcss.config.mjs
@@ -46,7 +46,8 @@ next-portfolio/
     │   └── skill/model/
     │
     ├── features/              # 단일 사용자 기능 단위
-    │   └── theme-toggle/      # 다크/라이트 전환 (next/dynamic으로 분할 가능)
+    │   ├── theme-toggle/      # 다크/라이트 전환 (next/dynamic으로 분할 가능)
+    │   └── contact-form/      # 연락 폼 상태·제출 (`useContactForm`)
     │
     ├── shared/                # 앱 전역 재사용
     │   ├── api/supabase/      # Supabase 클라이언트
@@ -75,13 +76,14 @@ next-portfolio/
 |--------|------|
 | **app** | 라우팅, `layout`/`page`, 전역 프로바이더, 메타·경계. URL과 1:1인 진입점. |
 | **widgets** | 여러 섹션을 묶은 **페이지 단위 UI** (예: `PortfolioPage`, `SplashScreen`, `SiteHeader`). |
-| **features** | 재사용 가능한 **기능 한 덩어리** (예: 테마 토글). |
+| **features** | 재사용 가능한 **기능 한 덩어리** (예: 테마 토글, 연락 폼). |
 | **entities** | 프로젝트·스킬·네비 등 **도메인 데이터와 타입**. |
 | **shared** | UI 키트, 유틸, 설정, 에셋 등 **도메인에 묶이지 않는 공통 코드**. |
 
 ### 데이터 흐름 (개략)
 
 - **정적 콘텐츠**: `entities/*/model`의 상수·데이터를 `widgets`·`app`의 페이지가 읽어 렌더링.
+- **연락 폼**: `features/contact-form`의 `useContactForm`을 `widgets/portfolio-page/.../contact-section`에서 사용.
 - **테마**: `next-themes` + `shared/lib/theme/use-resolved-theme` — HTML `class="dark"`와 연동.
 - **스플래시**: `SplashGateProvider`로 “한 번 닫으면 본문” 상태를 유지하고, 첫 화면은 `SplashScreen`만 표시.
 

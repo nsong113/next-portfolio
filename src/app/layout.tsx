@@ -10,25 +10,35 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+/** OG·Twitter 등에서 상대 이미지 URL을 절대 URL로 풀기 위해 필수 */
+const siteUrl = "https://next-portfolio-phi-topaz.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "송지우 | Frontend Portfolio",
   description: "프론트엔드 포트폴리오",
   keywords: ["Frontend", "React", "TypeScript", "Next.js", "Portfolio"],
   openGraph: {
     title: "송지우 | Frontend Developer",
     description: "TypeScript, Next.js 기반 프론트엔드 포트폴리오",
-    url: "https://next-portfolio-phi-topaz.vercel.app/",
+    url: siteUrl,
     siteName: "Frontend Portfolio",
     locale: "ko_KR",
     type: "website",
     images: [
       {
         url: "/icon.png",
-        width: 630,
-        height: 630,
+        width: 614,
+        height: 614,
         alt: "Jiu's Portfolio",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "송지우 | Frontend Developer",
+    description: "TypeScript, Next.js 기반 프론트엔드 포트폴리오",
+    images: ["/icon.png"],
   },
 };
 

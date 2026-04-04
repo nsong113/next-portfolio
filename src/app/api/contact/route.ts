@@ -1,6 +1,43 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+/** Resend는 Node API에 의존 — Edge가 아닌 Node 런타임으로 고정 (Vercel 502 방지). */
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+/** 이 출처에서만 `Access-Control-Allow-Origin` 허용 (프리플라이트·크로스 오리진 대비). */
+const CORS_ORIGINS = new Set([
+  "https://next-portfolio-phi-topaz.vercel.app",
+  ...(process.env.NODE_ENV === "development"
+    ? ["http://localhost:3000", "http://127.0.0.1:3000"]
+    : []),
+  ...(process.env.CORS_ALLOWED_ORIGINS?.split(",")
+    .map((s) => s.trim())
+    .filter(Boolean) ?? []),
+]);
+
+function corsHeaders(request: Request): Record<string, string> {
+  const origin = request.headers.get("origin");
+  if (!origin || !CORS_ORIGINS.has(origin)) {
+    return {};
+  }
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Max-Age": "86400",
+    Vary: "Origin",
+  };
+}
+
+function json(request: Request, data: unknown, status: number): NextResponse {
+  return NextResponse.json(data, { status, headers: corsHeaders(request) });
+}
+
+export async function OPTIONS(request: Request) {
+  return new NextResponse(null, { status: 204, headers: corsHeaders(request) });
+}
+
 function escapeHtml(s: string): string {
   return s
     .replace(/&/g, "&amp;")
@@ -77,11 +114,11 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "잘못된 요청이에요." }, { status: 400 });
+    return json(request, { error: "잘못된 요청이에요." }, 400);
   }
 
   if (!body || typeof body !== "object") {
-    return NextResponse.json({ error: "잘못된 요청이에요." }, { status: 400 });
+    return json(request, { error: "잘못된 요청이에요." }, 400);
   }
 
   const { name, email, message } = body as Record<string, unknown>;
@@ -90,10 +127,7 @@ export async function POST(request: Request) {
     typeof email !== "string" ||
     typeof message !== "string"
   ) {
-    return NextResponse.json(
-      { error: "모든 항목을 입력해 주세요." },
-      { status: 400 },
-    );
+    return json(request, { error: "모든 항목을 입력해 주세요." }, 400);
   }
 
   const trimmed = {
@@ -103,48 +137,33 @@ export async function POST(request: Request) {
   };
 
   if (!trimmed.name || !trimmed.email || !trimmed.message) {
-    return NextResponse.json(
-      { error: "모든 항목을 입력해 주세요." },
-      { status: 400 },
-    );
+    return json(request, { error: "모든 항목을 입력해 주세요." }, 400);
   }
 
   if (trimmed.message.length > 8000) {
-    return NextResponse.json(
-      { error: "메시지가 너무 길어요." },
-      { status: 400 },
-    );
+    return json(request, { error: "메시지가 너무 길어요." }, 400);
   }
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed.email);
   if (!emailOk) {
-    return NextResponse.json(
-      { error: "이메일 형식을 확인해 주세요." },
-      { status: 400 },
-    );
+    return json(request, { error: "이메일 형식을 확인해 주세요." }, 400);
   }
 
   const apiKey = process.env.RESEND_API_KEY?.trim();
   if (!apiKey) {
-    const devHint =
+    const hint =
       process.env.NODE_ENV === "development"
         ? " .env에 RESEND_API_KEY를 설정해 주세요."
-        : "";
-    return NextResponse.json(
-      { error: `서버에 메일 설정이 없어요.${devHint}` },
-      { status: 503 },
-    );
+        : " Vercel → Project → Settings → Environment Variables에 RESEND_API_KEY를 등록했는지 확인해 주세요.";
+    return json(request, { error: `서버에 메일 설정이 없어요.${hint}` }, 503);
   }
 
   if (!to || !from) {
-    const devHint =
+    const hint =
       process.env.NODE_ENV === "development"
         ? " .env에 CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL을 설정해 주세요."
-        : "";
-    return NextResponse.json(
-      { error: `메일 주소가 설정되지 않았어요.${devHint}` },
-      { status: 503 },
-    );
+        : " Vercel 환경 변수에 CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL을 등록했는지 확인해 주세요.";
+    return json(request, { error: `메일 주소가 설정되지 않았어요.${hint}` }, 503);
   }
 
   const resend = new Resend(apiKey);
@@ -170,19 +189,21 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      console.error("[api/contact]", error);
-      return NextResponse.json(
+      console.error("[api/contact] Resend error:", error);
+      return json(
+        request,
         { error: "메일 전송에 실패했어요. 잠시 후 다시 시도해 주세요." },
-        { status: 502 },
+        502,
       );
     }
 
-    return NextResponse.json({ ok: true as const });
+    return json(request, { ok: true as const }, 200);
   } catch (e) {
     console.error("[api/contact]", e);
-    return NextResponse.json(
+    return json(
+      request,
       { error: "메일 전송에 실패했어요. 잠시 후 다시 시도해 주세요." },
-      { status: 502 },
+      502,
     );
   }
 }

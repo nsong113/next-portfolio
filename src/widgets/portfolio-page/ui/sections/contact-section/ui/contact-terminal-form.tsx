@@ -18,12 +18,14 @@ type ContactTerminalFormProps = {
   };
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onSubmit: SubmitEventHandler<HTMLFormElement>;
+  isSubmitting?: boolean;
 };
 
 export function ContactTerminalForm({
   formData,
   onChange,
   onSubmit,
+  isSubmitting = false,
 }: ContactTerminalFormProps) {
   return (
     <motion.div
@@ -121,11 +123,12 @@ export function ContactTerminalForm({
 
           <motion.button
             type="submit"
-            className="w-full border border-primary bg-transparent px-4 py-3 text-sm font-medium uppercase tracking-wider text-primary transition-colors hover:bg-[#58C4FF]/10"
-            whileHover={{ scale: 1.005 }}
-            whileTap={{ scale: 0.995 }}
+            disabled={isSubmitting}
+            className="w-full border border-primary bg-transparent px-4 py-3 text-sm font-medium uppercase tracking-wider text-primary transition-colors hover:bg-[#58C4FF]/10 disabled:pointer-events-none disabled:opacity-50"
+            whileHover={isSubmitting ? undefined : { scale: 1.005 }}
+            whileTap={isSubmitting ? undefined : { scale: 0.995 }}
           >
-            [ COMMIT &amp; PUSH ]
+            {isSubmitting ? "[ SENDING… ]" : "[ COMMIT & PUSH ]"}
           </motion.button>
         </form>
       </TerminalBody>

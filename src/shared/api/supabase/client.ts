@@ -1,9 +1,10 @@
 import { createClient } from "@supabase/supabase-js";
+
 import { env } from "@/shared/config/env";
 
 /**
  * 브라우저용 Supabase 클라이언트.
- * RSC/Route Handler에서는 `@supabase/ssr` + 쿠키 기반 클라이언트를 추가하는 것을 권장합니다.
+ * 추후 DB·Auth·Storage 연동 시 사용. RSC/Route Handler에서는 `@supabase/ssr` + 쿠키 기반 클라이언트를 검토하세요.
  */
 export function createSupabaseBrowserClient() {
   const url = env.NEXT_PUBLIC_SUPABASE_URL;

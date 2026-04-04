@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { CircleCheck } from "lucide-react";
+import { AlertCircle, CircleCheck } from "lucide-react";
 
 import { PortfolioSectionHeading } from "@/shared/ui/portfolio-section-heading";
 import { ContactLinks } from "./ui/contact-links";
@@ -13,21 +13,44 @@ import { useContactForm } from "@/features/contact-form";
 import flower from "@/shared/assets/images/flower.png";
 import modalEllipse from "@/shared/assets/images/modalEllipse.png";
 
-export function ContactSection() {
-  const [overlayOpen, setOverlayOpen] = useState<boolean>(false);
+type ModalState =
+  | { open: false }
+  | { open: true; variant: "success" }
+  | { open: true; variant: "error"; errorMessage: string };
 
-  const { formData, handleInputChange, handleSubmit } = useContactForm({
-    onCommit: () => setOverlayOpen(true),
-  });
+export function ContactSection() {
+  const [modal, setModal] = useState<ModalState>({ open: false });
+
+  const { formData, handleInputChange, handleSubmit, isSubmitting } =
+    useContactForm({
+      onSubmitResult: (result) => {
+        if (result.ok) {
+          setModal({ open: true, variant: "success" });
+        } else {
+          setModal({
+            open: true,
+            variant: "error",
+            errorMessage: result.error,
+          });
+        }
+      },
+    });
+
+  const overlayOpen = modal.open;
 
   useEffect(() => {
     if (!overlayOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOverlayOpen(false);
+      if (e.key === "Escape") setModal({ open: false });
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [overlayOpen]);
+
+  const headingId =
+    modal.open && modal.variant === "success"
+      ? "contact-success-heading"
+      : "contact-error-heading";
 
   return (
     <section className="px-4 py-20">
@@ -42,6 +65,7 @@ export function ContactSection() {
             formData={formData}
             onChange={handleInputChange}
             onSubmit={handleSubmit}
+            isSubmitting={isSubmitting}
           />
         </div>
 
@@ -60,7 +84,7 @@ export function ContactSection() {
       </div>
 
       <AnimatePresence>
-        {overlayOpen ? (
+        {modal.open ? (
           <motion.div
             key="contact-modal-overlay"
             role="presentation"
@@ -73,27 +97,27 @@ export function ContactSection() {
             <div
               aria-hidden
               className="pointer-events-auto absolute inset-0 bg-black/55 backdrop-blur-[3px]"
-              onClick={() => setOverlayOpen(false)}
+              onClick={() => setModal({ open: false })}
             />
             <motion.div
               role="dialog"
               aria-modal="true"
-              aria-labelledby="contact-success-heading"
-              className="pointer-events-auto relative p-4 z-10 flex max-w-[300px] max-h-[350px] flex-col items-center rounded-[15px] bg-modal-bg shadow-lg"
+              aria-labelledby={headingId}
+              className="pointer-events-auto relative z-10 flex max-h-[min(420px,90vh)] w-[min(400px,100%)] max-w-[400px] flex-col items-center overflow-y-auto rounded-[15px] bg-modal-bg p-4 shadow-lg"
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex w-full flex-col items-center ">
-                <div className="relative flex shrink-0 items-center justify-center -translate-y-10">
+              <div className="flex w-full flex-col items-center pb-[calc(15px+3rem+12px)]">
+                <div className="relative flex shrink-0 items-center justify-center -translate-y-6 sm:-translate-y-10">
                   <Image
                     src={flower}
                     alt=""
                     width={300}
                     height={400}
-                    className="relative z-0  w-auto object-contain "
+                    className="relative z-0 max-h-[160px] w-auto object-contain sm:max-h-[200px]"
                   />
                   <Image
                     src={modalEllipse}
@@ -102,15 +126,23 @@ export function ContactSection() {
                     height={100}
                     className="pointer-events-none absolute left-1/2 top-1/2 z-10 size-[min(5.5rem,22vw)] max-w-[70px] -translate-x-1/2 -translate-y-1/2 object-contain"
                   />
-                  <CircleCheck
-                    className="pointer-events-none absolute left-1/2 top-1/2 z-20 size-10 -translate-x-1/2 -translate-y-1/2 text-primary drop-shadow-sm"
-                    strokeWidth={1.25}
-                    aria-hidden
-                  />
+                  {modal.variant === "success" ? (
+                    <CircleCheck
+                      className="pointer-events-none absolute left-1/2 top-1/2 z-20 size-10 -translate-x-1/2 -translate-y-1/2 text-primary drop-shadow-sm"
+                      strokeWidth={1.25}
+                      aria-hidden
+                    />
+                  ) : (
+                    <AlertCircle
+                      className="pointer-events-none absolute left-1/2 top-1/2 z-20 size-10 -translate-x-1/2 -translate-y-1/2 text-destructive drop-shadow-sm"
+                      strokeWidth={1.25}
+                      aria-hidden
+                    />
+                  )}
                 </div>
 
                 <motion.div
-                  className="mt-6 w-full space-y-3 text-center -translate-y-23"
+                  className="mt-4 w-full space-y-3 px-1 text-center sm:mt-6 sm:-translate-y-16"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -119,23 +151,39 @@ export function ContactSection() {
                     ease: [0.22, 1, 0.36, 1],
                   }}
                 >
-                  <span
-                    id="contact-success-heading"
-                    className="text-lg font-bold text-foreground"
-                  >
-                    메일이 성공적으로 보내졌어요
-                  </span>
-                  <span className="block text-sm text-muted-foreground">
-                    확인하는 대로 답장 드릴게요.
-                  </span>
+                  {modal.variant === "success" ? (
+                    <>
+                      <span
+                        id="contact-success-heading"
+                        className="font-jetbrains text-lg font-bold text-foreground"
+                      >
+                        메일이 성공적으로 보내졌어요
+                      </span>
+                      <span className="block font-jetbrains text-sm text-muted-foreground">
+                        확인하는 대로 답장 드릴게요.
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span
+                        id="contact-error-heading"
+                        className="font-jetbrains text-lg font-bold text-foreground"
+                      >
+                        메일을 보내지 못했어요
+                      </span>
+                      <span className="block font-jetbrains text-sm text-muted-foreground">
+                        {modal.errorMessage}
+                      </span>
+                    </>
+                  )}
                 </motion.div>
 
                 <motion.button
                   type="button"
-                  className="mt-7 w-full border border-primary bg-transparent px-4 py-3 text-sm font-medium uppercase tracking-wider text-primary transition-colors hover:bg-[#58C4FF]/10 -translate-y-25"
+                  className="absolute bottom-[15px] left-4 right-4 z-20 border border-primary bg-modal-bg px-4 py-3 text-sm font-medium uppercase tracking-wider text-primary transition-colors hover:bg-[#58C4FF]/10"
                   whileHover={{ scale: 1.005 }}
                   whileTap={{ scale: 0.995 }}
-                  onClick={() => setOverlayOpen(false)}
+                  onClick={() => setModal({ open: false })}
                 >
                   나가기
                 </motion.button>
@@ -147,4 +195,3 @@ export function ContactSection() {
     </section>
   );
 }
-

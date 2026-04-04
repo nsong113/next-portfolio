@@ -13,7 +13,7 @@
 | UI·모션 | Framer Motion |
 | 테마 | next-themes (`class` 전략) |
 | 데이터·상태 | TanStack React Query, Zustand |
-| 기타 | Pretendard, Supabase 클라이언트(준비) |
+| 기타 | Pretendard, Resend(연락 폼), Supabase JS(추후 DB·Auth 등 연동용) |
 
 ## 폴더 구조 (요약)
 
@@ -34,6 +34,7 @@ next-portfolio/
     │   ├── app-chrome.tsx     # 헤더/푸터·레이아웃 셸 (스플래시 시 크롬 숨김)
     │   ├── splash-gate-context.tsx
     │   ├── icon.png
+    │   ├── api/contact/route.ts   # 연락 폼 POST (Resend)
     │   └── projects/
     │       └── [id]/
     │           ├── page.tsx   # 프로젝트 상세 (SSG)
@@ -50,9 +51,9 @@ next-portfolio/
     │   └── contact-form/      # 연락 폼 상태·제출 (`useContactForm`)
     │
     ├── shared/                # 앱 전역 재사용
-    │   ├── api/supabase/      # Supabase 클라이언트
+    │   ├── api/supabase/      # Supabase 브라우저 클라이언트 (미사용 시에도 추후 대비)
+    │   ├── config/            # 공개 env (`NEXT_PUBLIC_*` 등)
     │   ├── assets/            # 이미지, 아이콘(SVG)
-    │   ├── config/            # env 등
     │   ├── lib/               # motion 변형, query-client, theme 훅
     │   ├── model/             # 전역 UI 스토어 등
     │   ├── styles/index.css   # 디자인 토큰·폰트·글로벌 스타일
@@ -83,7 +84,7 @@ next-portfolio/
 ### 데이터 흐름 (개략)
 
 - **정적 콘텐츠**: `entities/*/model`의 상수·데이터를 `widgets`·`app`의 페이지가 읽어 렌더링.
-- **연락 폼**: `features/contact-form`의 `useContactForm`을 `widgets/portfolio-page/.../contact-section`에서 사용.
+- **연락 폼**: `features/contact-form`의 `useContactForm` → `POST /api/contact`(Resend). Supabase는 이 흐름에 아직 연결하지 않았고, `shared/api/supabase`는 추후 DB·Auth 등을 붙일 때 쓸 수 있게 둔 자리다.
 - **테마**: `next-themes` + `shared/lib/theme/use-resolved-theme` — HTML `class="dark"`와 연동.
 - **스플래시**: `SplashGateProvider`로 “한 번 닫으면 본문” 상태를 유지하고, 첫 화면은 `SplashScreen`만 표시.
 

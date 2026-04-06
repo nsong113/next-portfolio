@@ -11,6 +11,11 @@ import star from "@/shared/assets/ico/star.svg";
 import darkStar from "@/shared/assets/ico/darkStar.svg";
 import { NAV_ITEMS } from "@/entities/navigation/model/nav-items";
 
+function sectionLinkHref(href: string) {
+  if (!href.startsWith("#")) return href;
+  return `/${href}`;
+}
+
 const ThemeToggle = dynamic(
   () => import("@/features/theme-toggle").then((m) => m.ThemeToggle),
   { ssr: false },
@@ -69,13 +74,14 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <div className="hidden space-x-8 md:flex">
             {NAV_ITEMS.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                href={sectionLinkHref(item.href)}
+                prefetch={false}
                 className="text-foreground transition-all duration-300 hover:text-opposite-color hover:[text-shadow:0_0_3px_rgba(80,5,255,0.035),0_0_8px_rgba(80,5,255,0.01)] dark:text-white dark:hover:text-primary dark:hover:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
           <ThemeToggle />

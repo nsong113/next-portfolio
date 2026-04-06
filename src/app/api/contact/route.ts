@@ -163,7 +163,11 @@ export async function POST(request: Request) {
       process.env.NODE_ENV === "development"
         ? " .env에 CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL을 설정해 주세요."
         : " Vercel 환경 변수에 CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL을 등록했는지 확인해 주세요.";
-    return json(request, { error: `메일 주소가 설정되지 않았어요.${hint}` }, 503);
+    return json(
+      request,
+      { error: `메일 주소가 설정되지 않았어요.${hint}` },
+      503,
+    );
   }
 
   const resend = new Resend(apiKey);

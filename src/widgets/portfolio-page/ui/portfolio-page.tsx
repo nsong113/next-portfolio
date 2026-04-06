@@ -8,7 +8,7 @@ import { SkillsSection } from "./sections/skills-section";
 export function PortfolioPage() {
   return (
     <main className="flex-1 overflow-x-hidden bg-transparent text-foreground">
-      <div id="portfolio-page">
+      <div id="home" className="scroll-mt-24">
         <HeroSection />
       </div>
 
@@ -16,15 +16,15 @@ export function PortfolioPage() {
 
       <PortfolioTicker />
 
-      <div id="skills" className='py-10'>
+      <div id="skills" className="scroll-mt-24 py-10">
         <SkillsSection />
       </div>
 
-      <div id="projects" className='py-10'>
+      <div id="projects" className="scroll-mt-24 py-10">
         <ProjectsSection />
       </div>
 
-      <div id="contact" className='py-10'>
+      <div id="contact" className="scroll-mt-24 py-10">
         <ContactSection />
       </div>
     </main>

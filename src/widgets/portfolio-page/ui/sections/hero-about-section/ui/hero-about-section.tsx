@@ -15,7 +15,10 @@ import profilePhoto from "@/shared/assets/images/profile.jpg";
 
 export function HeroAboutSection() {
   return (
-    <section className="px-4 pb-12 md:pb-16">
+    <section
+      id="about"
+      className="scroll-mt-24 px-4 pb-12 md:pb-16"
+    >
       <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mx-auto w-full max-w-6xl">
         <PortfolioSectionHeading>&gt; About Me</PortfolioSectionHeading>
 

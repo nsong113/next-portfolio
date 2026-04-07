@@ -206,7 +206,7 @@ export async function POST(request: Request) {
     console.error("[api/contact]", e);
     return json(
       request,
-      { error: "메일 전송에 실패했어요. 잠시 후 다시 시도해 주세요." },
+      { error: "메일 전송에 실패했어요. 잠시 후 다시 시도해 주세요." },//
       502,
     );
   }

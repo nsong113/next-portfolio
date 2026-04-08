@@ -1,3 +1,4 @@
+import { BlogSection } from "./sections/blog-section";
 import { ContactSection } from "./sections/contact-section";
 import { HeroAboutSection } from "./sections/hero-about-section/ui/hero-about-section";
 import { HeroSection } from "./sections/hero-section";
@@ -18,6 +19,10 @@ export function PortfolioPage() {
 
       <div id="skills" className="scroll-mt-24 py-10">
         <SkillsSection />
+      </div>
+
+      <div id="blog" className="scroll-mt-24 py-10">
+        <BlogSection />
       </div>
 
       <div id="projects" className="scroll-mt-24 py-10">

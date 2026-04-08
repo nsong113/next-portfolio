@@ -1,6 +1,10 @@
 # next-portfolio
 
-프론트엔드 포트폴리오 사이트 (Next.js App Router).
+Next.js App Router로 만든 **개인 웹사이트**입니다. 
+레포 이름은 portfolio이지만, **공부한 것을 적용해 보는 실험장**입니다.
+인터랙션·모션·UI 패턴 등, 당시에 익힌 주제를 메인·섹션에 그대로 옮겨 보는 용도로 쓴다.
+
+정리·기록은 **Blog**에 두고, 방문자에게 “프로젝트 나열”보다는 **학습의 흔적**이 드러나게 만드는 쪽을 우선시 합니다.
 
 배포: https://next-portfolio-phi-topaz.vercel.app/
 
@@ -13,7 +17,7 @@
 | UI·모션 | Framer Motion |
 | 테마 | next-themes (`class` 전략) |
 | 데이터·상태 | TanStack React Query, Zustand |
-| 기타 | Pretendard, Resend(연락 폼), Supabase JS(추후 DB·Auth 등 연동용) |
+| 기타 | Resend(연락 폼), Supabase JS(추후 DB·Auth 등 연동용) |
 
 ## 폴더 구조 (요약)
 
@@ -34,15 +38,19 @@ next-portfolio/
     │   ├── app-chrome.tsx     # 헤더/푸터·레이아웃 셸 (스플래시 시 크롬 숨김)
     │   ├── splash-gate-context.tsx
     │   ├── icon.png
-    │   ├── api/contact/route.ts   # 연락 폼 POST (Resend)
+    │   ├── api/contact/route.ts   # 연락 폼 POST (Resend, CORS)
+    │   ├── blog/
+    │   │   ├── page.tsx           # `/blog` — 글 목록
+    │   │   └── [slug]/page.tsx    # `/blog/[slug]` — 글 상세 (SSG)
     │   └── projects/
     │       └── [id]/
-    │           ├── page.tsx   # 프로젝트 상세 (SSG)
+    │           ├── page.tsx       # 프로젝트 상세 (SSG)
     │           └── not-found.tsx
     │
     ├── entities/              # 도메인 데이터·상수 (UI 거의 없음)
+    │   ├── blog/model/        # BLOG_POSTS, 글 메타·본문
     │   ├── contact/model/
-    │   ├── navigation/model/
+    │   ├── navigation/model/  # NAV_ITEMS (헤더 앵커·링크)
     │   ├── project/model/     # PROJECTS 등
     │   └── skill/model/
     │
@@ -63,7 +71,8 @@ next-portfolio/
         ├── portfolio-page/    # 메인 랜딩 본문
         │   └── ui/
         │       ├── portfolio-page.tsx
-        │       └── sections/  # hero, skills, projects, contact, ticker 등
+        │       └── sections/  # hero, about, skills, blog, projects, contact, ticker 등
+        ├── blog-page/         # `/blog`, `/blog/[slug]` 본문 UI
         ├── site-header/
         ├── site-footer/
         └── splash-screen/     # 진입 스플래시 + 캔버스 파티클(lib)
@@ -84,7 +93,9 @@ next-portfolio/
 ### 데이터 흐름 (개략)
 
 - **정적 콘텐츠**: `entities/*/model`의 상수·데이터를 `widgets`·`app`의 페이지가 읽어 렌더링.
-- **연락 폼**: `features/contact-form`의 `useContactForm` → `POST /api/contact`(Resend). Supabase는 이 흐름에 아직 연결하지 않았고, `shared/api/supabase`는 추후 DB·Auth 등을 붙일 때 쓸 수 있게 둔 자리다.
+- **블로그**: `entities/blog/model/blog-posts.ts`의 `BLOG_POSTS`를 메인의 `BlogSection`(프리뷰)과 `app/blog` 목록·상세가 공유한다. 글 추가·수정은 데이터 파일을 편집하면 된다.
+- **내비게이션**: `entities/navigation/model/nav-items.ts` — 헤더는 `next/link`로 앵커를 `/#…` 형태에 두어 풀 리로드 없이 메인의 해당 섹션으로 이동한다(예: `#blog` → 블로그 프리뷰 섹션). 글 목록·상세는 `/blog`, `/blog/[slug]`.
+- **연락 폼**: `features/contact-form`의 `useContactForm` → `POST /api/contact`(Resend). 서버 env: `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` 등(`.env.example` 참고). Supabase는 이 흐름에 아직 연결하지 않았고, `shared/api/supabase`는 추후 DB·Auth 등을 붙일 때 쓸 수 있게 둔 자리다.
 - **테마**: `next-themes` + `shared/lib/theme/use-resolved-theme` — HTML `class="dark"`와 연동.
 - **스플래시**: `SplashGateProvider`로 “한 번 닫으면 본문” 상태를 유지하고, 첫 화면은 `SplashScreen`만 표시.
 
@@ -92,6 +103,7 @@ next-portfolio/
 
 - **이미지**: `shared/ui/image-with-fallback`에서 `next/image` 사용; 외부 도메인은 `next.config.ts`의 `images.remotePatterns`에 등록.
 - **코드 분할**: `SiteHeader`의 `ThemeToggle`은 `next/dynamic` + `ssr: false`로 지연 로딩(클라이언트 전용·번들 분리).
+- **API Route**: `app/api/contact/route.ts`는 `runtime: nodejs`(Resend), CORS 허용 출처는 코드·`CORS_ALLOWED_ORIGINS` env로 조정.
 
 ## 스크립트
 

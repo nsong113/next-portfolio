@@ -3,11 +3,10 @@ export type BlogPost = {
   title: string;
   date: string;
   excerpt: string;
-  /** 본문 (GFM 마크다운) */
   content: string;
 };
 
-export const BLOG_POSTS: BlogPost[] = [
+const BLOG_POSTS_UNSORTED: BlogPost[] = [
   {
     slug: "next-app-router-notes",
     title: "Next.js App Router에서 레이아웃 나누기",
@@ -42,6 +41,10 @@ export const BLOG_POSTS: BlogPost[] = [
       "viewport once: true로 한 번만 재생하고, amount는 섹션마다 살짝 다르게 두었습니다. 모션은 과하면 산만해지니까 지연과 duration을 보수적으로 잡는 편이에요.",
   },
 ];
+
+export const BLOG_POSTS: BlogPost[] = [...BLOG_POSTS_UNSORTED].sort((a, b) =>
+  b.date.localeCompare(a.date),
+);
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);

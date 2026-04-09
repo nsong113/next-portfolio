@@ -39,7 +39,8 @@ export function ContactLinks() {
         variants={staggerItem}
         className="mb-8 font-sans text-lg leading-relaxed text-foreground break-keep"
       >
-        다음 프로젝트를 함께해 볼까요? 블라블라 예시 문구임더.. 연락 주시면 멋진 결과를 함께 만들어가겠습니다. 새로운 기회와 혁신적인 아이디어에 대한 이야기를 언제나 반갑게 기다리고 있습니다.
+        문의 주시면 빠르게 확인하고 답장드리겠습니다. 프로젝트·협업 제안이나 프론트엔드 관련 문의가 있다면
+        편하게 연락 주세요. 간단한 인사도 환영합니다.
       </motion.p>
 
       <div className="space-y-6">

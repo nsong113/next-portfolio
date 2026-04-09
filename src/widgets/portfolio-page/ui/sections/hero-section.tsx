@@ -56,7 +56,7 @@ export function HeroSection() {
         </motion.div>
         <motion.div variants={staggerItem} className="mb-8 inline-block">
           <p className="text-lg text-primary after:content-['▍'] after:ml-[0.15em] after:opacity-85 after:animate-[cursor-blink_1.1s_step-end_infinite]">
-            Turning complex flows into simple interfaces
+            Making complex UI simple and clear
           </p>
         </motion.div>
         <motion.a

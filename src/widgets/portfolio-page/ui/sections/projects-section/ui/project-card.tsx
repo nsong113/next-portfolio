@@ -80,9 +80,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </p>
 
         <div className="mb-6 flex flex-wrap gap-1.5">
-          {project.technologies.map((tech) => (
+          {project.technologies.map((tech, i) => (
             <span
-              key={tech}
+              key={`${tech}-${i}`}
               className="inline-flex items-center px-1 py-1 text-[13px] leading-tight text-muted-foreground transition-colors hover:border-primary/35 hover:text-foreground/90"
             >
               {tech} 

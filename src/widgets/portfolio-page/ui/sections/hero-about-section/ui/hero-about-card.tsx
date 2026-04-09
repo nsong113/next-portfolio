@@ -30,7 +30,7 @@ export function HeroAboutCard() {
             <span className="text-slate-900/60 dark:text-primary font-jetbrains">{"// "}</span>
             <span className="mr-2 text-slate-700/70 dark:text-primary font-jetbrains"> requirements.map</span>
             <span className="text-slate-900/85 dark:text-zinc-100/90">
-              (복잡한 흐름 → 명확한 인터페이스)
+              (복잡한 UI → 구조적으로 설계)
             </span>
           </p>
 
@@ -39,9 +39,9 @@ export function HeroAboutCard() {
               &lt;div className=&quot;intent&quot;&gt;
             </p>
             <p className="pl-2 text-slate-900 dark:text-zinc-100">
-              제품의 복잡한 흐름을
+             - 복잡한 UI를 구조적으로 설계하고 구현하는 프론트엔드 역량을 보유하고 있습니다.
               <br />
-              더 명확하고 자연스러운 사용자 경험으로 바꾸는 일을 합니다.
+             - 공통 컴포넌트화와 상태 흐름 분리를 통해 유지보수성과 확장성을 고려한 코드 구조를 설계합니다.
             </p>
             <p className="mt-1 text-[11px] font-jetbrains text-slate-600/70 dark:text-zinc-400/80">
               &lt;/div&gt;

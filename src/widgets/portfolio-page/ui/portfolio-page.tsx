@@ -17,12 +17,12 @@ export function PortfolioPage() {
 
       <PortfolioTicker />
 
-      <div id="skills" className="scroll-mt-24 py-10">
-        <SkillsSection />
-      </div>
-
       <div id="blog" className="scroll-mt-24 py-10">
         <BlogSection />
+      </div>
+
+      <div id="skills" className="scroll-mt-24 py-10">
+        <SkillsSection />
       </div>
 
       <div id="projects" className="scroll-mt-24 py-10">

@@ -10,6 +10,10 @@ import detailBg from "@/shared/assets/images/detailBg.png";
 import { PROJECTS } from "@/entities/project/model/project-data";
 
 import { ProjectProblemCard } from "./project-problem-card";
+import {
+  isRetroProblemItem,
+  ProjectRetroCard,
+} from "./project-retro-card";
 
 type ProjectEntry = (typeof PROJECTS)[number];
 
@@ -21,6 +25,8 @@ export type ProjectDetailPageProps = {
 
 export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
   const { portfolio } = project;
+  const caseStudies = portfolio.problems.filter((p) => !isRetroProblemItem(p));
+  const retros = portfolio.problems.filter(isRetroProblemItem);
 
   return (
     <main className="relative min-h-screen overflow-hidden px-4 pb-24 text-foreground md:px-6 ">
@@ -54,13 +60,13 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
         </header>
 
         <div className="mb-10 space-y-4 rounded-[15px] border border-slate-900/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(255,255,255,0.26)_30%,rgba(245,243,255,0.18))] p-6 shadow-[0_4px_34px_rgba(0,0,0,0.12)] backdrop-blur-[20px] md:p-8 dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04)_30%,rgba(0,0,0,0.08))] dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)]">
-          <p className="font-sans leading-relaxed text-foreground/90 break-keep">
+          <p className="whitespace-pre-line font-sans leading-relaxed text-foreground/90 break-keep">
             {portfolio.description}
           </p>
           <div className="flex flex-wrap gap-2 pt-2">
-            {portfolio.technologies.map((tech) => (
+            {portfolio.technologies.map((tech, i) => (
               <span
-                key={tech}
+                key={`${tech}-${i}`}
                 className="rounded-lg border border-[rgb(var(--accent-rgb)/0.26)] bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.14),rgb(var(--accent-rgb)/0.05))] px-3 py-1 text-xs text-primary shadow-[0_6px_14px_rgba(2,6,23,0.08),0_2px_10px_rgb(var(--accent-rgb)/0.10)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[linear-gradient(145deg,rgb(var(--accent-rgb)/0.22),rgb(var(--accent-rgb)/0.12))] hover:shadow-[0_10px_22px_rgba(2,6,23,0.12),0_6px_18px_rgb(var(--accent-rgb)/0.16)]"
               >
                 {tech}
@@ -91,12 +97,23 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
           </div>
         ) : null}
 
-        {portfolio.problems.length > 0 ? (
+        {caseStudies.length > 0 ? (
           <section className="space-y-8">
             <h2 className="text-xl text-primary">Problems &amp; solutions</h2>
             <ul className="space-y-8">
-              {portfolio.problems.map((item) => (
+              {caseStudies.map((item) => (
                 <ProjectProblemCard key={item.id} item={item} />
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
+        {retros.length > 0 ? (
+          <section className="mt-14 space-y-6">
+            <h2 className="text-xl text-primary">Review</h2>
+            <ul className="space-y-8">
+              {retros.map((item) => (
+                <ProjectRetroCard key={item.id} item={item} />
               ))}
             </ul>
           </section>

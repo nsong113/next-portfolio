@@ -76,13 +76,13 @@ const components: Components = {
       );
     }
     return (
-      <code className="rounded bg-muted/80 px-1.5 py-0.5 font-mono text-[0.9em] text-foreground">
+      <code className="rounded-md border border-border/60 bg-(--input-background) px-1.5 py-0.5 font-mono text-[0.9em] text-foreground dark:border-primary/25 dark:bg-card/80">
         {children}
       </code>
     );
   },
   pre: ({ children }) => (
-    <pre className="mb-4 overflow-x-auto rounded-lg border border-border bg-muted/40 p-4 font-mono text-[0.85rem] leading-relaxed text-foreground last:mb-0 [&>code]:bg-transparent [&>code]:p-0">
+    <pre className="mb-4 overflow-x-auto rounded-xl border border-white/45 bg-white/50 p-4 font-mono text-[0.85rem] leading-relaxed text-foreground shadow-[0_4px_24px_-6px_rgba(15,23,42,0.1)] last:mb-0 dark:border-primary/30 dark:bg-card/65 dark:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)] [&>code]:bg-transparent [&>code]:p-0">
       {children}
     </pre>
   ),

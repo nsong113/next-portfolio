@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { BlogPost } from "@/entities/blog/model/blog-posts";
+import { BlogMarkdown } from "./blog-markdown";
 
 type BlogPostDetailPageProps = {
   post: BlogPost;
@@ -35,12 +36,8 @@ export function BlogPostDetailPage({ post }: BlogPostDetailPageProps) {
           &gt; {post.title}
         </h1>
 
-        <div className="mt-10 max-w-none font-jetbrains text-sm leading-relaxed text-muted-foreground">
-          {post.content.split("\n\n").map((para, i) => (
-            <p key={i} className="mb-4 last:mb-0">
-              {para}
-            </p>
-          ))}
+        <div className="mt-10">
+          <BlogMarkdown>{post.content}</BlogMarkdown>
         </div>
       </article>
     </main>

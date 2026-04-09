@@ -3,7 +3,7 @@ export type BlogPost = {
   title: string;
   date: string;
   excerpt: string;
-  /** 본문 (마크다운 아님) */
+  /** 본문 (GFM 마크다운) */
   content: string;
 };
 
@@ -14,8 +14,14 @@ export const BLOG_POSTS: BlogPost[] = [
     date: "2026-03-15",
     excerpt:
       "app 디렉터리 기준으로 라우트와 공통 셸을 정리하면서 겪은 선택들을 짧게 정리했습니다.",
-    content:
-      "레이아웃은 URL 트리와 맞추고, 클라이언트 전용 위젯은 동적 import로 번들을 나눴습니다. 스플래시처럼 한 번만 보여야 하는 UI는 Context로 게이트를 두었어요.\n\n아직 실험 중인 패턴도 있어서, 나중에 글을 더 보강할 예정입니다.",
+    content: `레이아웃은 **URL 트리**와 맞추고, 클라이언트 전용 위젯은 \`dynamic import\`로 번들을 나눴습니다. 스플래시처럼 한 번만 보여야 하는 UI는 Context로 게이트를 두었어요.
+
+## 정리
+
+- 레이아웃: \`app/\` 트리와 1:1
+- 게이트: 한 번만 보이는 UI는 Context
+
+아직 실험 중인 패턴도 있어서, 나중에 글을 더 보강할 예정입니다.`,
   },
   {
     slug: "tailwind-v4-theme",

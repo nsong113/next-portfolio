@@ -28,7 +28,7 @@ export function ImageWithFallback({
   draggable = false,
   ...rest
 }: ImageWithFallbackProps) {
-  const [didError, setDidError] = useState(false);
+  const [didError, setDidError] = useState<boolean>(false);
 
   if (src == null || src === "") {
     return null;
@@ -46,7 +46,7 @@ export function ImageWithFallback({
           aria-hidden
           fill
           draggable={draggable}
-          className="object-cover opacity-50"
+          className="object-cover object-center opacity-50"
           unoptimized
           sizes={sizes}
           data-original-url={
@@ -57,13 +57,17 @@ export function ImageWithFallback({
     );
   }
 
+  const mergedClassName = [className?.trim(), "object-center"]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <Image
       src={src}
       alt={alt}
       fill
       draggable={draggable}
-      className={className}
+      className={mergedClassName}
       style={style}
       sizes={sizes}
       onError={() => setDidError(true)}

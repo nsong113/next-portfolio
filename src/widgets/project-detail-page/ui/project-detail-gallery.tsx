@@ -44,11 +44,13 @@ export function ProjectDetailGallery({ title, images }: ProjectDetailGalleryProp
                 src={src}
                 alt=""
                 className="h-full w-full object-cover"
-                sizes="(max-width: 640px) 85vw, 400px"
+                style={{ objectFit: "cover", objectPosition: "center center" }}
+                sizes="(max-width: 640px) 85vw, 450px"
                 quality={75}
               />
               <button
                 type="button"
+                data-carousel-swipe
                 className="absolute inset-0 z-10 cursor-zoom-in bg-transparent p-0"
                 aria-label={`${title} 이미지 ${i + 1} 크게 보기`}
                 onClick={() => openLightbox(i)}

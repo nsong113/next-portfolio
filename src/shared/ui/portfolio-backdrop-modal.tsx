@@ -2,11 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { createPortal } from "react-dom";
-import { useEffect, useSyncExternalStore, type ReactNode } from "react";
-
-function emptySubscribe() {
-  return () => {};
-}
+import { useEffect, useState, type ReactNode } from "react";
 
 export type PortfolioBackdropModalProps = {
   open: boolean;
@@ -26,7 +22,11 @@ export function PortfolioBackdropModal({
   panelClassName = DEFAULT_PANEL_CLASS,
   ariaLabelledBy,
 }: PortfolioBackdropModalProps) {
-  const isClient = useSyncExternalStore(emptySubscribe, () => true, () => false);
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    queueMicrotask(() => setMounted(true));
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -37,7 +37,7 @@ export function PortfolioBackdropModal({
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
-  if (!isClient) {
+  if (!mounted) {
     return null;
   }
 

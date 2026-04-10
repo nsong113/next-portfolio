@@ -18,6 +18,9 @@ type DragScrollCarouselProps = {
 
 const EDGE_EPS = 2;
 
+const TAP_PX = 10;
+const TAP_SCROLL_EPS = 4;
+
 export function DragScrollCarousel({
   children,
   className,
@@ -25,6 +28,12 @@ export function DragScrollCarousel({
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const dragStart = useRef({ x: 0, scrollLeft: 0 });
+  const dragTapRef = useRef<{
+    startX: number;
+    startY: number;
+    startScrollLeft: number;
+    swipeEl: HTMLElement | null;
+  } | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
@@ -73,8 +82,19 @@ export function DragScrollCarousel({
     const el = viewportRef.current;
     if (!el) return;
     const t = e.target as HTMLElement;
-    if (t.closest('button,input,textarea,select,a,label,[data-no-drag="true"]'))
+    /** 슬라이드 위 투명 버튼 등: 클릭은 유지하면서 가로 스크롤(스와이프)도 허용 */
+    if (
+      !t.closest("[data-carousel-swipe]") &&
+      t.closest('button,input,textarea,select,a,label,[data-no-drag="true"]')
+    )
       return;
+    const swipeEl = t.closest("[data-carousel-swipe]") as HTMLElement | null;
+    dragTapRef.current = {
+      startX: e.clientX,
+      startY: e.clientY,
+      startScrollLeft: el.scrollLeft,
+      swipeEl,
+    };
     el.setPointerCapture(e.pointerId);
     setIsDragging(true);
     dragStart.current = { x: e.clientX, scrollLeft: el.scrollLeft };
@@ -88,6 +108,26 @@ export function DragScrollCarousel({
   };
 
   const endDrag = () => setIsDragging(false);
+
+  const onPointerUp = (e: PointerEvent<HTMLDivElement>) => {
+    const el = viewportRef.current;
+    const tap = dragTapRef.current;
+    dragTapRef.current = null;
+    if (tap?.swipeEl && el) {
+      const dx = e.clientX - tap.startX;
+      const dy = e.clientY - tap.startY;
+      const dScroll = Math.abs(el.scrollLeft - tap.startScrollLeft);
+      if (dx * dx + dy * dy < TAP_PX * TAP_PX && dScroll <= TAP_SCROLL_EPS) {
+        tap.swipeEl.click();
+      }
+    }
+    endDrag();
+  };
+
+  const onPointerCancel = () => {
+    dragTapRef.current = null;
+    endDrag();
+  };
 
   useEffect(() => {
     const up = () => {
@@ -132,11 +172,11 @@ export function DragScrollCarousel({
         onDragStart={(e) => e.preventDefault()}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
-        onPointerUp={endDrag}
-        onPointerCancel={endDrag}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerCancel}
       >
         <div
-          className={`flex gap-4 pb-1 select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
+          className={`flex items-start gap-4 pb-1 select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
         >
           {children}
         </div>

@@ -5,12 +5,12 @@ import { ArrowBigLeft } from "lucide-react";
 import detailBg from "@/shared/assets/images/detailBg.png";
 import { PROJECTS } from "@/entities/project/model/project-data";
 
-import { ProjectDetailGallery } from "./project-detail-gallery";
-import { ProjectProblemCard } from "./project-problem-card";
+import { ProjectDetailGallery } from "./ui/project-detail-gallery";
+import { ProjectProblemCard } from "./ui/project-problem-card";
 import {
   isRetroProblemItem,
   ProjectRetroCard,
-} from "./project-retro-card";
+} from "./ui/project-retro-card";
 
 type ProjectEntry = (typeof PROJECTS)[number];
 
@@ -101,3 +101,6 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
     </main>
   );
 }
+
+export { ProjectProblemCard } from "./ui/project-problem-card";
+export type { ProjectProblemCardProps } from "./ui/project-problem-card";

@@ -57,17 +57,13 @@ export function ImageWithFallback({
     );
   }
 
-  const mergedClassName = [className?.trim(), "object-center"]
-    .filter(Boolean)
-    .join(" ");
-
   return (
     <Image
       src={src}
       alt={alt}
       fill
       draggable={draggable}
-      className={mergedClassName}
+      className={`${className?.trim() ?? ""} object-center`.trim()}
       style={style}
       sizes={sizes}
       onError={() => setDidError(true)}

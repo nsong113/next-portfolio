@@ -1,1 +1,0 @@
-export { HeroAboutSection } from "./ui/hero-about-section";

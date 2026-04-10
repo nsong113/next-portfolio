@@ -3,7 +3,7 @@
 import { useRef, useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
 
-import { SourceFieldCanvas } from "./source-field-canvas";
+import { SourceFieldCanvas } from "./ui/source-field-canvas";
 import { staggerContainer, staggerItem } from "@/shared/lib/motion";
 import { staticImportUrl } from "@/shared/lib/static-import-url";
 import { useResolvedTheme } from "@/shared/lib/theme/use-resolved-theme";
@@ -83,7 +83,6 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
       <SourceFieldCanvas
         attractPointRef={attractPointRef}
         releaseClusterRef={releaseClusterRef}
-        // className="pointer-events-auto absolute inset-0 h-full w-full touch-none"
         className="pointer-events-auto absolute inset-0 h-full w-full"
       />
 

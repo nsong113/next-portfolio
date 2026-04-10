@@ -10,7 +10,7 @@ import lightBtn from "@/shared/assets/ico/lightBtn.svg";
 
 export function HeroSection() {
   const { isDark, isReady } = useResolvedTheme();
-  /** 테마 확정 전에도 SSR·첫 클라 페인트 트리 일치 — `ThemeProvider`의 defaultTheme(`dark`)과 동일 */
+  // 테마 확정 전엔 isDark가 false라 라이트 에셋이 깜빡이므로, defaultTheme(dark)에 맞춰 다크로 고정
   const isDarkForUi = isReady ? isDark : true;
   const buttonAsset = isDarkForUi ? darkBtn : lightBtn;
   const bgRoundUrl = isDarkForUi ? "/darkBgRound.png" : "/lightBgRound.png";

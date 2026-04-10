@@ -2,7 +2,7 @@
 
 Next.js App Router로 만든 **개인 웹사이트**입니다. 
 레포 이름은 portfolio이지만, **공부한 것을 적용해 보는 실험장**입니다.
-인터랙션·모션·UI 패턴 등, 당시에 익힌 주제를 메인·섹션에 그대로 옮겨 보는 용도로 쓴다.
+인터랙션·모션·UI 패턴 등, 당시에 익힌 주제를 메인·섹션에 그대로 옮겨 보는 용도로 씁니다.
 
 정리·기록은 **Blog**에 두고, 방문자에게 “프로젝트 나열”보다는 **학습의 흔적**이 드러나게 만드는 쪽을 우선시 합니다.
 
@@ -36,6 +36,8 @@ next-portfolio/
     │   ├── page.tsx           # `/` — 풀스크린 스플래시만
     │   ├── home/page.tsx      # `/home` — 메인 포트폴리오(랜딩 섹션)
     │   ├── providers.tsx      # QueryClient, ThemeProvider 등
+    │   ├── opengraph-image.tsx  # OG ImageResponse (`public/og.png`)
+    │   ├── twitter-image.tsx    # opengraph-image 재노출
     │   ├── app-chrome.tsx     # 헤더/푸터·레이아웃 셸 (`/` 스플래시일 때 크롬 숨김)
     │   ├── icon.png
     │   ├── api/contact/route.ts   # 연락 폼 POST (Resend, CORS)
@@ -84,7 +86,7 @@ next-portfolio/
 
 | 레이어 | 역할 |
 |--------|------|
-| **app** | 라우팅, `layout`/`page`, 전역 프로바이더, 메타·경계. URL과 1:1인 진입점. |
+| **app** | 라우팅, `layout`/`page`, 전역 프로바이더, 메타·경계(`opengraph-image` 등). URL과 1:1인 진입점. |
 | **widgets** | 여러 섹션을 묶은 **페이지 단위 UI** (예: `PortfolioPage`, `SplashScreen`, `SiteHeader`). |
 | **features** | 재사용 가능한 **기능 한 덩어리** (예: 테마 토글, 연락 폼). |
 | **entities** | 프로젝트·스킬·네비 등 **도메인 데이터와 타입**. |
@@ -102,6 +104,7 @@ next-portfolio/
 ### 기술적 메모
 
 - **이미지**: `shared/ui/image-with-fallback`에서 `next/image` 사용; 외부 도메인은 `next.config.ts`의 `images.remotePatterns`에 등록.
+- **OG·Twitter 카드 이미지**: `opengraph-image.tsx`에서 `next/og`의 `ImageResponse`로 `public/og.png` 기반 OG를 만들고, `twitter-image.tsx`는 동일 설정을 재노출한다.
 - **코드 분할**: `SiteHeader`의 `ThemeToggle`은 `next/dynamic` + `ssr: false`로 지연 로딩(클라이언트 전용·번들 분리).
 - **API Route**: `app/api/contact/route.ts`는 `runtime: nodejs`(Resend), CORS 허용 출처는 코드·`CORS_ALLOWED_ORIGINS` env로 조정.
 

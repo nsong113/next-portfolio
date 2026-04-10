@@ -17,6 +17,7 @@ export function PortfolioSectionHeading({
   className,
   viewport = { once: true },
 }: PortfolioSectionHeadingProps) {
+  //공통 섹션 헤더
   return (
     <motion.div
       className={["mx-auto mb-16 w-fit", className].filter(Boolean).join(" ")}

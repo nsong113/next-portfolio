@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-import { HeroAboutCard } from "./hero-about-card";
+import { HeroAboutCard } from "./ui/hero-about-card";
 import { PortfolioSectionHeading } from "@/shared/ui/portfolio-section-heading";
 import {
   ImageWithFallback,

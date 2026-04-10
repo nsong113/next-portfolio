@@ -22,7 +22,6 @@ function clamp(n: number, lo: number, hi: number) {
 }
 
 export type CreateParticlesOptions = {
-  /** Uniform disk spawn around canvas center (px radius); omit = full canvas */
   clusterRadius?: number;
 };
 

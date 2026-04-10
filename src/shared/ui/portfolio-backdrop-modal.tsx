@@ -22,9 +22,11 @@ export function PortfolioBackdropModal({
   panelClassName = DEFAULT_PANEL_CLASS,
   ariaLabelledBy,
 }: PortfolioBackdropModalProps) {
+  // `document.body`는 클라에만 있음 — SSR·첫 페인트 전엔 포털을 쓰지 않도록 게이트
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
+    // effect 직후 한 틱 미룸(마이크로태스크) — 하이드레이션 타이밍과 맞추기 위한 보조
     queueMicrotask(() => setMounted(true));
   }, []);
 

@@ -22,7 +22,7 @@ export function ProjectsSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
-          {PROJECTS.map((project) => (
+          {PROJECTS.filter((p) => p.portfolio != null).map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </motion.div>

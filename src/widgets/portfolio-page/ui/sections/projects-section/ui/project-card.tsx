@@ -14,7 +14,7 @@ import { useResolvedTheme } from "@/shared/lib/theme/use-resolved-theme";
 type Project = (typeof import("@/entities/project/model/project-data").PROJECTS)[number];
 
 type ProjectCardProps = {
-  project: Project;
+  project: Project & { portfolio: NonNullable<Project["portfolio"]> };
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
@@ -41,7 +41,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       {detailsHref ? (
         <Link
           href={detailsHref}
-          aria-label={`View details: ${project.title}`}
+          aria-label={`View details: ${project.portfolio.title}`}
           className="absolute inset-0 z-1"
         />
       ) : null}
@@ -61,9 +61,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="relative aspect-video shrink-0 overflow-hidden bg-secondary/40">
         <ImageWithFallback
-          key={imageWithFallbackKey(project.image)}
-          src={project.image}
-          alt={project.title}
+          key={imageWithFallbackKey(project.portfolio.image[0])}
+          src={project.portfolio.image[0]}
+          alt={project.portfolio.title}
           className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100"
           sizes="(max-width: 768px) 100vw, (max-width: 1536px) 45vw, 576px"
           quality={75}
@@ -73,14 +73,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="flex min-h-0 flex-1 flex-col p-6">
         <h3 className="mb-3 text-2xl font-bold leading-snug text-primary">
-          {project.title}
+          {project.portfolio.title}
         </h3>
         <p className="mb-4 break-keep leading-relaxed text-muted-foreground">
-          {project.description}
+          {project.portfolio.description}
         </p>
 
         <div className="mb-6 flex flex-wrap gap-1.5">
-          {project.technologies.map((tech, i) => (
+          {project.portfolio.technologies.map((tech, i) => (
             <span
               key={`${tech}-${i}`}
               className="inline-flex items-center px-1 py-1 text-[13px] leading-tight text-muted-foreground transition-colors hover:border-primary/35 hover:text-foreground/90"

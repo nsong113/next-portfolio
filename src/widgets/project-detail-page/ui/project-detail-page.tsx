@@ -73,7 +73,7 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
         </div>
 
         {portfolio.image.length > 0 ? (
-          <ProjectDetailGallery title={project.title} images={portfolio.image} />
+          <ProjectDetailGallery title={portfolio.title} images={portfolio.image} />
         ) : null}
 
         {caseStudies.length > 0 ? (

@@ -8,24 +8,13 @@ import anz1 from "@/shared/assets/projects/anz1.webp";
 import nextDark from "@/shared/assets/projects/nextDart.webp";
 import nextLight from "@/shared/assets/projects/nextLight.webp";
 
+/** 카드·상세 공통 필드는 `portfolio`만. 카드 썸네일 = `portfolio.image[0]`. */
 export const PROJECTS = [
   {
     id: 1,
-    title: "메인 홈페이지 고도화 및 리팩토링",
-    description:
-      "메인 홈페이지 고도화와 리팩토링을 수행하며 구조 개선·성능 최적화·SEO 정합성까지 개선했습니다.",
-    technologies: [
-      "TypeScript",
-      "React",
-      "Vite",
-      "Tailwind CSS",
-      "Recoil",
-      "Socket.IO",
-    ],
-    image: homePage,
+    tags: ["유지보수", "구조", "성능 최적화", "SEO 정합성"],
     liveUrl: "https://maum.ai/",
     codeUrl: "",
-    tags: ["유지보수", "구조", "성능 최적화", "SEO 정합성"],
     portfolio: {
       title: "메인 홈페이지 고도화 및 리팩토링",
       subTitle: "유지보수, 구조, 성능 최적화, SEO 정합성",
@@ -39,8 +28,6 @@ export const PROJECTS = [
         "Recoil",
         "Socket.IO",
       ],
-      roles: ["Front-End Developer"],
-      role: "Front-End Developer",
       period: "2024.02 ~ 현재",
       contribution: 100,
       video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -80,22 +67,9 @@ export const PROJECTS = [
   },
   {
     id: 2,
-    title: "안내용 로봇 UI 개발 및 고도화",
-    description:
-      "전시·매장·로비 등 안내 로봇 WebView UI를 기획 단계부터 참여해 요구사항 정리·구조 설계·구현·고도화를 수행했습니다.",
-    technologies: [
-      "TypeScript",
-      "React",
-      "Vite",
-      "Recoil",
-      "Socket.IO",
-      "Tailwind CSS",
-      "Framer Motion",
-    ],
-    image: temi_general,
+    tags: ["구조", "Voice/Robot 분리", "온디바이스 UI 안정성"],
     liveUrl: "",
     codeUrl: "",
-    tags: ["구조", "Voice/Robot 분리", "온디바이스 UI 안정성"],
     portfolio: {
       title: "안내용 로봇 UI 개발 및 고도화",
       subTitle: "구조 설계, Voice/Robot 분리, 온디바이스 UI 안정성",
@@ -110,8 +84,6 @@ export const PROJECTS = [
         "Tailwind CSS",
         "Framer Motion",
       ],
-      roles: ["Front-End Developer"],
-      role: "Front-End Developer",
       period: "2025.07 ~ 2026.02",
       contribution: 100,
       video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -142,23 +114,9 @@ export const PROJECTS = [
   },
   {
     id: 3,
-    title: "인터랙티브 맵 기반 시각화 UI 개발",
-    description:
-      "이미지 기반 맵 위에 확대·축소, 드래그, 경로 편집이 자연스럽게 동작하는 편집 UX를 구현했습니다.",
-    technologies: [
-      "TypeScript",
-      "React",
-      "Vite",
-      "Fabric.js",
-      "Zustand",
-      "Tanstack Query",
-      "MQTT",
-      "WebRTC",
-    ],
-    image: rms,
+    tags: ["canvas", "시각화", "인터랙션", "편집 UX"],
     liveUrl: "",
     codeUrl: "",
-    tags: ["canvas", "시각화", "인터랙션", "편집 UX"],
     portfolio: {
       title: "인터랙티브 맵 기반 시각화 UI 개발",
       subTitle: "캔버스 렌더링, 맵 편집 인터랙션, 구조 개선",
@@ -174,8 +132,6 @@ export const PROJECTS = [
         "MQTT",
         "WebRTC",
       ],
-      roles: ["Front-End Developer"],
-      role: "Front-End Developer",
       period: "2025.12 - 현재",
       contribution: 100,
       video: "",
@@ -216,23 +172,9 @@ export const PROJECTS = [
   },
   {
     id: 4,
-    title: "글로벌 마케팅 웹사이트 프론트엔드 개발",
-    description:
-      "다국어 지원과 문의 전환 흐름(CTA→상세→문의)을 고려한 마케팅 웹사이트를 구현했습니다.",
-    technologies: [
-      "TypeScript",
-      "React",
-      "Vite",
-      "Tailwind CSS",
-      "i18next",
-      "Swiper",
-      "React Hook Form",
-      "Yup",
-    ],
-    image: anz1,
+    tags: ["마케팅", "다국어", "전환", "폼"],
     liveUrl: "",
     codeUrl: "",
-    tags: ["마케팅", "다국어", "전환", "폼"],
     portfolio: {
       title: "글로벌 마케팅 웹사이트 프론트엔드 개발",
       subTitle: "다국어 UI, 전환 플로우, 인터랙티브 UX",
@@ -248,8 +190,6 @@ export const PROJECTS = [
         "React Hook Form",
         "Yup",
       ],
-      roles: ["Front-End Developer"],
-      role: "Front-End Developer",
       period: "2024.02 - 2024.06",
       contribution: 100,
       video: "",
@@ -290,22 +230,15 @@ export const PROJECTS = [
   },
   {
     id: 5,
-    title: "무신사 Playwright E2E Test",
-    description:
-      "무신사 웹사이트를 대상으로 Playwright 기반 E2E 테스트 환경을 구축한 개인 프로젝트입니다.",
-    technologies: ["TypeScript", "Playwright", "GitHub Actions"],
-    image: taskUI,
+    tags: ["E2E", "테스트", "CI", "Playwright"],
     liveUrl: "",
     codeUrl: "https://github.com/nsong113/musinsa",
-    tags: ["E2E", "테스트", "CI", "Playwright"],
     portfolio: {
       title: "무신사 Playwright E2E Test",
       subTitle: "테스트 설계, 세션 재사용, CI 관측성",
       description:
         "무신사 웹사이트를 대상으로 Playwright 기반 E2E 테스트 환경을 구축한 개인 프로젝트입니다. 유지보수 가능한 테스트 구조(Page Object/컴포넌트 객체 분리)와 인증 세션 재사용(storageState), CI(리포트/아티팩트/실패 분석)까지 전체 실행 체계를 설계·구현했습니다.",
       technologies: ["TypeScript", "Playwright", "GitHub Actions"],
-      roles: ["Front-End Developer"],
-      role: "Front-End Developer",
       period: "2026.01 - 2026.01",
       contribution: 100,
       video: "",
@@ -355,20 +288,9 @@ export const PROJECTS = [
   },
   {
     id: 6,
-    title: "Next Portfolio",
-    description:
-      "Next.js App Router 기반으로 인터랙티브 메인 페이지와 블로그·프로젝트 상세까지 서비스 형태로 구현한 개인 포트폴리오입니다.",
-    technologies: [
-      "TypeScript",
-      "Next.js (App Router)",
-      "Tailwind CSS",
-      "Framer Motion",
-      "next-themes",
-    ],
-    image: nextDark,
+    tags: ["Next.js", "SSG", "다크모드", "성능", "구조"],
     liveUrl: "",
     codeUrl: "https://github.com/nsong113/next-portfolio",
-    tags: ["Next.js", "SSG", "다크모드", "성능", "구조"],
     portfolio: {
       title: "Next Portfolio",
       subTitle: "FSD 구조, 성능 최적화, App Router 정적 콘텐츠",
@@ -381,8 +303,6 @@ export const PROJECTS = [
         "Framer Motion",
         "next-themes",
       ],
-      roles: ["Front-End Developer"],
-      role: "Front-End Developer",
       period: "2026. 04 - 2026. 04",
       contribution: 100,
       video: "",

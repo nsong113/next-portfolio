@@ -9,7 +9,7 @@ export function BlogPage() {
       <div className="mx-auto max-w-3xl">
         <p className="mb-6 font-jetbrains text-sm text-muted-foreground">
           <Link
-            href="/"
+            href="/home"
             className="text-primary underline-offset-4 transition-colors hover:text-opposite-color hover:underline"
           >
             ← Portfolio

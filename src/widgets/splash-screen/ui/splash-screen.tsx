@@ -124,7 +124,7 @@ export function SplashScreen({ onEnter }: SplashScreenProps) {
             backgroundSize: "contain",
           }}
         >
-          Enter portfolio
+          View projects
         </motion.button>
       </motion.div>
     </div>

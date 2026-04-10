@@ -33,10 +33,10 @@ next-portfolio/
 └── src/
     ├── app/                   # Next.js App Router — 라우트·레이아웃·프로바이더
     │   ├── layout.tsx         # 루트 레이아웃, 폰트·글로벌 CSS
-    │   ├── page.tsx           # `/` — 스플래시 게이트 후 포트폴리오
-    │   ├── providers.tsx      # QueryClient, SplashGate, ThemeProvider 등
-    │   ├── app-chrome.tsx     # 헤더/푸터·레이아웃 셸 (스플래시 시 크롬 숨김)
-    │   ├── splash-gate-context.tsx
+    │   ├── page.tsx           # `/` — 풀스크린 스플래시만
+    │   ├── home/page.tsx      # `/home` — 메인 포트폴리오(랜딩 섹션)
+    │   ├── providers.tsx      # QueryClient, ThemeProvider 등
+    │   ├── app-chrome.tsx     # 헤더/푸터·레이아웃 셸 (`/` 스플래시일 때 크롬 숨김)
     │   ├── icon.png
     │   ├── api/contact/route.ts   # 연락 폼 POST (Resend, CORS)
     │   ├── blog/
@@ -94,10 +94,10 @@ next-portfolio/
 
 - **정적 콘텐츠**: `entities/*/model`의 상수·데이터를 `widgets`·`app`의 페이지가 읽어 렌더링.
 - **블로그**: `entities/blog/model/blog-posts.ts`의 `BLOG_POSTS`를 메인의 `BlogSection`(프리뷰)과 `app/blog` 목록·상세가 공유한다. 글 추가·수정은 데이터 파일을 편집하면 된다.
-- **내비게이션**: `entities/navigation/model/nav-items.ts` — 헤더는 `next/link`로 앵커를 `/#…` 형태에 두어 풀 리로드 없이 메인의 해당 섹션으로 이동한다(예: `#blog` → 블로그 프리뷰 섹션). 글 목록·상세는 `/blog`, `/blog/[slug]`.
+- **내비게이션**: `entities/navigation/model/nav-items.ts` — 헤더는 `next/link`로 `/home#…` 형태에 두어 메인(`/home`)의 해당 섹션으로 이동한다(예: `#blog` → 블로그 프리뷰 섹션). 글 목록·상세는 `/blog`, `/blog/[slug]`.
 - **연락 폼**: `features/contact-form`의 `useContactForm` → `POST /api/contact`(Resend). 서버 env: `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` 등(`.env.example` 참고). Supabase는 이 흐름에 아직 연결하지 않았고, `shared/api/supabase`는 추후 DB·Auth 등을 붙일 때 쓸 수 있게 둔 자리다.
 - **테마**: `next-themes` + `shared/lib/theme/use-resolved-theme` — HTML `class="dark"`와 연동.
-- **스플래시**: `SplashGateProvider`로 “한 번 닫으면 본문” 상태를 유지하고, 첫 화면은 `SplashScreen`만 표시.
+- **스플래시**: `/`는 `SplashScreen`만 두고, 진입 버튼으로 `router.push('/home')` — 메인 포트폴리오는 `/home`에서 렌더한다.
 
 ### 기술적 메모
 

@@ -5,14 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-import { useSplashGate } from "@/app/splash-gate-context";
-
 import star from "@/shared/assets/ico/star.svg";
 import darkStar from "@/shared/assets/ico/darkStar.svg";
 import { NAV_ITEMS } from "@/entities/navigation/model/nav-items";
 
 function navItemHref(href: string) {
-  if (href.startsWith("#")) return `/${href}`;
+  if (href.startsWith("#")) return `/home${href}`;
   return href;
 }
 
@@ -24,7 +22,6 @@ const ThemeToggle = dynamic(
 export function SiteHeader() {
   const pathname = usePathname();
   const router = useRouter();
-  const { dismissSplash } = useSplashGate();
 
   function handleLogoClick(e: React.MouseEvent<HTMLAnchorElement>) {
     if (
@@ -34,24 +31,21 @@ export function SiteHeader() {
       e.altKey ||
       e.button !== 0
     ) {
-      dismissSplash();
       return;
     }
     e.preventDefault();
-    if (pathname === "/" || pathname === "") {
-      dismissSplash();
+    if (pathname === "/home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    dismissSplash();
-    router.push("/");
+    router.push("/home");
   }
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 border-b border-primary/20 backdrop-blur-md">
       <div className="mx-auto my-2 flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-2 md:px-6">
         <Link
-          href="/"
+          href="/home"
           prefetch
           onClick={handleLogoClick}
           className="[text-shadow:0_0_3px_rgba(80,5,255,0.035),0_0_8px_rgba(80,5,255,0.01)] text-xl font-bold text-logo-color flex items-center gap-2 transition-opacity hover:opacity-90 dark:[text-shadow:0_0_10px_rgba(88,187,246,0.36),0_0_24px_rgba(88,187,246,0.12)]"

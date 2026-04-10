@@ -39,7 +39,7 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
       </div>
       <div className="relative mt-28 z-10 mx-auto max-w-3xl">
         <Link
-          href="/#projects"
+          href="/home#projects"
           className="mb-10 inline-flex items-center gap-2 text-sm text-primary transition-colors hover:text-primary/80"
         >
           <ArrowBigLeft className="size-4 shrink-0" aria-hidden />

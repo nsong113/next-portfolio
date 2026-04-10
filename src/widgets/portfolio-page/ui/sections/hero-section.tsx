@@ -10,14 +10,12 @@ import lightBtn from "@/shared/assets/ico/lightBtn.svg";
 
 export function HeroSection() {
   const { isDark, isReady } = useResolvedTheme();
-  const buttonAsset = isDark ? darkBtn : lightBtn;
-  const bgRoundUrl = isDark ? "/darkBgRound.png" : "/lightBgRound.png";
-  const bgRoundMobUrl = isDark ? "/darkBgRoundMob.png" : "/lightBgRoundMob.png";
+  /** 테마 확정 전에도 SSR·첫 클라 페인트 트리 일치 — `ThemeProvider`의 defaultTheme(`dark`)과 동일 */
+  const isDarkForUi = isReady ? isDark : true;
+  const buttonAsset = isDarkForUi ? darkBtn : lightBtn;
+  const bgRoundUrl = isDarkForUi ? "/darkBgRound.png" : "/lightBgRound.png";
+  const bgRoundMobUrl = isDarkForUi ? "/darkBgRoundMob.png" : "/lightBgRoundMob.png";
   const buttonBgUrl = staticImportUrl(buttonAsset);
-
-  if (!isReady) {
-    return null;
-  }
 
   return (
     <section className="relative flex min-h-screen items-center justify-center px-4 text-foreground">
@@ -65,16 +63,12 @@ export function HeroSection() {
           variants={staggerItem} 
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
-          style={
-            isReady
-              ? {
-                  backgroundImage: `url(${buttonBgUrl})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundSize: "contain",
-                }
-              : undefined
-          }
+          style={{
+            backgroundImage: `url(${buttonBgUrl})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "contain",
+          }}
         >
           View Projects
         </motion.a>

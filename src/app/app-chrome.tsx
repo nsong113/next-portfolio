@@ -4,16 +4,11 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { SiteFooter } from "@/widgets/site-footer";
 import { SiteHeader } from "@/widgets/site-header";
-import { useSplashGate } from "@/app/splash-gate-context";
-
 
 export function AppChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const { splashDismissed } = useSplashGate();
-  /** `/` (또는 초기 빈 문자열)에서만 스플래시가 덮을 때 크롬 숨김 */
-  const isHomeSplash =
-    !splashDismissed && (pathname === "/" || pathname === "");
-  const showChrome = !isHomeSplash;
+  /** `/`는 풀스크린 스플래시만 — 헤더·푸터 없음 */
+  const showChrome = pathname !== "/" && pathname !== "";
 
   return (
     <>

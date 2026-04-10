@@ -20,11 +20,11 @@ type ProjectCardProps = {
 export function ProjectCard({ project }: ProjectCardProps) {
   const detailsHref = project.portfolio ? `/projects/${project.id}` : null;
   const { isDark, isReady } = useResolvedTheme();
-  const detailsGradient = isReady
-    ? isDark
-      ? "linear-gradient(90deg, #F97BFD 0%, #04C9BF 100%)"
-      : "linear-gradient(90deg, #04C9BF 0%, #F97BFD 100%)"
-    : "linear-gradient(90deg, #04C9BF 0%, #FCDDFF 100%)";
+  /** 테마 미확정 시에도 SSR·하이드레이션 일치 — `ThemeProvider` defaultTheme(`dark`)와 동일 */
+  const isDarkForUi = isReady ? isDark : true;
+  const detailsGradient = isDarkForUi
+    ? "linear-gradient(90deg, #F97BFD 0%, #04C9BF 100%)"
+    : "linear-gradient(90deg, #04C9BF 0%, #F97BFD 100%)";
 
   return (
     <motion.article

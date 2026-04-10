@@ -22,7 +22,7 @@ export function BlogPostDetailPage({ post }: BlogPostDetailPageProps) {
             |
           </span>
           <Link
-            href="/"
+            href="/home"
             className="text-primary underline-offset-4 transition-colors hover:text-opposite-color hover:underline"
           >
             Portfolio

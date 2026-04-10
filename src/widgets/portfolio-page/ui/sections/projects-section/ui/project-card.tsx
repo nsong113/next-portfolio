@@ -47,11 +47,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
       ) : null}
 
       {project.tags.length > 0 ? (
-        <div className="absolute left-4 top-4 z-10 flex flex-wrap gap-2">
+        <div className="pointer-events-none absolute left-3 top-3 z-10 flex max-w-[calc(100%-1.5rem)] flex-wrap gap-1.5 sm:left-4 sm:top-4">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center justify-center rounded-[15px] border border-border/30 bg-background/40 px-4 py-1 font-bold text-xs text-foreground/80"
+              className="inline-flex max-w-full items-center truncate rounded-lg border border-white/25 bg-black/55 px-2.5 py-1 text-[11px] font-semibold leading-tight text-white shadow-[0_2px_12px_rgba(0,0,0,0.45)] backdrop-blur-sm dark:border-white/20 dark:bg-black/65 sm:rounded-xl sm:px-3 sm:py-1.5 sm:text-xs"
             >
               {tag}
             </span>

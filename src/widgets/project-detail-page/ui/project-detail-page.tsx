@@ -2,13 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowBigLeft } from "lucide-react";
 
-import { imageWithFallbackKey } from "@/shared/lib/static-import-url";
-import { DragScrollCarousel } from "@/shared/ui/drag-scroll-carousel";
-import { ImageWithFallback } from "@/shared/ui/image-with-fallback";
-
 import detailBg from "@/shared/assets/images/detailBg.png";
 import { PROJECTS } from "@/entities/project/model/project-data";
 
+import { ProjectDetailGallery } from "./project-detail-gallery";
 import { ProjectProblemCard } from "./project-problem-card";
 import {
   isRetroProblemItem,
@@ -76,25 +73,7 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
         </div>
 
         {portfolio.image.length > 0 ? (
-          <div className="-mx-4 mb-12 md:-mx-6">
-            <DragScrollCarousel>
-              {portfolio.image.map((src, i) => (
-                <div
-                  key={`${String(src)}-${i}`}
-                  className="relative rounded-[15px] aspect-video w-[min(100vw-2rem,28rem)] shrink-0 overflow-hidden border border-border/60 bg-muted/20 sm:w-104"
-                >
-                  <ImageWithFallback
-                    key={imageWithFallbackKey(src)}
-                    src={src}
-                    alt={`${project.title} — ${i + 1}`}
-                    className="h-full w-full object-cover"
-                    sizes="(max-width: 640px) 85vw, 400px"
-                    quality={75}
-                  />
-                </div>
-              ))}
-            </DragScrollCarousel>
-          </div>
+          <ProjectDetailGallery title={project.title} images={portfolio.image} />
         ) : null}
 
         {caseStudies.length > 0 ? (

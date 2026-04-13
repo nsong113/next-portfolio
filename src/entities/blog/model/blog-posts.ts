@@ -1,3 +1,4 @@
+import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.content";
 import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./nextjs-first-hydration-theme.content";
 
 export type BlogPost = {
@@ -9,6 +10,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "app-router-static-params-metadata",
+    title: "Next.js App Router: 블로그·프로젝트 정적 경로와 generateMetadata",
+    date: "2026-04-12",
+    excerpt:
+      "generateStaticParams와 generateMetadata로 이 레포의 블로그·프로젝트 상세 URL을 빌드 시 정적으로 만들고, 페이지별 메타데이터를 맞춘 구조를 코드 기준으로 정리했습니다.",
+    content: APP_ROUTER_STATIC_CONTENT_MARKDOWN,
+  },
   {
     slug: "nextjs-first-hydration-theme",
     title: "Next.js 첫 프로젝트: 하이드레이션·다크모드에서 막혔던 것들",

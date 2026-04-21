@@ -1,5 +1,6 @@
 import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
 type BlogMarkdownProps = {
@@ -110,12 +111,26 @@ const components: Components = {
       src={src ?? undefined}
     />
   ),
+  details: ({ children }) => (
+    <details className="my-10 rounded-xl border border-border/80 bg-card/35 p-4 open:border-primary/25 [&>summary+p]:mt-4">
+      {children}
+    </details>
+  ),
+  summary: ({ children }) => (
+    <summary className="cursor-pointer list-none font-jetbrains text-base font-semibold text-foreground marker:text-primary [&::-webkit-details-marker]:hidden">
+      <span className="underline-offset-2 hover:underline">{children}</span>
+    </summary>
+  ),
 };
 
 export function BlogMarkdown({ children }: BlogMarkdownProps) {
   return (
     <div className="max-w-none">
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
+        components={components}
+      >
         {children}
       </ReactMarkdown>
     </div>

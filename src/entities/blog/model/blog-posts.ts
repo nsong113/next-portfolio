@@ -1,4 +1,5 @@
 import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.content";
+import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./mvvm-llm-task-ui-refactor.content";
 import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./nextjs-first-hydration-theme.content";
 
 export type BlogPost = {
@@ -10,6 +11,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "mvvm-llm-task-ui-refactor",
+    title: "MVVM 적용을 통한 컴포넌트 구조 리팩토링",
+    date: "2026-04-21",
+    excerpt:
+      "LLM task UI(유사 화면 다수)에서 MVVM·useTask*Model/ViewModel·View로 책임을 나누고, 화면 간 파생 상태는 Recoil selector·태스크 안은 커스텀 훅으로 묶어 영향 범위를 예측하기 쉽게 만든 기록입니다. 순차 리팩터링·약 92개 파일 정비, 경계 고민·장단을 덧붙였습니다.",
+    content: MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN,
+  },
   {
     slug: "app-router-static-params-metadata",
     title: "Next.js App Router: 블로그·프로젝트 정적 경로와 generateMetadata",

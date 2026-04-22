@@ -2,6 +2,7 @@ import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.
 import { MAIN_LANDING_SCROLL_PERFORMANCE_MARKDOWN } from "./main-landing-scroll-performance.content";
 import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./mvvm-llm-task-ui-refactor.content";
 import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./nextjs-first-hydration-theme.content";
+import { SPA_SEO_METADATA_SEARCH_SNIPPET_MARKDOWN } from "./spa-seo-metadata-search-snippet.content";
 
 export type BlogPost = {
   slug: string;
@@ -12,6 +13,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "spa-seo-metadata-search-snippet",
+    title: "메타데이터 정합성 개선 및 검색 스니펫 최적화",
+    date: "2026-04-23",
+    excerpt:
+      "라우트별 메타 불일치 진단, meta·OG·JSON-LD 통합·Helmet 적용·초기 HTML·noscript 보강, 네이버 스니펫 정합성 점검까지를 본문 중심으로 정리하고 코드 근거와 운영 증빙의 한계는 접어 두었습니다.",
+    content: SPA_SEO_METADATA_SEARCH_SNIPPET_MARKDOWN,
+  },
   {
     slug: "main-landing-scroll-performance",
     title: "메인 랜딩 스크롤 인터랙션 개선과 성능 최적화",

@@ -1,4 +1,5 @@
 import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.content";
+import { MAIN_LANDING_SCROLL_PERFORMANCE_MARKDOWN } from "./main-landing-scroll-performance.content";
 import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./mvvm-llm-task-ui-refactor.content";
 import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./nextjs-first-hydration-theme.content";
 
@@ -11,6 +12,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "main-landing-scroll-performance",
+    title: "메인 랜딩 스크롤 인터랙션 개선과 성능 최적화",
+    date: "2026-04-22",
+    excerpt:
+      "문제·진단(Profiler) → 구현(휠, FMStackSection, lazy·React.lazy) → 트레이드오프(휠 rAF·FMStackSection CPU) 순으로, 당시 코드 기준으로 정리한 글입니다.",
+    content: MAIN_LANDING_SCROLL_PERFORMANCE_MARKDOWN,
+  },
   {
     slug: "mvvm-llm-task-ui-refactor",
     title: "MVVM 적용을 통한 컴포넌트 구조 리팩토링",

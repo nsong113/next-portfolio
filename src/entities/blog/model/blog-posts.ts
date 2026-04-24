@@ -2,6 +2,7 @@ import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.
 import { MAIN_LANDING_SCROLL_PERFORMANCE_MARKDOWN } from "./main-landing-scroll-performance.content";
 import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./mvvm-llm-task-ui-refactor.content";
 import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./nextjs-first-hydration-theme.content";
+import { ROBOT_CHAT_NAVIGATION_2LAYER_ARCHITECTURE_MARKDOWN } from "./robot-chat-navigation-2layer-architecture.content";
 import { SPA_SEO_METADATA_SEARCH_SNIPPET_MARKDOWN } from "./spa-seo-metadata-search-snippet.content";
 
 export type BlogPost = {
@@ -13,6 +14,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "robot-chat-navigation-2layer-architecture",
+    title: "요구사항 기반 설계: 대화/이동 2-Layer 구조와 이동 UX 통합",
+    date: "2026-04-23",
+    excerpt:
+      "대화(LLM/음성)와 이동(goTo/도착/실패)을 도메인으로 분리하고, selector로 파생 조건을 단일화한 뒤, dispatchMove·브릿지 이벤트·MovingModal을 상위에서만 조합하도록 고정해 운영 변경의 수정 범위를 줄인 구조를 정리했습니다.",
+    content: ROBOT_CHAT_NAVIGATION_2LAYER_ARCHITECTURE_MARKDOWN,
+  },
   {
     slug: "spa-seo-metadata-search-snippet",
     title: "메타데이터 정합성 개선 및 검색 스니펫 최적화",

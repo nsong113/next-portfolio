@@ -3,6 +3,7 @@ import { MAIN_LANDING_SCROLL_PERFORMANCE_MARKDOWN } from "./main-landing-scroll-
 import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./mvvm-llm-task-ui-refactor.content";
 import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./nextjs-first-hydration-theme.content";
 import { ROBOT_CHAT_NAVIGATION_2LAYER_ARCHITECTURE_MARKDOWN } from "./robot-chat-navigation-2layer-architecture.content";
+import { ROBOT_UI_MODAL_GLOBAL_FLOW_MARKDOWN } from "./robot-ui-modal-global-flow.content";
 import { SPA_SEO_METADATA_SEARCH_SNIPPET_MARKDOWN } from "./spa-seo-metadata-search-snippet.content";
 
 export type BlogPost = {
@@ -14,6 +15,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "robot-ui-modal-global-flow",
+    title: "온디바이스 로봇 UI: 모달을 비동기 흐름에서 분리한 사례",
+    date: "2026-04-25",
+    excerpt:
+      "API 성공과 전역 상태 갱신이 있어야만 열리던 모달을, ModalProvider·ModalManager·useModal로 루트에 두고 ‘안내’와 ‘데이터’를 나눠 지연·장애에서도 같은 경로로 보이도록 정리한 온디바이스 WebView 사례입니다.",
+    content: ROBOT_UI_MODAL_GLOBAL_FLOW_MARKDOWN,
+  },
   {
     slug: "robot-chat-navigation-2layer-architecture",
     title: "요구사항 기반 설계: 대화/이동 2-Layer 구조와 이동 UX 통합",

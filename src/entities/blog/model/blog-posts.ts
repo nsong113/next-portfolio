@@ -1,5 +1,6 @@
 import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.content";
 import { MAP_CANVAS_COORDINATE_ALIGNMENT_MARKDOWN } from "./map-canvas-coordinate-alignment.content";
+import { ROBOT_POSITION_MQTT_RENDER_OPTIMIZATION_MARKDOWN } from "./robot-position-mqtt-render-optimization.content";
 import { MAIN_LANDING_SCROLL_PERFORMANCE_MARKDOWN } from "./main-landing-scroll-performance.content";
 import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./mvvm-llm-task-ui-refactor.content";
 import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./nextjs-first-hydration-theme.content";
@@ -16,6 +17,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "robot-position-mqtt-render-optimization",
+    title: "실시간 로봇 pose: MQTT 수신·누적·샘플링·RobotPosition·렌더 절감",
+    date: "2026-04-27",
+    excerpt:
+      "MQTT로 위치가 자주 와도 화면에는 최신만 필요하다는 전제로, 메시지는 쌓아 두고 1초마다 마지막만 골라 반영하며 수신 시각으로 중복을 끊고, u/v·x/y를 RobotPosition으로 맞춘 뒤 숫자가 같으면 state·마커를 건너뛰어 그리기 부담을 줄인 내용을 쉬운 말로 정리했습니다.",
+    content: ROBOT_POSITION_MQTT_RENDER_OPTIMIZATION_MARKDOWN,
+  },
   {
     slug: "map-canvas-coordinate-alignment",
     title: "캔버스 맵 렌더링: world·pixel·canvas 정합과 공통 meta",

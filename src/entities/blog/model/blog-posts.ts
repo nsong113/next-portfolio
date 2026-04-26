@@ -1,4 +1,5 @@
 import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.content";
+import { MAP_CANVAS_COORDINATE_ALIGNMENT_MARKDOWN } from "./map-canvas-coordinate-alignment.content";
 import { MAIN_LANDING_SCROLL_PERFORMANCE_MARKDOWN } from "./main-landing-scroll-performance.content";
 import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./mvvm-llm-task-ui-refactor.content";
 import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./nextjs-first-hydration-theme.content";
@@ -15,6 +16,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "map-canvas-coordinate-alignment",
+    title: "캔버스 맵 렌더링: world·pixel·canvas 정합과 공통 meta",
+    date: "2026-04-26",
+    excerpt:
+      "맵 Base64·MQTT·URL 배경을 Fabric에 맞출 때 scale·offset·원본 크기를 canvas.meta로 고정하고, world→pixel→canvas 변환을 유틸로 통일해 포인트·경로·로봇·클릭의 좌표를 한 기준으로 맞춘 정리입니다.",
+    content: MAP_CANVAS_COORDINATE_ALIGNMENT_MARKDOWN,
+  },
   {
     slug: "robot-ui-modal-global-flow",
     title: "온디바이스 로봇 UI: 모달을 비동기 흐름에서 분리한 사례",

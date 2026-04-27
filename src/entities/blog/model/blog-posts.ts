@@ -1,4 +1,5 @@
 import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.content";
+import { DESIGN_SYSTEM_TAILWIND_TOKENS_SHARED_COMPONENTS_MARKDOWN } from "./design-system-tailwind-tokens-shared-components.content";
 import { MAP_CANVAS_COORDINATE_ALIGNMENT_MARKDOWN } from "./map-canvas-coordinate-alignment.content";
 import { MAP_EDIT_FABRIC_ZOOM_STABILITY_MARKDOWN } from "./map-edit-fabric-zoom-stability.content";
 import { ROBOT_POSITION_MQTT_RENDER_OPTIMIZATION_MARKDOWN } from "./robot-position-mqtt-render-optimization.content";
@@ -18,6 +19,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "design-system-tailwind-tokens-shared-components",
+    title: "디자인 시스템: 토큰(@theme)과 공통 컴포넌트(버튼·모달)로 규칙 맞추기",
+    date: "2026-04-30",
+    excerpt:
+      "CSS 변수 + Tailwind v4 @theme로 색상·브레이크포인트·타이포 같은 기준을 토큰으로 모으고, 버튼과 Portal 모달을 공통 컴포넌트로 통일해 화면 전반의 UI 규칙과 레이어 동작을 일관되게 유지한 과정을 정리했습니다.",
+    content: DESIGN_SYSTEM_TAILWIND_TOKENS_SHARED_COMPONENTS_MARKDOWN,
+  },
   {
     slug: "map-edit-fabric-zoom-stability",
     title: "맵 편집 캔버스: meta·viewport·선택 포인트 기준으로 줌 안정화",

@@ -1,5 +1,6 @@
 import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.content";
 import { MAP_CANVAS_COORDINATE_ALIGNMENT_MARKDOWN } from "./map-canvas-coordinate-alignment.content";
+import { MAP_EDIT_FABRIC_ZOOM_STABILITY_MARKDOWN } from "./map-edit-fabric-zoom-stability.content";
 import { ROBOT_POSITION_MQTT_RENDER_OPTIMIZATION_MARKDOWN } from "./robot-position-mqtt-render-optimization.content";
 import { MAIN_LANDING_SCROLL_PERFORMANCE_MARKDOWN } from "./main-landing-scroll-performance.content";
 import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./mvvm-llm-task-ui-refactor.content";
@@ -17,6 +18,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "map-edit-fabric-zoom-stability",
+    title: "맵 편집 캔버스: meta·viewport·선택 포인트 기준으로 줌 안정화",
+    date: "2026-04-28",
+    excerpt:
+      "Fabric 맵에서 pos_x/y는 이미지 기준, 그리기·입력은 canvas.meta와 getScenePoint로 통일하고, 줌 시 선택 포인트가 화면에서 밀리지 않도록 setViewportTransform을 보정하며, 훅·path·pan 충돌·DOM 눈금까지 묶은 편집 흐름을 정리했습니다.",
+    content: MAP_EDIT_FABRIC_ZOOM_STABILITY_MARKDOWN,
+  },
   {
     slug: "robot-position-mqtt-render-optimization",
     title: "실시간 로봇 pose: MQTT 수신·누적·샘플링·RobotPosition·렌더 절감",

@@ -9,6 +9,7 @@ import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./mvvm-llm-task-ui-refactor.
 import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./nextjs-first-hydration-theme.content";
 import { ROBOT_CHAT_NAVIGATION_2LAYER_ARCHITECTURE_MARKDOWN } from "./robot-chat-navigation-2layer-architecture.content";
 import { ROBOT_UI_MODAL_GLOBAL_FLOW_MARKDOWN } from "./robot-ui-modal-global-flow.content";
+import { RESPONSIVE_TAILWIND_BREAKPOINTS_AUTOPREFIXER_MARKDOWN } from "./responsive-tailwind-breakpoints-autoprefixer.content";
 import { SPA_SEO_METADATA_SEARCH_SNIPPET_MARKDOWN } from "./spa-seo-metadata-search-snippet.content";
 
 export type BlogPost = {
@@ -20,6 +21,14 @@ export type BlogPost = {
 };
 
 const BLOG_POSTS_UNSORTED: BlogPost[] = [
+  {
+    slug: "responsive-tailwind-breakpoints-autoprefixer",
+    title: "반응형·크로스 브라우징: Tailwind 브레이크포인트 공통화와 Autoprefixer",
+    date: "2026-05-01",
+    excerpt:
+      "Tailwind 커스텀 브레이크포인트로 반응형 전환 기준을 한곳에 모으고, 타이포그래피·여백·인터랙션 요소를 화면별로 최적화해 일관된 사용자 경험을 만들었습니다. 또한 Autoprefixer를 빌드 파이프라인에 포함해 vendor prefix를 자동 처리하도록 구성했습니다.",
+    content: RESPONSIVE_TAILWIND_BREAKPOINTS_AUTOPREFIXER_MARKDOWN,
+  },
   {
     slug: "design-system-tailwind-tokens-shared-components",
     title: "디자인 시스템: 토큰(@theme)과 공통 컴포넌트(버튼·모달)로 규칙 맞추기",

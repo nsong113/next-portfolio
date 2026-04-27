@@ -1,5 +1,6 @@
 import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.content";
 import { DESIGN_SYSTEM_TAILWIND_TOKENS_SHARED_COMPONENTS_MARKDOWN } from "./design-system-tailwind-tokens-shared-components.content";
+import { I18N_GLOBAL_LANGUAGE_UI_STRUCTURE_MARKDOWN } from "./i18n-global-language-ui-structure.content";
 import { MAP_CANVAS_COORDINATE_ALIGNMENT_MARKDOWN } from "./map-canvas-coordinate-alignment.content";
 import { MAP_EDIT_FABRIC_ZOOM_STABILITY_MARKDOWN } from "./map-edit-fabric-zoom-stability.content";
 import { ROBOT_POSITION_MQTT_RENDER_OPTIMIZATION_MARKDOWN } from "./robot-position-mqtt-render-optimization.content";
@@ -26,6 +27,14 @@ const BLOG_POSTS_UNSORTED: BlogPost[] = [
     excerpt:
       "CSS 변수 + Tailwind v4 @theme로 색상·브레이크포인트·타이포 같은 기준을 토큰으로 모으고, 버튼과 Portal 모달을 공통 컴포넌트로 통일해 화면 전반의 UI 규칙과 레이어 동작을 일관되게 유지한 과정을 정리했습니다.",
     content: DESIGN_SYSTEM_TAILWIND_TOKENS_SHARED_COMPONENTS_MARKDOWN,
+  },
+  {
+    slug: "i18n-global-language-ui-structure",
+    title: "글로벌 대응: 네임스페이스 i18n과 언어 선택 영속화",
+    date: "2026-04-29",
+    excerpt:
+      "react-i18next로 문장을 t() 키로 분리하고, en/ger JSON을 네임스페이스로 나눈 뒤, Recoil + recoil-persist로 언어 선택을 전역에서 유지해 새로고침 이후에도 같은 언어가 적용되도록 만든 구조를 정리했습니다.",
+    content: I18N_GLOBAL_LANGUAGE_UI_STRUCTURE_MARKDOWN,
   },
   {
     slug: "map-edit-fabric-zoom-stability",

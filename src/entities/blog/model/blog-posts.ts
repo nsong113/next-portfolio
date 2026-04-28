@@ -1,16 +1,16 @@
-import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./app-router-static-content.content";
-import { DESIGN_SYSTEM_TAILWIND_TOKENS_SHARED_COMPONENTS_MARKDOWN } from "./design-system-tailwind-tokens-shared-components.content";
-import { I18N_GLOBAL_LANGUAGE_UI_STRUCTURE_MARKDOWN } from "./i18n-global-language-ui-structure.content";
-import { MAP_CANVAS_COORDINATE_ALIGNMENT_MARKDOWN } from "./map-canvas-coordinate-alignment.content";
-import { MAP_EDIT_FABRIC_ZOOM_STABILITY_MARKDOWN } from "./map-edit-fabric-zoom-stability.content";
-import { ROBOT_POSITION_MQTT_RENDER_OPTIMIZATION_MARKDOWN } from "./robot-position-mqtt-render-optimization.content";
-import { MAIN_LANDING_SCROLL_PERFORMANCE_MARKDOWN } from "./main-landing-scroll-performance.content";
-import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./mvvm-llm-task-ui-refactor.content";
-import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./nextjs-first-hydration-theme.content";
-import { ROBOT_CHAT_NAVIGATION_2LAYER_ARCHITECTURE_MARKDOWN } from "./robot-chat-navigation-2layer-architecture.content";
-import { ROBOT_UI_MODAL_GLOBAL_FLOW_MARKDOWN } from "./robot-ui-modal-global-flow.content";
-import { RESPONSIVE_TAILWIND_BREAKPOINTS_AUTOPREFIXER_MARKDOWN } from "./responsive-tailwind-breakpoints-autoprefixer.content";
-import { SPA_SEO_METADATA_SEARCH_SNIPPET_MARKDOWN } from "./spa-seo-metadata-search-snippet.content";
+import { APP_ROUTER_STATIC_CONTENT_MARKDOWN } from "./contents/app-router-static-content.content";
+import { DESIGN_SYSTEM_TAILWIND_TOKENS_SHARED_COMPONENTS_MARKDOWN } from "./contents/design-system-tailwind-tokens-shared-components.content";
+import { I18N_GLOBAL_LANGUAGE_UI_STRUCTURE_MARKDOWN } from "./contents/i18n-global-language-ui-structure.content";
+import { MAP_CANVAS_COORDINATE_ALIGNMENT_MARKDOWN } from "./contents/map-canvas-coordinate-alignment.content";
+import { MAP_EDIT_FABRIC_ZOOM_STABILITY_MARKDOWN } from "./contents/map-edit-fabric-zoom-stability.content";
+import { ROBOT_POSITION_MQTT_RENDER_OPTIMIZATION_MARKDOWN } from "./contents/robot-position-mqtt-render-optimization.content";
+import { MAIN_LANDING_SCROLL_PERFORMANCE_MARKDOWN } from "./contents/main-landing-scroll-performance.content";
+import { MVVM_LLM_TASK_UI_REFACTOR_MARKDOWN } from "./contents/mvvm-llm-task-ui-refactor.content";
+import { NEXTJS_FIRST_HYDRATION_THEME_MARKDOWN } from "./contents/nextjs-first-hydration-theme.content";
+import { ROBOT_CHAT_NAVIGATION_2LAYER_ARCHITECTURE_MARKDOWN } from "./contents/robot-chat-navigation-2layer-architecture.content";
+import { ROBOT_UI_MODAL_GLOBAL_FLOW_MARKDOWN } from "./contents/robot-ui-modal-global-flow.content";
+import { RESPONSIVE_TAILWIND_BREAKPOINTS_AUTOPREFIXER_MARKDOWN } from "./contents/responsive-tailwind-breakpoints-autoprefixer.content";
+import { SPA_SEO_METADATA_SEARCH_SNIPPET_MARKDOWN } from "./contents/spa-seo-metadata-search-snippet.content";
 
 export type BlogPost = {
   slug: string;

@@ -20,6 +20,39 @@ export type ProjectDetailPageProps = {
   };
 };
 
+function renderLinkifiedText(text: string) {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const lines = text.split("\n");
+
+  return lines.map((line, lineIndex) => {
+    const parts = line.split(urlRegex);
+
+    return (
+      <span key={`line-${lineIndex}`}>
+        {parts.map((part, partIndex) => {
+          const isUrl = urlRegex.test(part);
+          urlRegex.lastIndex = 0;
+
+          if (!isUrl) return <span key={`text-${lineIndex}-${partIndex}`}>{part}</span>;
+
+          return (
+            <Link
+              key={`link-${lineIndex}-${partIndex}`}
+              href={part}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="break-all text-primary underline underline-offset-2 hover:text-primary/80"
+            >
+              {part}
+            </Link>
+          );
+        })}
+        {lineIndex < lines.length - 1 ? <br /> : null}
+      </span>
+    );
+  });
+}
+
 export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
   const { portfolio } = project;
   const caseStudies = portfolio.problems.filter((p) => !isRetroProblemItem(p));
@@ -71,6 +104,15 @@ export function ProjectDetailPage({ project }: ProjectDetailPageProps) {
             ))}
           </div>
         </div>
+
+        {"contentBoxText" in portfolio &&
+        typeof portfolio.contentBoxText === "string" ? (
+          <div className="mb-10 rounded-[15px] border border-slate-900/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.86),rgba(245,243,255,0.24)_30%,rgba(245,243,255,0.14))] p-6 shadow-[0_4px_34px_rgba(0,0,0,0.10)] backdrop-blur-[20px] md:p-8 dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.09),rgba(255,255,255,0.03)_30%,rgba(0,0,0,0.10))] dark:shadow-[0_10px_40px_rgba(0,0,0,0.40)]">
+            <p className="whitespace-pre-line font-sans leading-relaxed text-foreground/90 break-keep">
+              {renderLinkifiedText(portfolio.contentBoxText)}
+            </p>
+          </div>
+        ) : null}
 
         {portfolio.image.length > 0 ? (
           <ProjectDetailGallery title={portfolio.title} images={portfolio.image} />

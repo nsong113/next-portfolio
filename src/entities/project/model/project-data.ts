@@ -7,6 +7,7 @@ import rmsMap from "@/shared/assets/projects/rmsMap.webp";
 import anz1 from "@/shared/assets/projects/anz1.webp";
 import nextDark from "@/shared/assets/projects/nextDart.webp";
 import nextLight from "@/shared/assets/projects/nextLight.webp";
+import musinsa from "@/shared/assets/projects/musinsa.png";
 
 /** 카드·상세 공통 필드는 `portfolio`만. 카드 썸네일 = `portfolio.image[0]`. */
 export const PROJECTS = [
@@ -230,25 +231,33 @@ export const PROJECTS = [
   },
   {
     id: 5,
-    tags: ["E2E", "테스트", "CI", "Playwright"],
-    liveUrl: "",
+    tags: ["기능", "테스트", "CI", "Playwright"],
+    liveUrl: "https://playwright-reports-eight.vercel.app/",
     codeUrl: "https://github.com/nsong113/musinsa",
     portfolio: {
-      title: "무신사 Playwright E2E Test",
+      title: "무신사 Playwright 기능 Test",
       subTitle: "테스트 설계, 세션 재사용, CI 관측성",
       description:
-        "무신사 웹사이트를 대상으로 Playwright 기반 E2E 테스트 환경을 구축한 개인 프로젝트입니다. 유지보수 가능한 테스트 구조(Page Object/컴포넌트 객체 분리)와 인증 세션 재사용(storageState), CI(리포트/아티팩트/실패 분석)까지 전체 실행 체계를 설계·구현했습니다.",
+        "무신사 웹사이트를 대상으로 Playwright 기반 기능 테스트 환경을 구축한 개인 프로젝트입니다. 유지보수 가능한 테스트 구조(Page Object/컴포넌트 객체 분리)와 인증 세션 재사용(storageState), CI(리포트/아티팩트/실패 분석)까지 전체 실행 체계를 설계·구현했습니다.",
+      contentBoxText: `
+[테스트 케이스 문서]
+요구사항 기반으로 정의한 검색 플로우 테스트 케이스 정리
+https://docs.google.com/spreadsheets/d/1MV3zCdSLq4Eb7XZCN4ltTse4kCpJpTJE1423JpVSCIM/edit?gid=0#gid=0
+
+[로컬 실행 리포트 예시]
+로컬 환경에서 실행한 Playwright HTML Report
+https://playwright-reports-eight.vercel.app/`,
       technologies: ["TypeScript", "Playwright", "GitHub Actions"],
       period: "2026.01 - 2026.01",
       contribution: 100,
       video: "",
-      image: [taskUI],
+      image: [musinsa],
       problems: [
         {
           id: 1,
           title: "유지보수 가능한 테스트 설계",
           problem:
-            "UI 변경에 취약한 E2E 테스트를 최소화하고, 회귀 테스트로서 의미 있는 핵심 플로우를 일관된 규칙으로 유지할 구조가 필요했음.",
+            "UI 변경에 취약한 기능 테스트를 최소화하고, 회귀 테스트로서 의미 있는 핵심 플로우를 일관된 규칙으로 유지할 구조가 필요했음.",
           solution:
             "- Page Object와 공통 컴포넌트 객체를 분리해 UI 변경에 상대적으로 강한 구조로 설계\n- 검색 핵심 플로우를 회귀 테스트 시나리오로 정의하고, 요구사항 ID 기반 네이밍과 Arrange–Act–Assert 패턴 적용",
           result:
@@ -276,10 +285,20 @@ export const PROJECTS = [
         },
         {
           id: 4,
+          title: "프로젝트 컨텐츠",
+          problem:
+            "프로젝트의 코드·테스트 케이스 문서·실행 리포트를 한곳에서 바로 확인할 수 있는 컨텐츠 구성이 필요했음.",
+          solution:
+            "[소스코드]\nhttps://github.com/nsong113/musinsa\n\n[테스트 케이스 문서]\n요구사항 기반으로 정의한 검색 플로우 테스트 케이스 정리\nhttps://docs.google.com/spreadsheets/d/1MV3zCdSLq4Eb7XZCN4ltTse4kCpJpTJE1423JpVSCIM/edit?gid=0#gid=0\n\n[로컬 실행 리포트 예시]\n로컬 환경에서 실행한 Playwright HTML Report\nhttps://playwright-reports-eight.vercel.app/",
+          result:
+            "코드, 테스트 설계 문서, 실행 리포트를 상세 페이지에서 빠르게 확인할 수 있게 되었음.",
+        },
+        {
+          id: 5,
           kind: "retro",
           title: "회고",
           learnings:
-            "- E2E 테스트는 인증 상태, 실행 환경, 실패 분석까지 포함한 전체 테스트 구조 설계가 중요하다는 점을 배움\n- Playwright의 storageState, trace, HTML Report, CI 연동을 적용하며 자동화 테스트의 실무적인 구성 방식을 익힘",
+            "- 기능 테스트는 인증 상태, 실행 환경, 실패 분석까지 포함한 전체 테스트 구조 설계가 중요하다는 점을 배움\n- Playwright의 storageState, trace, HTML Report, CI 연동을 적용하며 자동화 테스트의 실무적인 구성 방식을 익힘",
           improvements:
             "- 글로벌 도메인 리다이렉트 이슈로 CI에서 로컬과 동일한 조건의 실서비스 테스트 재현에 한계가 있었고, 향후에는 환경 제어가 가능한 대체 전략도 함께 검토할 필요가 있음을 확인함",
         },
@@ -289,7 +308,7 @@ export const PROJECTS = [
   {
     id: 6,
     tags: ["Next.js", "SSG", "다크모드", "성능", "구조"],
-    liveUrl: "",
+    liveUrl: "https://next-portfolio-phi-topaz.vercel.app/",
     codeUrl: "https://github.com/nsong113/next-portfolio",
     portfolio: {
       title: "Next Portfolio",
